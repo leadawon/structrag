@@ -1,0 +1,150 @@
+INFO 03-19 06:27:09 api_server.py:528] vLLM API server version 0.6.3.post1
+INFO 03-19 06:27:09 api_server.py:529] args: Namespace(host='127.0.0.1', port=1225, uvicorn_log_level='info', allow_credentials=False, allowed_origins=['*'], allowed_methods=['*'], allowed_headers=['*'], api_key=None, lora_modules=None, prompt_adapters=None, chat_template=None, response_role='assistant', ssl_keyfile=None, ssl_certfile=None, ssl_ca_certs=None, ssl_cert_reqs=0, root_path=None, middleware=[], return_tokens_as_token_ids=False, disable_frontend_multiprocessing=False, enable_auto_tool_choice=False, tool_call_parser=None, tool_parser_plugin='', model='/workspace/StructRAG/model/Qwen2.5-32B-Instruct', tokenizer=None, skip_tokenizer_init=False, revision=None, code_revision=None, tokenizer_revision=None, tokenizer_mode='auto', trust_remote_code=False, download_dir=None, load_format='auto', config_format=<ConfigFormat.AUTO: 'auto'>, dtype='auto', kv_cache_dtype='auto', quantization_param_path=None, max_model_len=None, guided_decoding_backend='outlines', distributed_executor_backend=None, worker_use_ray=False, pipeline_parallel_size=1, tensor_parallel_size=4, max_parallel_loading_workers=None, ray_workers_use_nsight=False, block_size=16, enable_prefix_caching=False, disable_sliding_window=False, use_v2_block_manager=False, num_lookahead_slots=0, seed=0, swap_space=4, cpu_offload_gb=0, gpu_memory_utilization=0.9, num_gpu_blocks_override=None, max_num_batched_tokens=None, max_num_seqs=256, max_logprobs=20, disable_log_stats=False, quantization=None, rope_scaling=None, rope_theta=None, enforce_eager=False, max_context_len_to_capture=None, max_seq_len_to_capture=8192, disable_custom_all_reduce=True, tokenizer_pool_size=0, tokenizer_pool_type='ray', tokenizer_pool_extra_config=None, limit_mm_per_prompt=None, mm_processor_kwargs=None, enable_lora=False, max_loras=1, max_lora_rank=16, lora_extra_vocab_size=256, lora_dtype='auto', long_lora_scaling_factors=None, max_cpu_loras=None, fully_sharded_loras=False, enable_prompt_adapter=False, max_prompt_adapters=1, max_prompt_adapter_token=0, device='auto', num_scheduler_steps=1, multi_step_stream_outputs=True, scheduler_delay_factor=0.0, enable_chunked_prefill=None, speculative_model=None, speculative_model_quantization=None, num_speculative_tokens=None, speculative_disable_mqa_scorer=False, speculative_draft_tensor_parallel_size=None, speculative_max_model_len=None, speculative_disable_by_batch_size=None, ngram_prompt_lookup_max=None, ngram_prompt_lookup_min=None, spec_decoding_acceptance_method='rejection_sampler', typical_acceptance_sampler_posterior_threshold=None, typical_acceptance_sampler_posterior_alpha=None, disable_logprobs_during_spec_decoding=None, model_loader_extra_config=None, ignore_patterns=[], preemption_mode=None, served_model_name=['Qwen'], qlora_adapter_name_or_path=None, otlp_traces_endpoint=None, collect_detailed_traces=None, disable_async_output_proc=False, override_neuron_config=None, scheduling_policy='fcfs', disable_log_requests=False, max_log_len=None, disable_fastapi_docs=False)
+INFO 03-19 06:27:09 api_server.py:166] Multiprocessing frontend to use ipc:///tmp/ee5d6487-1577-4fed-aef4-97437a5f6bdd for IPC Path.
+INFO 03-19 06:27:09 api_server.py:179] Started engine process with PID 1064012
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+INFO 03-19 06:27:15 config.py:905] Defaulting to use mp for distributed inference
+WARNING 03-19 06:27:15 arg_utils.py:1019] [DEPRECATED] Block manager v1 has been removed, and setting --use-v2-block-manager to True or False has no effect on vLLM behavior. Please remove --use-v2-block-manager in your engine argument. If your use case is not supported by SelfAttnBlockSpaceManager (i.e. block manager v2), please file an issue with detailed information.
+INFO 03-19 06:27:20 config.py:905] Defaulting to use mp for distributed inference
+WARNING 03-19 06:27:20 arg_utils.py:1019] [DEPRECATED] Block manager v1 has been removed, and setting --use-v2-block-manager to True or False has no effect on vLLM behavior. Please remove --use-v2-block-manager in your engine argument. If your use case is not supported by SelfAttnBlockSpaceManager (i.e. block manager v2), please file an issue with detailed information.
+INFO 03-19 06:27:20 llm_engine.py:237] Initializing an LLM engine (v0.6.3.post1) with config: model='/workspace/StructRAG/model/Qwen2.5-32B-Instruct', speculative_config=None, tokenizer='/workspace/StructRAG/model/Qwen2.5-32B-Instruct', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, rope_scaling=None, rope_theta=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=32768, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=4, pipeline_parallel_size=1, disable_custom_all_reduce=True, quantization=None, enforce_eager=False, kv_cache_dtype=auto, quantization_param_path=None, device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='outlines'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=0, served_model_name=Qwen, num_scheduler_steps=1, chunked_prefill_enabled=False multi_step_stream_outputs=True, enable_prefix_caching=False, use_async_output_proc=True, use_cached_outputs=True, mm_processor_kwargs=None)
+WARNING 03-19 06:27:20 multiproc_gpu_executor.py:53] Reducing Torch parallelism from 18 threads to 1 to avoid unnecessary CPU contention. Set OMP_NUM_THREADS in the external environment to tune this value as needed.
+INFO 03-19 06:27:20 custom_cache_manager.py:17] Setting Triton cache manager to: vllm.triton_utils.custom_cache_manager:CustomCacheManager
+[1;36m(VllmWorkerProcess pid=1064416)[0;0m INFO 03-19 06:27:21 multiproc_worker_utils.py:215] Worker ready; awaiting tasks
+[1;36m(VllmWorkerProcess pid=1064415)[0;0m INFO 03-19 06:27:21 multiproc_worker_utils.py:215] Worker ready; awaiting tasks
+[1;36m(VllmWorkerProcess pid=1064414)[0;0m INFO 03-19 06:27:21 multiproc_worker_utils.py:215] Worker ready; awaiting tasks
+[1;36m(VllmWorkerProcess pid=1064416)[0;0m INFO 03-19 06:27:22 utils.py:1008] Found nccl from library libnccl.so.2
+INFO 03-19 06:27:22 utils.py:1008] Found nccl from library libnccl.so.2
+[1;36m(VllmWorkerProcess pid=1064415)[0;0m INFO 03-19 06:27:22 utils.py:1008] Found nccl from library libnccl.so.2
+[1;36m(VllmWorkerProcess pid=1064414)[0;0m INFO 03-19 06:27:22 utils.py:1008] Found nccl from library libnccl.so.2
+[1;36m(VllmWorkerProcess pid=1064416)[0;0m INFO 03-19 06:27:22 pynccl.py:63] vLLM is using nccl==2.20.5
+INFO 03-19 06:27:22 pynccl.py:63] vLLM is using nccl==2.20.5
+[1;36m(VllmWorkerProcess pid=1064415)[0;0m INFO 03-19 06:27:22 pynccl.py:63] vLLM is using nccl==2.20.5
+[1;36m(VllmWorkerProcess pid=1064414)[0;0m INFO 03-19 06:27:22 pynccl.py:63] vLLM is using nccl==2.20.5
+INFO 03-19 06:27:23 shm_broadcast.py:241] vLLM message queue communication handle: Handle(connect_ip='127.0.0.1', local_reader_ranks=[1, 2, 3], buffer=<vllm.distributed.device_communicators.shm_broadcast.ShmRingBuffer object at 0x7f69c27d5450>, local_subscribe_port=43459, remote_subscribe_port=None)
+INFO 03-19 06:27:23 model_runner.py:1056] Starting to load model /workspace/StructRAG/model/Qwen2.5-32B-Instruct...
+[1;36m(VllmWorkerProcess pid=1064415)[0;0m INFO 03-19 06:27:23 model_runner.py:1056] Starting to load model /workspace/StructRAG/model/Qwen2.5-32B-Instruct...
+[1;36m(VllmWorkerProcess pid=1064414)[0;0m INFO 03-19 06:27:23 model_runner.py:1056] Starting to load model /workspace/StructRAG/model/Qwen2.5-32B-Instruct...
+[1;36m(VllmWorkerProcess pid=1064416)[0;0m INFO 03-19 06:27:23 model_runner.py:1056] Starting to load model /workspace/StructRAG/model/Qwen2.5-32B-Instruct...
+Loading safetensors checkpoint shards:   0% Completed | 0/17 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards:   6% Completed | 1/17 [00:42<11:23, 42.73s/it]
+Loading safetensors checkpoint shards:  12% Completed | 2/17 [01:34<11:59, 47.98s/it]
+Loading safetensors checkpoint shards:  18% Completed | 3/17 [01:34<06:07, 26.24s/it]
+Loading safetensors checkpoint shards:  24% Completed | 4/17 [02:25<07:45, 35.78s/it]
+Loading safetensors checkpoint shards:  29% Completed | 5/17 [03:28<09:08, 45.68s/it]
+Loading safetensors checkpoint shards:  35% Completed | 6/17 [04:28<09:14, 50.44s/it]
+Loading safetensors checkpoint shards:  41% Completed | 7/17 [04:28<05:40, 34.08s/it]
+Loading safetensors checkpoint shards:  47% Completed | 8/17 [04:28<03:30, 23.35s/it]
+Loading safetensors checkpoint shards:  53% Completed | 9/17 [04:29<02:09, 16.16s/it]
+Loading safetensors checkpoint shards:  59% Completed | 10/17 [04:29<01:19, 11.29s/it]
+Loading safetensors checkpoint shards:  65% Completed | 11/17 [04:29<00:47,  7.95s/it]
+Loading safetensors checkpoint shards:  71% Completed | 12/17 [05:36<02:08, 25.72s/it]
+Loading safetensors checkpoint shards:  76% Completed | 13/17 [05:36<01:12, 18.06s/it]
+Loading safetensors checkpoint shards:  82% Completed | 14/17 [05:37<00:38, 12.71s/it]
+Loading safetensors checkpoint shards:  88% Completed | 15/17 [06:44<00:58, 29.14s/it]
+Loading safetensors checkpoint shards:  94% Completed | 16/17 [07:52<00:40, 40.80s/it]
+Loading safetensors checkpoint shards: 100% Completed | 17/17 [07:52<00:00, 28.64s/it]
+Loading safetensors checkpoint shards: 100% Completed | 17/17 [07:52<00:00, 27.80s/it]
+
+[1;36m(VllmWorkerProcess pid=1064416)[0;0m INFO 03-19 06:35:16 model_runner.py:1067] Loading model weights took 15.3916 GB
+[1;36m(VllmWorkerProcess pid=1064415)[0;0m INFO 03-19 06:35:16 model_runner.py:1067] Loading model weights took 15.3916 GB
+[1;36m(VllmWorkerProcess pid=1064414)[0;0m INFO 03-19 06:35:16 model_runner.py:1067] Loading model weights took 15.3916 GB
+INFO 03-19 06:35:16 model_runner.py:1067] Loading model weights took 15.3916 GB
+INFO 03-19 06:35:49 distributed_gpu_executor.py:57] # GPU blocks: 2987, # CPU blocks: 4096
+INFO 03-19 06:35:49 distributed_gpu_executor.py:61] Maximum concurrency for 32768 tokens per request: 1.46x
+[1;36m(VllmWorkerProcess pid=1064414)[0;0m INFO 03-19 06:35:51 model_runner.py:1395] Capturing the model for CUDA graphs. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI.
+[1;36m(VllmWorkerProcess pid=1064414)[0;0m INFO 03-19 06:35:51 model_runner.py:1399] CUDA graphs can take additional 1~3 GiB memory per GPU. If you are running out of memory, consider decreasing `gpu_memory_utilization` or enforcing eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
+[1;36m(VllmWorkerProcess pid=1064416)[0;0m INFO 03-19 06:35:51 model_runner.py:1395] Capturing the model for CUDA graphs. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI.
+[1;36m(VllmWorkerProcess pid=1064416)[0;0m INFO 03-19 06:35:51 model_runner.py:1399] CUDA graphs can take additional 1~3 GiB memory per GPU. If you are running out of memory, consider decreasing `gpu_memory_utilization` or enforcing eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
+[1;36m(VllmWorkerProcess pid=1064415)[0;0m INFO 03-19 06:35:51 model_runner.py:1395] Capturing the model for CUDA graphs. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI.
+[1;36m(VllmWorkerProcess pid=1064415)[0;0m INFO 03-19 06:35:51 model_runner.py:1399] CUDA graphs can take additional 1~3 GiB memory per GPU. If you are running out of memory, consider decreasing `gpu_memory_utilization` or enforcing eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
+INFO 03-19 06:35:51 model_runner.py:1395] Capturing the model for CUDA graphs. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI.
+INFO 03-19 06:35:51 model_runner.py:1399] CUDA graphs can take additional 1~3 GiB memory per GPU. If you are running out of memory, consider decreasing `gpu_memory_utilization` or enforcing eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
+[1;36m(VllmWorkerProcess pid=1064414)[0;0m INFO 03-19 06:36:19 model_runner.py:1523] Graph capturing finished in 28 secs.
+INFO 03-19 06:36:19 model_runner.py:1523] Graph capturing finished in 27 secs.
+[1;36m(VllmWorkerProcess pid=1064416)[0;0m INFO 03-19 06:36:19 model_runner.py:1523] Graph capturing finished in 28 secs.
+[1;36m(VllmWorkerProcess pid=1064415)[0;0m INFO 03-19 06:36:19 model_runner.py:1523] Graph capturing finished in 28 secs.
+INFO 03-19 06:36:20 api_server.py:232] vLLM to use /tmp/tmpiy0nm2_0 as PROMETHEUS_MULTIPROC_DIR
+WARNING 03-19 06:36:20 serving_embedding.py:199] embedding_mode is False. Embedding API will not work.
+INFO 03-19 06:36:20 launcher.py:19] Available routes are:
+INFO 03-19 06:36:20 launcher.py:27] Route: /openapi.json, Methods: GET, HEAD
+INFO 03-19 06:36:20 launcher.py:27] Route: /docs, Methods: GET, HEAD
+INFO 03-19 06:36:20 launcher.py:27] Route: /docs/oauth2-redirect, Methods: GET, HEAD
+INFO 03-19 06:36:20 launcher.py:27] Route: /redoc, Methods: GET, HEAD
+INFO 03-19 06:36:20 launcher.py:27] Route: /health, Methods: GET
+INFO 03-19 06:36:20 launcher.py:27] Route: /tokenize, Methods: POST
+INFO 03-19 06:36:20 launcher.py:27] Route: /detokenize, Methods: POST
+INFO 03-19 06:36:20 launcher.py:27] Route: /v1/models, Methods: GET
+INFO 03-19 06:36:20 launcher.py:27] Route: /version, Methods: GET
+INFO 03-19 06:36:20 launcher.py:27] Route: /v1/chat/completions, Methods: POST
+INFO 03-19 06:36:20 launcher.py:27] Route: /v1/completions, Methods: POST
+INFO 03-19 06:36:20 launcher.py:27] Route: /v1/embeddings, Methods: POST
+INFO:     Started server process [1063854]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on socket ('0.0.0.0', 1225) (Press CTRL+C to quit)
+INFO 03-19 06:36:30 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:36:40 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:36:50 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:37:00 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:37:10 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:37:20 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:37:30 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:37:40 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:37:50 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:38:00 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:38:10 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:38:20 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:38:30 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:38:40 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:38:50 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:39:00 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:39:10 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:39:20 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:39:30 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:39:40 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:39:50 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:40:00 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:40:10 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:40:20 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:40:30 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:40:40 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:40:50 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:41:00 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:41:10 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:41:20 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:41:30 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:41:40 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:41:50 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO:     127.0.0.1:44042 - "GET /v1/chat/completions HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:44042 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO 03-19 06:42:00 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:42:10 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:42:20 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:42:30 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:42:40 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:42:50 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:43:00 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:43:11 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:43:21 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:43:31 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:43:41 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:43:51 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:44:01 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:44:11 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:44:21 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:44:31 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:44:41 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:44:51 metrics.py:349] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+INFO 03-19 06:44:55 launcher.py:57] Shutting down FastAPI HTTP server.
+INFO 03-19 06:44:55 multiproc_worker_utils.py:133] Terminating local vLLM worker processes
+[1;36m(VllmWorkerProcess pid=1064415)[0;0m INFO 03-19 06:44:55 multiproc_worker_utils.py:240] Worker exiting
+[1;36m(VllmWorkerProcess pid=1064416)[0;0m INFO 03-19 06:44:55 multiproc_worker_utils.py:240] Worker exiting
+[1;36m(VllmWorkerProcess pid=1064414)[0;0m INFO 03-19 06:44:55 multiproc_worker_utils.py:240] Worker exiting
+[rank0]:[W319 06:44:57.891787142 ProcessGroupNCCL.cpp:1168] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+/opt/conda/lib/python3.10/multiprocessing/resource_tracker.py:224: UserWarning: resource_tracker: There appear to be 1 leaked shared_memory objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

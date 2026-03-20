@@ -1,0 +1,1358 @@
+*.pyc
+eval_results
+intermediate_results
+Loong/assets/logo.png
+Loong/assets/main_fig.jpg
+Loong/config/models/claude3haiku.yaml
+Loong/config/models/claude35sonnet.yaml
+Loong/config/models/geminipro.yaml
+Loong/config/models/glm4.yaml
+Loong/config/models/gpt4.yaml
+Loong/config/models/gpt4o.yaml
+Loong/config/models/qwen2.yaml
+Loong/data/loong_process.jsonl
+Loong/data/loong.jsonl
+Loong/data/doc/README.md
+Loong/data/doc/financial/2019-avni123118form10k.txt
+Loong/data/doc/financial/2020-avni123119form10k.txt
+Loong/data/doc/financial/2020-f10k2019_boxscorebrands.txt
+Loong/data/doc/financial/2020-form10-k.txt
+Loong/data/doc/financial/2021-avni123120form10k.txt
+Loong/data/doc/financial/2021-f10k2020_boxscorebrands.txt
+Loong/data/doc/financial/2021-form10-k.txt
+Loong/data/doc/financial/2022-aqb-20211231x10k.txt
+Loong/data/doc/financial/2022-avni123121form10k.txt
+Loong/data/doc/financial/2022-f10k2021_boxscorebrands.txt
+Loong/data/doc/financial/2022-form10-k.txt
+Loong/data/doc/financial/2022-synl-20211231.txt
+Loong/data/doc/financial/2023-acnt-20221231.txt
+Loong/data/doc/financial/2023-Aetherium Acquisition Corp-n.txt
+Loong/data/doc/financial/2023-AMERIGUARD SECURITY SERVICES, INC.-n.txt
+Loong/data/doc/financial/2023-aqb-20221231x10k.txt
+Loong/data/doc/financial/2023-avni123123form10k.txt
+Loong/data/doc/financial/2023-f10k2022_boxscore.txt
+Loong/data/doc/financial/2023-form10-k.txt
+Loong/data/doc/financial/2024-1st FRANKLIN FINANCIAL CORP-j.txt
+Loong/data/doc/financial/2024-4Front Ventures Corp.-j.txt
+Loong/data/doc/financial/2024-1847 Holdings LLC-j.txt
+Loong/data/doc/financial/2024-acnt-20231231.txt
+Loong/data/doc/financial/2024-Acorda Therapeutics, Inc.-j.txt
+Loong/data/doc/financial/2024-Acutus Medical, Inc.-j.txt
+Loong/data/doc/financial/2024-ADIAL PHARMACEUTICALS, INC.-j.txt
+Loong/data/doc/financial/2024-Aditxt, Inc.-j.txt
+Loong/data/doc/financial/2024-ADM ENDEAVORS, INC.-j.txt
+Loong/data/doc/financial/2024-Aetherium Acquisition Corp-n.txt
+Loong/data/doc/financial/2024-Agape ATP Corp-j.txt
+Loong/data/doc/financial/2024-AgEagle Aerial Systems Inc.-j.txt
+Loong/data/doc/financial/2024-AGRIFORCE GROWING SYSTEMS LTD.-j.txt
+Loong/data/doc/financial/2024-Agrify Corp-j.txt
+Loong/data/doc/financial/2024-Aileron Therapeutics, Inc.-j.txt
+Loong/data/doc/financial/2024-AIM ImmunoTech Inc.-j.txt
+Loong/data/doc/financial/2024-Alaunos Therapeutics, Inc.-j.txt
+Loong/data/doc/financial/2024-Alpha Investment Inc.-j.txt
+Loong/data/doc/financial/2024-Alset Inc.-j.txt
+Loong/data/doc/financial/2024-Ameri Metro, Inc. (formerly Yellowwood)-j.txt
+Loong/data/doc/financial/2024-AMERICAN BATTERY MATERIALS, INC.-j.txt
+Loong/data/doc/financial/2024-American Resources Corp-j.txt
+Loong/data/doc/financial/2024-AMERICAN SHARED HOSPITAL SERVICES-j.txt
+Loong/data/doc/financial/2024-American Strategic Investment Co.-j.txt
+Loong/data/doc/financial/2024-AMERIGUARD SECURITY SERVICES, INC.-j.txt
+Loong/data/doc/financial/2024-AMERIGUARD SECURITY SERVICES, INC.-n.txt
+Loong/data/doc/financial/2024-Ameritek Ventures, Inc.-j.txt
+Loong/data/doc/financial/2024-Apple iSports Group, Inc.-j.txt
+Loong/data/doc/financial/2024-Appsoft Technologies, Inc.-j.txt
+Loong/data/doc/financial/2024-AppTech Payments Corp.-j.txt
+Loong/data/doc/financial/2024-APPYEA, INC-j.txt
+Loong/data/doc/financial/2024-aqb-20231231x10k.txt
+Loong/data/doc/financial/2024-AQUABOUNTY TECHNOLOGIES INC-j.txt
+Loong/data/doc/financial/2024-Arax Holdings Corp-j.txt
+Loong/data/doc/financial/2024-Arena Group Holdings, Inc.-j.txt
+Loong/data/doc/financial/2024-ARVANA INC-j.txt
+Loong/data/doc/financial/2024-ASCENT INDUSTRIES CO.-j.txt
+Loong/data/doc/financial/2024-Aspira Women's Health Inc.-j.txt
+Loong/data/doc/financial/2024-AST SpaceMobile, Inc.-j.txt
+Loong/data/doc/financial/2024-ATOSSA THERAPEUTICS, INC.-j.txt
+Loong/data/doc/financial/2024-AUDDIA INC.-j.txt
+Loong/data/doc/financial/2024-Ault Alliance, Inc.-j.txt
+Loong/data/doc/financial/2024-avni123123form10k.txt
+Loong/data/doc/financial/2024-AXIM BIOTECHNOLOGIES, INC.-j.txt
+Loong/data/doc/financial/2024-B. Riley Financial, Inc.-j.txt
+Loong/data/doc/financial/2024-Backblaze, Inc.-j.txt
+Loong/data/doc/financial/2024-Balance Labs, Inc.-j.txt
+Loong/data/doc/financial/2024-BASANITE, INC.-j.txt
+Loong/data/doc/financial/2024-BATTALION OIL CORP-j.txt
+Loong/data/doc/financial/2024-Beam Global-j.txt
+Loong/data/doc/financial/2024-Better Choice Co Inc.-j.txt
+Loong/data/doc/financial/2024-Better Home & Finance Holding Co-j.txt
+Loong/data/doc/financial/2024-Bio Essence Corp-j.txt
+Loong/data/doc/financial/2024-BIOADAPTIVES, INC.-j.txt
+Loong/data/doc/financial/2024-BioCorRx Inc.-j.txt
+Loong/data/doc/financial/2024-BIOETHICS LTD-j.txt
+Loong/data/doc/financial/2024-BIOFORCE NANOSCIENCES HOLDINGS, INC.-j.txt
+Loong/data/doc/financial/2024-BIOLARGO, INC.-j.txt
+Loong/data/doc/financial/2024-BiomX Inc.-j.txt
+Loong/data/doc/financial/2024-BioNexus Gene Lab Corp-j.txt
+Loong/data/doc/financial/2024-BIORA THERAPEUTICS, INC.-j.txt
+Loong/data/doc/financial/2024-BioSig Technologies, Inc.-j.txt
+Loong/data/doc/financial/2024-Biostax Corp.-j.txt
+Loong/data/doc/financial/2024-Bitech Technologies Corp-j.txt
+Loong/data/doc/financial/2024-BLACKBOXSTOCKS INC.-j.txt
+Loong/data/doc/financial/2024-BLUE DOLPHIN ENERGY CO-j.txt
+Loong/data/doc/financial/2024-BLUE DOLPHIN ENERGY CO-n.txt
+Loong/data/doc/financial/2024-Blue Line Protection Group, Inc.-j.txt
+Loong/data/doc/financial/2024-Blue Star Foods Corp.-j.txt
+Loong/data/doc/financial/2024-BM Technologies, Inc.-j.txt
+Loong/data/doc/financial/2024-Boxabl Inc.-j.txt
+Loong/data/doc/financial/2024-BRAINSTORM CELL THERAPEUTICS INC.-j.txt
+Loong/data/doc/financial/2024-BRAINSTORM CELL THERAPEUTICS INC.-n.txt
+Loong/data/doc/financial/2024-Brand Engagement Network Inc.-j.txt
+Loong/data/doc/financial/2024-Breeze Holdings Acquisition Corp.-j.txt
+Loong/data/doc/financial/2024-BrewBilt Brewing Co-j.txt
+Loong/data/doc/financial/2024-Bright Mountain Media, Inc.-j.txt
+Loong/data/doc/financial/2024-Broad Street Realty, Inc.-j.txt
+Loong/data/doc/financial/2024-BROADWAY FINANCIAL CORP /DE/-j.txt
+Loong/data/doc/financial/2024-BT Brands, Inc.-j.txt
+Loong/data/doc/financial/2024-BTC Digital Ltd.-j.txt
+Loong/data/doc/financial/2024-BurgerFi International, Inc.-j.txt
+Loong/data/doc/financial/2024-C & C TOURS, INC.-j.txt
+Loong/data/doc/financial/2024-C-Bond Systems, Inc-j.txt
+Loong/data/doc/financial/2024-CalEthos, Inc.-j.txt
+Loong/data/doc/financial/2024-CaliberCos Inc.-j.txt
+Loong/data/doc/financial/2024-Can B Corp-j.txt
+Loong/data/doc/financial/2024-CANCER CAPITAL CORP-j.txt
+Loong/data/doc/financial/2024-Cano Health, Inc.-j.txt
+Loong/data/doc/financial/2024-Canoo Inc.-j.txt
+Loong/data/doc/financial/2024-Carisma Therapeutics Inc.-j.txt
+Loong/data/doc/financial/2024-Catheter Precision, Inc.-j.txt
+Loong/data/doc/financial/2024-Cepton, Inc.-j.txt
+Loong/data/doc/financial/2024-CFN Enterprises Inc.-j.txt
+Loong/data/doc/financial/2024-Charlie's Holdings, Inc.-j.txt
+Loong/data/doc/financial/2024-CHASE PACKAGING CORP-j.txt
+Loong/data/doc/financial/2024-CHESAPEAKE GRANITE WASH TRUST-j.txt
+Loong/data/doc/financial/2024-Chicken Soup for the Soul Entertainment, Inc.-j.txt
+Loong/data/doc/financial/2024-China Foods Holdings Ltd.-j.txt
+Loong/data/doc/financial/2024-CHINA PHARMA HOLDINGS, INC.-j.txt
+Loong/data/doc/financial/2024-Chosen, Inc.-j.txt
+Loong/data/doc/financial/2024-Churchill Capital Corp VII-j.txt
+Loong/data/doc/financial/2024-Cidara Therapeutics, Inc.-j.txt
+Loong/data/doc/financial/2024-CIM Opportunity Zone Fund, L.P.-j.txt
+Loong/data/doc/financial/2024-CIRTRAN CORP-j.txt
+Loong/data/doc/financial/2024-CISO Global, Inc.-j.txt
+Loong/data/doc/financial/2024-Clean Energy Technologies, Inc.-j.txt
+Loong/data/doc/financial/2024-Clean Vision Corp-j.txt
+Loong/data/doc/financial/2024-CLEARONE INC-j.txt
+Loong/data/doc/financial/2024-ClearSign Technologies Corp-j.txt
+Loong/data/doc/financial/2024-CNS Pharmaceuticals, Inc.-j.txt
+Loong/data/doc/financial/2024-Complete Solaria, Inc.-j.txt
+Loong/data/doc/financial/2024-Corner Growth Acquisition Corp.-j.txt
+Loong/data/doc/financial/2024-Correlate Energy Corp.-j.txt
+Loong/data/doc/financial/2024-Cosmos Group Holdings Inc.-j.txt
+Loong/data/doc/financial/2024-Coyni, Inc.-j.txt
+Loong/data/doc/financial/2024-CPI AEROSTRUCTURES INC-j.txt
+Loong/data/doc/financial/2024-CQENS Technologies Inc.-j.txt
+Loong/data/doc/financial/2024-CROSS TIMBERS ROYALTY TRUST-j.txt
+Loong/data/doc/financial/2024-Crown Electrokinetics Corp.-j.txt
+Loong/data/doc/financial/2024-Crypto Co-j.txt
+Loong/data/doc/financial/2024-Cuentas Inc.-j.txt
+Loong/data/doc/financial/2024-CUTERA INC-j.txt
+Loong/data/doc/financial/2024-Data Call Technologies-j.txt
+Loong/data/doc/financial/2024-Data443 Risk Mitigation, Inc.-j.txt
+Loong/data/doc/financial/2024-DAWSON GEOPHYSICAL CO-j.txt
+Loong/data/doc/financial/2024-DecisionPoint Systems, Inc.-j.txt
+Loong/data/doc/financial/2024-DIGITAL ALLY, INC.-j.txt
+Loong/data/doc/financial/2024-Digital Brands Group, Inc.-j.txt
+Loong/data/doc/financial/2024-Digital Media Solutions, Inc.-j.txt
+Loong/data/doc/financial/2024-DISH DBS CORP-j.txt
+Loong/data/doc/financial/2024-DIVALL INSURED INCOME PROPERTIES 2 LIMITED PARTNERSHIP-j.txt
+Loong/data/doc/financial/2024-Dolphin Entertainment, Inc.-j.txt
+Loong/data/doc/financial/2024-Doma Holdings, Inc.-j.txt
+Loong/data/doc/financial/2024-Dominari Holdings Inc.-j.txt
+Loong/data/doc/financial/2024-Dror Ortho-Design, Inc.-j.txt
+Loong/data/doc/financial/2024-DUOS TECHNOLOGIES GROUP, INC.-j.txt
+Loong/data/doc/financial/2024-Dynamic Shares Trust-j.txt
+Loong/data/doc/financial/2024-DYNARESOURCE INC-j.txt
+Loong/data/doc/financial/2024-ea0202445-10k_american.txt
+Loong/data/doc/financial/2024-Edgemode, Inc.-j.txt
+Loong/data/doc/financial/2024-Edible Garden AG Inc-j.txt
+Loong/data/doc/financial/2024-Eiger BioPharmaceuticals, Inc.-n.txt
+Loong/data/doc/financial/2024-Elvictor Group, Inc.-j.txt
+Loong/data/doc/financial/2024-EOS INC.-j.txt
+Loong/data/doc/financial/2024-EQUUS TOTAL RETURN, INC.-j.txt
+Loong/data/doc/financial/2024-ExchangeRight Income Fund-j.txt
+Loong/data/doc/financial/2024-Exela Technologies, Inc.-j.txt
+Loong/data/doc/financial/2024-Ezagoo Ltd-j.txt
+Loong/data/doc/financial/2024-EzFill Holdings Inc-j.txt
+Loong/data/doc/financial/2024-Fathom Digital Manufacturing Corp-j.txt
+Loong/data/doc/financial/2024-FLEXIBLE SOLUTIONS INTERNATIONAL INC-j.txt
+Loong/data/doc/financial/2024-FlexShopper, Inc.-j.txt
+Loong/data/doc/financial/2024-Fluent, Inc.-j.txt
+Loong/data/doc/financial/2024-FOCUS UNIVERSAL INC.-j.txt
+Loong/data/doc/financial/2024-FORGE INNOVATION DEVELOPMENT CORP.-j.txt
+Loong/data/doc/financial/2024-form10-k.txt
+Loong/data/doc/financial/2024-Fortune Valley Treasures, Inc.-j.txt
+Loong/data/doc/financial/2024-FRACTYL HEALTH, INC.-j.txt
+Loong/data/doc/financial/2024-Free Flow, Inc.-j.txt
+Loong/data/doc/financial/2024-Future FinTech Group Inc.-j.txt
+Loong/data/doc/financial/2024-GameSquare Holdings, Inc.-j.txt
+Loong/data/doc/financial/2024-Gaucho Group Holdings, Inc.-j.txt
+Loong/data/doc/financial/2024-GBT Technologies Inc.-j.txt
+Loong/data/doc/financial/2024-GD Culture Group Ltd-j.txt
+Loong/data/doc/financial/2024-General Enterprise Ventures, Inc.-j.txt
+Loong/data/doc/financial/2024-GENERATION INCOME PROPERTIES, INC.-j.txt
+Loong/data/doc/financial/2024-Generations Bancorp NY, Inc.-j.txt
+Loong/data/doc/financial/2024-Genprex, Inc.-j.txt
+Loong/data/doc/financial/2024-GIVEMEPOWER CORP-j.txt
+Loong/data/doc/financial/2024-Global Clean Energy Holdings, Inc.-j.txt
+Loong/data/doc/financial/2024-Global Gas Corp-j.txt
+Loong/data/doc/financial/2024-Goal Acquisitions Corp.-j.txt
+Loong/data/doc/financial/2024-Gofba, Inc.-j.txt
+Loong/data/doc/financial/2024-GOLDENWELL BIOTECH, INC.-j.txt
+Loong/data/doc/financial/2024-Goodness Growth Holdings, Inc.-j.txt
+Loong/data/doc/financial/2024-GRANT PARK FUTURES FUND LIMITED PARTNERSHIP-j.txt
+Loong/data/doc/financial/2024-GRANT PARK FUTURES FUND LIMITED PARTNERSHIP-n.txt
+Loong/data/doc/financial/2024-Greater Cannabis Company, Inc.-j.txt
+Loong/data/doc/financial/2024-Greenbrook TMS Inc.-j.txt
+Loong/data/doc/financial/2024-Greenland Technologies Holding Corp.-j.txt
+Loong/data/doc/financial/2024-Greenwave Technology Solutions, Inc.-j.txt
+Loong/data/doc/financial/2024-Greenwich LifeSciences, Inc.-j.txt
+Loong/data/doc/financial/2024-GRESHAM WORLDWIDE, INC.-j.txt
+Loong/data/doc/financial/2024-GRIID Infrastructure Inc.-j.txt
+Loong/data/doc/financial/2024-Grom Social Enterprises, Inc.-j.txt
+Loong/data/doc/financial/2024-Gryphon Digital Mining, Inc.-j.txt
+Loong/data/doc/financial/2024-GSE SYSTEMS INC-j.txt
+Loong/data/doc/financial/2024-Hapi Metaverse Inc.-j.txt
+Loong/data/doc/financial/2024-HARTE HANKS INC-j.txt
+Loong/data/doc/financial/2024-HCW Biologics Inc.-j.txt
+Loong/data/doc/financial/2024-HealthLynked Corp-j.txt
+Loong/data/doc/financial/2024-HIGH WIRE NETWORKS, INC.-j.txt
+Loong/data/doc/financial/2024-HOUSTON AMERICAN ENERGY CORP-j.txt
+Loong/data/doc/financial/2024-HUGOTON ROYALTY TRUST-j.txt
+Loong/data/doc/financial/2024-iLearningEngines, Inc.-j.txt
+Loong/data/doc/financial/2024-ISUN, INC.-n.txt
+Loong/data/doc/financial/2024-Lovesac Co-n.txt
+Loong/data/doc/financial/2024-Nano Magic Inc.-n.txt
+Loong/data/doc/financial/2024-Quarta-Rad, Inc.-n.txt
+Loong/data/doc/financial/2024-Sequoia Mortgage Trust 2013-2-n.txt
+Loong/data/doc/financial/report_000001-2024-平安银行-2024年第一季度报告.txt
+Loong/data/doc/financial/report_000026-2024-飞亚达-2024年一季度报告.txt
+Loong/data/doc/financial/report_000049-2024-德赛电池-2024年一季度报告.txt
+Loong/data/doc/financial/report_000409-2024-云鼎科技-2024年一季度报告.txt
+Loong/data/doc/financial/report_000423-2015-东阿阿胶-2015年第三季度报告全文.txt
+Loong/data/doc/financial/report_000423-2015-东阿阿胶-2015年第一季度报告全文.txt
+Loong/data/doc/financial/report_000423-2016-东阿阿胶-2016年第三季度报告全文.txt
+Loong/data/doc/financial/report_000423-2016-东阿阿胶-2016年第一季度报告全文.txt
+Loong/data/doc/financial/report_000423-2017-东阿阿胶-2017年第三季度报告全文.txt
+Loong/data/doc/financial/report_000423-2017-东阿阿胶-2017年第一季度报告全文.txt
+Loong/data/doc/financial/report_000423-2018-东阿阿胶-2018年第三季度报告全文.txt
+Loong/data/doc/financial/report_000423-2019-东阿阿胶-2019年第一季度报告全文.txt
+Loong/data/doc/financial/report_000423-2020-东阿阿胶-2020年第一季度报告全文.txt
+Loong/data/doc/financial/report_000423-2021-东阿阿胶-2021年第一季度报告全文.txt
+Loong/data/doc/financial/report_000423-2022-东阿阿胶-2022年一季度报告.txt
+Loong/data/doc/financial/report_000423-2023-东阿阿胶-2023年一季度报告.txt
+Loong/data/doc/financial/report_000423-2024-东阿阿胶-2024年一季度报告.txt
+Loong/data/doc/financial/report_000488-2024-晨鸣纸业-2024年一季度报告.txt
+Loong/data/doc/financial/report_000498-2024-山东路桥-2024年一季度报告.txt
+Loong/data/doc/financial/report_000536-2024-华映科技-2024年一季度报告.txt
+Loong/data/doc/financial/report_000554-2024-泰山石油-2024年一季度报告.txt
+Loong/data/doc/financial/report_000567-2024-海德股份-2024年一季度报告.txt
+Loong/data/doc/financial/report_000607-2024-华媒控股-2024年一季度报告.txt
+Loong/data/doc/financial/report_000631-2024-顺发恒业-2024年一季度报告.txt
+Loong/data/doc/financial/report_000635-2024-英力特-2024年一季度报告.txt
+Loong/data/doc/financial/report_000636-2024-风华高科-2024年一季度报告.txt
+Loong/data/doc/financial/report_000651-2015-格力电器-2015年第三季度报告全文.txt
+Loong/data/doc/financial/report_000651-2016-格力电器-2016年第三季度报告全文.txt
+Loong/data/doc/financial/report_000651-2017-格力电器-2017年第三季度报告全文.txt
+Loong/data/doc/financial/report_000651-2017-格力电器-2017年第一季度报告全文.txt
+Loong/data/doc/financial/report_000651-2018-格力电器-2018年第三季度报告全文.txt
+Loong/data/doc/financial/report_000651-2019-格力电器-2019年第一季度报告全文.txt
+Loong/data/doc/financial/report_000651-2020-格力电器-2020年第一季度报告全文.txt
+Loong/data/doc/financial/report_000651-2021-格力电器-2021年第一季度报告全文.txt
+Loong/data/doc/financial/report_000651-2022-格力电器-2022年一季度报告.txt
+Loong/data/doc/financial/report_000651-2023-格力电器-2023年一季度报告.txt
+Loong/data/doc/financial/report_000651-2024-格力电器-2024年一季度报告.txt
+Loong/data/doc/financial/report_000702-2024-正虹科技-2024年一季度报告.txt
+Loong/data/doc/financial/report_000819-2024-岳阳兴长-2024年一季度报告.txt
+Loong/data/doc/financial/report_000848-2024-承德露露-2024年一季度报告.txt
+Loong/data/doc/financial/report_000863-2024-三湘印象-2024年一季度报告.txt
+Loong/data/doc/financial/report_000888-2024-峨眉山Ａ-2024年一季度报告.txt
+Loong/data/doc/financial/report_000906-2024-浙商中拓-2024年一季度报告.txt
+Loong/data/doc/financial/report_000921-2024-海信家电-2024年一季度报告.txt
+Loong/data/doc/financial/report_000933-2024-神火股份-2024年一季度报告.txt
+Loong/data/doc/financial/report_000959-2024-首钢股份-2024年一季度报告.txt
+Loong/data/doc/financial/report_000972-2024-中基健康-2024年一季度报告.txt
+Loong/data/doc/financial/report_000989-2024-九芝堂-2024年一季度报告.txt
+Loong/data/doc/financial/report_001203-2024-大中矿业-2024年一季度报告.txt
+Loong/data/doc/financial/report_001207-2024-联科科技-2024年一季度报告.txt
+Loong/data/doc/financial/report_001223-2024-欧克科技-2024年一季度报告.txt
+Loong/data/doc/financial/report_001306-2024-夏厦精密-2024年一季度报告.txt
+Loong/data/doc/financial/report_001322-2024-箭牌家居-2024年一季度报告.txt
+Loong/data/doc/financial/report_001360-2024-南矿集团-2024年一季度报告.txt
+Loong/data/doc/financial/report_001368-2024-通达创智-2024年一季度报告.txt
+Loong/data/doc/financial/report_001378-2024-德冠新材-2024年一季度报告.txt
+Loong/data/doc/financial/report_001387-2024-雪祺电气-2024年一季度报告.txt
+Loong/data/doc/financial/report_002011-2024-盾安环境-2024年一季度报告.txt
+Loong/data/doc/financial/report_002019-2024-亿帆医药-2024年一季度报告.txt
+Loong/data/doc/financial/report_002020-2024-京新药业-2024年一季度报告.txt
+Loong/data/doc/financial/report_002023-2024-海特高新-2024年一季度报告.txt
+Loong/data/doc/financial/report_002026-2024-山东威达-2024年一季度报告.txt
+Loong/data/doc/financial/report_002033-2024-丽江股份-2024年一季度报告.txt
+Loong/data/doc/financial/report_002065-2024-东华软件-2024年一季度报告.txt
+Loong/data/doc/financial/report_002090-2024-金智科技-2024年一季度报告.txt
+Loong/data/doc/financial/report_002093-2024-国脉科技-2024年一季度报告.txt
+Loong/data/doc/financial/report_002138-2024-顺络电子-2024年一季度报告.txt
+Loong/data/doc/financial/report_002167-2024-东方锆业-2024年一季度报告.txt
+Loong/data/doc/financial/report_002186-2024-全聚德-2024年一季度报告.txt
+Loong/data/doc/financial/report_002194-2024-武汉凡谷-2024年一季度报告.txt
+Loong/data/doc/financial/report_002230-2024-科大讯飞-2024年一季度报告.txt
+Loong/data/doc/financial/report_002242-2024-九阳股份-2024年一季度报告.txt
+Loong/data/doc/financial/report_002245-2024-蔚蓝锂芯-2024年一季度报告.txt
+Loong/data/doc/financial/report_002283-2024-天润工业-2024年一季度报告.txt
+Loong/data/doc/financial/report_002285-2024-世联行-2024年一季度报告.txt
+Loong/data/doc/financial/report_002304-2015-洋河股份-2015年第三季度报告全文.txt
+Loong/data/doc/financial/report_002304-2015-洋河股份-2015年第一季度报告全文.txt
+Loong/data/doc/financial/report_002304-2016-洋河股份-2016年第三季度报告全文.txt
+Loong/data/doc/financial/report_002304-2017-洋河股份-2017年第三季度报告全文.txt
+Loong/data/doc/financial/report_002304-2017-洋河股份-2017年第一季度报告全文.txt
+Loong/data/doc/financial/report_002304-2018-洋河股份-2018年第三季度报告全文.txt
+Loong/data/doc/financial/report_002304-2018-洋河股份-2018年第一季度报告全文.txt
+Loong/data/doc/financial/report_002304-2019-洋河股份-2019年第一季度报告全文.txt
+Loong/data/doc/financial/report_002304-2020-洋河股份-2020年第一季度报告全文.txt
+Loong/data/doc/financial/report_002304-2021-洋河股份-2021年第一季度报告全文.txt
+Loong/data/doc/financial/report_002304-2022-洋河股份-2022年一季度报告.txt
+Loong/data/doc/financial/report_002304-2023-洋河股份-2023年一季度报告.txt
+Loong/data/doc/financial/report_002304-2024-洋河股份-2024年一季度报告.txt
+Loong/data/doc/financial/report_002312-2024-川发龙蟒-2024年一季度报告.txt
+Loong/data/doc/financial/report_002317-2024-众生药业-2024年一季度报告.txt
+Loong/data/doc/financial/report_002384-2024-东山精密-2024年一季度报告.txt
+Loong/data/doc/financial/report_002391-2024-长青股份-2024年一季度报告.txt
+Loong/data/doc/financial/report_002415-2024-海康威视-2024年第一季度报告.txt
+Loong/data/doc/financial/report_002461-2024-珠江啤酒-2024年一季度报告.txt
+Loong/data/doc/financial/report_002463-2024-沪电股份-2024年一季度报告.txt
+Loong/data/doc/financial/report_002468-2024-申通快递-2024年一季度报告.txt
+Loong/data/doc/financial/report_002519-2024-银河电子-2024年一季度报告.txt
+Loong/data/doc/financial/report_002537-2024-海联金汇-2024年一季度报告.txt
+Loong/data/doc/financial/report_002588-2024-史丹利-2024年一季度报告.txt
+Loong/data/doc/financial/report_002591-2024-恒大高新-2024年一季度报告.txt
+Loong/data/doc/financial/report_002594-2015-比亚迪-2015年第三季度报告全文.txt
+Loong/data/doc/financial/report_002594-2016-比亚迪-2016年第三季度报告全文.txt
+Loong/data/doc/financial/report_002594-2017-比亚迪-2017年第三季度报告全文.txt
+Loong/data/doc/financial/report_002594-2018-比亚迪-2018年第三季度报告全文.txt
+Loong/data/doc/financial/report_002594-2019-比亚迪-2019年第一季度报告全文.txt
+Loong/data/doc/financial/report_002594-2020-比亚迪-2020年第一季度报告全文.txt
+Loong/data/doc/financial/report_002594-2021-比亚迪-2021年第一季度报告全文.txt
+Loong/data/doc/financial/report_002594-2022-比亚迪-2022年一季度报告.txt
+Loong/data/doc/financial/report_002594-2023-比亚迪-2023年一季度报告.txt
+Loong/data/doc/financial/report_002594-2024-比亚迪-2024年一季度报告.txt
+Loong/data/doc/financial/report_002606-2024-大连电瓷-2024年一季度报告.txt
+Loong/data/doc/financial/report_002664-2024-信质集团-2024年一季度报告.txt
+Loong/data/doc/financial/report_002676-2024-顺威股份-2024年一季度报告.txt
+Loong/data/doc/financial/report_002681-2024-奋达科技-2024年一季度报告.txt
+Loong/data/doc/financial/report_002683-2024-广东宏大-2024年一季度报告.txt
+Loong/data/doc/financial/report_002726-2024-龙大美食-2024年一季度报告.txt
+Loong/data/doc/financial/report_002762-2024-金发拉比-2024年一季度报告.txt
+Loong/data/doc/financial/report_002767-2024-先锋电子-2024年一季度报告.txt
+Loong/data/doc/financial/report_002773-2024-康弘药业-2024年一季度报告.txt
+Loong/data/doc/financial/report_002791-2024-坚朗五金-2024年一季度报告.txt
+Loong/data/doc/financial/report_002812-2024-恩捷股份-2024年一季度报告.txt
+Loong/data/doc/financial/report_002843-2024-泰嘉股份-2023年第一季度报告修订版.txt
+Loong/data/doc/financial/report_002859-2024-洁美科技-2024年一季度报告.txt
+Loong/data/doc/financial/report_002881-2024-美格智能-2024年一季度报告.txt
+Loong/data/doc/financial/report_002891-2024-中宠股份-2024年一季度报告.txt
+Loong/data/doc/financial/report_002928-2024-华夏航空-2024年一季度报告.txt
+Loong/data/doc/financial/report_002938-2024-鹏鼎控股-2024年一季度报告.txt
+Loong/data/doc/financial/report_002970-2024-锐明技术-2024年一季度报告.txt
+Loong/data/doc/financial/report_002996-2024-顺博合金-2024年一季度报告.txt
+Loong/data/doc/financial/report_002997-2024-瑞鹄模具-2024年一季度报告.txt
+Loong/data/doc/financial/report_003006-2024-百亚股份-2024年一季度报告.txt
+Loong/data/doc/financial/report_003816-2024-中国广核-2024年第一季度报告.txt
+Loong/data/doc/financial/report_300004-2024-南风股份-2024年一季度报告.txt
+Loong/data/doc/financial/report_300014-2024-亿纬锂能-2024年一季度报告.txt
+Loong/data/doc/financial/report_300016-2024-北陆药业-2024年一季度报告.txt
+Loong/data/doc/financial/report_300069-2024-金利华电-2024年一季度报告.txt
+Loong/data/doc/financial/report_300070-2024-碧水源-2024年一季度报告.txt
+Loong/data/doc/financial/report_300072-2024-海新能科-2024年一季度报告.txt
+Loong/data/doc/financial/report_300079-2024-数码视讯-2024年一季度报告.txt
+Loong/data/doc/financial/report_300091-2024-金通灵-2024年一季度报告.txt
+Loong/data/doc/financial/report_300092-2024-科新机电-2024年一季度报告.txt
+Loong/data/doc/financial/report_300115-2024-长盈精密-2024年一季度报告.txt
+Loong/data/doc/financial/report_300126-2024-锐奇股份-2024年一季度报告.txt
+Loong/data/doc/financial/report_300133-2024-华策影视-2024年一季度报告.txt
+Loong/data/doc/financial/report_300134-2024-大富科技-2024年一季度报告.txt
+Loong/data/doc/financial/report_300136-2024-信维通信-2024年一季度报告.txt
+Loong/data/doc/financial/report_300140-2024-节能环境-2024年一季度报告.txt
+Loong/data/doc/financial/report_300142-2024-沃森生物-2024年一季度报告.txt
+Loong/data/doc/financial/report_300146-2015-汤臣倍健-2015年第三季度报告全文.txt
+Loong/data/doc/financial/report_300146-2016-汤臣倍健-2016年第三季度报告全文.txt
+Loong/data/doc/financial/report_300146-2017-汤臣倍健-2017年第三季度报告全文.txt
+Loong/data/doc/financial/report_300146-2019-汤臣倍健-2019年第一季度报告全文.txt
+Loong/data/doc/financial/report_300146-2021-汤臣倍健-2021年第一季度报告全文.txt
+Loong/data/doc/financial/report_300146-2022-汤臣倍健-2022年一季度报告.txt
+Loong/data/doc/financial/report_300146-2023-汤臣倍健-2023年一季度报告.txt
+Loong/data/doc/financial/report_300146-2024-汤臣倍健-2024年一季度报告.txt
+Loong/data/doc/financial/report_300160-2024-秀强股份-2024年一季度报告.txt
+Loong/data/doc/financial/report_300162-2024-雷曼光电-2024年一季度报告.txt
+Loong/data/doc/financial/report_300174-2024-元力股份-2024年一季度报告.txt
+Loong/data/doc/financial/report_300179-2024-四方达-2024年一季度报告.txt
+Loong/data/doc/financial/report_300180-2024-华峰超纤-2024年一季度报告.txt
+Loong/data/doc/financial/report_300212-2024-易华录-2024年一季度报告.txt
+Loong/data/doc/financial/report_300221-2024-银禧科技-2024年一季度报告.txt
+Loong/data/doc/financial/report_300223-2024-北京君正-2024年一季度报告.txt
+Loong/data/doc/financial/report_300232-2024-洲明科技-2024年一季度报告.txt
+Loong/data/doc/financial/report_300239-2024-东宝生物-2024年一季度报告.txt
+Loong/data/doc/financial/report_300249-2024-依米康-2024年一季度报告.txt
+Loong/data/doc/financial/report_300263-2024-隆华科技-2024年一季度报告.txt
+Loong/data/doc/financial/report_300275-2024-梅安森-2024年一季度报告.txt
+Loong/data/doc/financial/report_300278-2024-华昌达-2024年一季度报告.txt
+Loong/data/doc/financial/report_300284-2024-苏交科-2024年一季度报告.txt
+Loong/data/doc/financial/report_300292-2024-吴通控股-2024年一季度报告.txt
+Loong/data/doc/financial/report_300299-2024-富春股份-2024年一季度报告.txt
+Loong/data/doc/financial/report_300300-2024-海峡创新-2024年一季度报告.txt
+Loong/data/doc/financial/report_300314-2024-戴维医疗-2024年一季度报告.txt
+Loong/data/doc/financial/report_300321-2024-同大股份-2024年一季度报告.txt
+Loong/data/doc/financial/report_300337-2024-银邦股份-2024年一季度报告.txt
+Loong/data/doc/financial/report_300349-2024-金卡智能-2024年一季度报告.txt
+Loong/data/doc/financial/report_300354-2024-东华测试-2024年一季度报告.txt
+Loong/data/doc/financial/report_300358-2024-楚天科技-2024年一季度报告.txt
+Loong/data/doc/financial/report_300375-2024-鹏翎股份-2024年一季度报告.txt
+Loong/data/doc/financial/report_300390-2024-天华新能-2024年一季度报告.txt
+Loong/data/doc/financial/report_300393-2024-中来股份-2024年一季度报告.txt
+Loong/data/doc/financial/report_300394-2024-天孚通信-2024年一季度报告.txt
+Loong/data/doc/financial/report_300396-2024-迪瑞医疗-2024年一季度报告.txt
+Loong/data/doc/financial/report_300404-2024-博济医药-2024年一季度报告.txt
+Loong/data/doc/financial/report_300413-2024-芒果超媒-2024年一季度报告.txt
+Loong/data/doc/financial/report_300414-2024-中光防雷-2024年一季度报告.txt
+Loong/data/doc/financial/report_300439-2024-美康生物-2024年一季度报告.txt
+Loong/data/doc/financial/report_300446-2024-航天智造-2024年一季度报告.txt
+Loong/data/doc/financial/report_300462-2024-华铭智能-2024年一季度报告.txt
+Loong/data/doc/financial/report_300463-2024-迈克生物-2024年一季度报告.txt
+Loong/data/doc/financial/report_300467-2024-迅游科技-2024年一季度报告.txt
+Loong/data/doc/financial/report_300475-2024-香农芯创-2024年一季度报告.txt
+Loong/data/doc/financial/report_300478-2024-杭州高新-2024年一季度报告.txt
+Loong/data/doc/financial/report_300487-2024-蓝晓科技-2024年一季度报告.txt
+Loong/data/doc/financial/report_300496-2024-中科创达-2024年一季度报告.txt
+Loong/data/doc/financial/report_300502-2024-新易盛-2024年一季度报告.txt
+Loong/data/doc/financial/report_300525-2024-博思软件-2024年一季度报告.txt
+Loong/data/doc/financial/report_300540-2024-蜀道装备-2024年一季度报告.txt
+Loong/data/doc/financial/report_300541-2024-先进数通-2024年一季度报告.txt
+Loong/data/doc/financial/report_300550-2024-和仁科技-2024年一季度报告.txt
+Loong/data/doc/financial/report_300580-2024-贝斯特-2024年一季度报告.txt
+Loong/data/doc/financial/report_300581-2024-晨曦航空-2024年一季度报告.txt
+Loong/data/doc/financial/report_300584-2024-海辰药业-2024年一季度报告.txt
+Loong/data/doc/financial/report_300589-2024-江龙船艇-2024年一季度报告.txt
+Loong/data/doc/financial/report_300590-2024-移为通信-2024年一季度报告.txt
+Loong/data/doc/financial/report_300592-2024-华凯易佰-2024年一季度报告.txt
+Loong/data/doc/financial/report_300607-2024-拓斯达-2024年一季度报告.txt
+Loong/data/doc/financial/report_300608-2024-思特奇-2024年一季度报告.txt
+Loong/data/doc/financial/report_300617-2024-安靠智电-2024年一季度报告.txt
+Loong/data/doc/financial/report_300621-2024-维业股份-2024年一季度报告.txt
+Loong/data/doc/financial/report_300644-2024-南京聚隆-2024年一季度报告.txt
+Loong/data/doc/financial/report_300672-2024-国科微-2024年一季度报告.txt
+Loong/data/doc/financial/report_300673-2024-佩蒂股份-2024年一季度报告.txt
+Loong/data/doc/financial/report_300678-2024-中科信息-2024年一季度报告.txt
+Loong/data/doc/financial/report_300679-2024-电连技术-2024年一季度报告.txt
+Loong/data/doc/financial/report_300683-2024-海特生物-2024年一季度报告.txt
+Loong/data/doc/financial/report_300710-2024-万隆光电-2024年一季度报告.txt
+Loong/data/doc/financial/report_300725-2024-药石科技-2024年一季度报告.txt
+Loong/data/doc/financial/report_300741-2024-华宝股份-2024年一季度报告.txt
+Loong/data/doc/financial/report_300743-2024-天地数码-2024年一季度报告.txt
+Loong/data/doc/financial/report_300749-2024-顶固集创-2024年一季度报告.txt
+Loong/data/doc/financial/report_300761-2024-立华股份-2024年一季度报告.txt
+Loong/data/doc/financial/report_300768-2024-迪普科技-2024年一季度报告.txt
+Loong/data/doc/financial/report_300783-2024-三只松鼠-2024年一季度报告.txt
+Loong/data/doc/financial/report_300800-2024-力合科技-2024年一季度报告.txt
+Loong/data/doc/financial/report_300801-2024-泰和科技-2024年一季度报告.txt
+Loong/data/doc/financial/report_300822-2024-贝仕达克-2024年一季度报告.txt
+Loong/data/doc/financial/report_300840-2024-酷特智能-2024年一季度报告.txt
+Loong/data/doc/financial/report_300848-2024-美瑞新材-2024年一季度报告.txt
+Loong/data/doc/financial/report_300855-2024-图南股份-2024年一季度报告.txt
+Loong/data/doc/financial/report_300858-2024-科拓生物-2024年一季度报告.txt
+Loong/data/doc/financial/report_300862-2024-蓝盾光电-2024年一季度报告.txt
+Loong/data/doc/financial/report_300867-2024-圣元环保-2024年一季度报告.txt
+Loong/data/doc/financial/report_300882-2024-万胜智能-2024年一季度报告.txt
+Loong/data/doc/financial/report_300887-2024-谱尼测试-2024年一季度报告.txt
+Loong/data/doc/financial/report_300896-2024-爱美客-2024年一季度报告.txt
+Loong/data/doc/financial/report_300898-2024-熊猫乳品-2024年一季度报告.txt
+Loong/data/doc/financial/report_300900-2024-广联航空-2024年一季度报告.txt
+Loong/data/doc/financial/report_300908-2024-仲景食品-2024年一季度报告.txt
+Loong/data/doc/financial/report_300916-2024-朗特智能-2024年一季度报告.txt
+Loong/data/doc/financial/report_300917-2024-特发服务-2024年一季度报告.txt
+Loong/data/doc/financial/report_300923-2024-研奥股份-2024年一季度报告.txt
+Loong/data/doc/financial/report_300939-2024-秋田微-2024年一季度报告.txt
+Loong/data/doc/financial/report_300978-2024-东箭科技-2024年一季度报告.txt
+Loong/data/doc/financial/report_300990-2024-同飞股份-2024年一季度报告.txt
+Loong/data/doc/financial/report_300991-2024-创益通-2024年一季度报告.txt
+Loong/data/doc/financial/report_301000-2024-肇民科技-2024年一季度报告.txt
+Loong/data/doc/financial/report_301003-2024-江苏博云-2024年一季度报告.txt
+Loong/data/doc/financial/report_301022-2024-海泰科-2024年一季度报告.txt
+Loong/data/doc/financial/report_301046-2024-能辉科技-2024年一季度报告.txt
+Loong/data/doc/financial/report_301050-2024-雷电微力-2024年一季度报告.txt
+Loong/data/doc/financial/report_301058-2024-中粮科工-2024年一季度报告.txt
+Loong/data/doc/financial/report_301070-2024-开勒股份-2024年一季度报告.txt
+Loong/data/doc/financial/report_301075-2024-多瑞医药-2024年一季度报告.txt
+Loong/data/doc/financial/report_301099-2024-雅创电子-2024年一季度报告.txt
+Loong/data/doc/financial/report_301117-2024-佳缘科技-2024年一季度报告.txt
+Loong/data/doc/financial/report_301120-2024-新特电气-2024年一季度报告.txt
+Loong/data/doc/financial/report_301121-2024-紫建电子-2024年一季度报告.txt
+Loong/data/doc/financial/report_301129-2024-瑞纳智能-2024年一季度报告.txt
+Loong/data/doc/financial/report_301150-2024-中一科技-2024年一季度报告.txt
+Loong/data/doc/financial/report_301156-2024-美农生物-2024年一季度报告.txt
+Loong/data/doc/financial/report_301157-2024-华塑科技-2024年一季度报告.txt
+Loong/data/doc/financial/report_301200-2024-大族数控-2024年一季度报告.txt
+Loong/data/doc/financial/report_301219-2024-腾远钴业-2024年一季度报告.txt
+Loong/data/doc/financial/report_301246-2024-宏源药业-2024年一季度报告.txt
+Loong/data/doc/financial/report_301282-2024-金禄电子-2024年一季度报告.txt
+Loong/data/doc/financial/report_301283-2024-聚胶股份-2024年一季度报告.txt
+Loong/data/doc/financial/report_301285-2024-鸿日达-2024年一季度报告.txt
+Loong/data/doc/financial/report_301288-2024-清研环境-2024年一季度报告.txt
+Loong/data/doc/financial/report_301311-2024-昆船智能-2024年一季度报告.txt
+Loong/data/doc/financial/report_301318-2024-维海德-2024年一季度报告.txt
+Loong/data/doc/financial/report_301325-2024-曼恩斯特-2024年一季度报告.txt
+Loong/data/doc/financial/report_301345-2024-涛涛车业-2024年第一季度报告修订版.txt
+Loong/data/doc/financial/report_301357-2024-北方长龙-2024年一季度报告.txt
+Loong/data/doc/financial/report_301368-2024-丰立智能-2024年一季度报告.txt
+Loong/data/doc/financial/report_301370-2024-国科恒泰-2024年一季度报告.txt
+Loong/data/doc/financial/report_301376-2024-致欧科技-2024年一季度报告.txt
+Loong/data/doc/financial/report_301383-2024-天键股份-2024年一季度报告.txt
+Loong/data/doc/financial/report_301388-2024-欣灵电气-2024年一季度报告.txt
+Loong/data/doc/financial/report_301391-2024-卡莱特-2024年一季度报告.txt
+Loong/data/doc/financial/report_301419-2024-阿莱德-2024年一季度报告.txt
+Loong/data/doc/financial/report_301469-2024-恒达新材-2024年一季度报告.txt
+Loong/data/doc/financial/report_301507-2024-民生健康-2024年一季度报告.txt
+Loong/data/doc/financial/report_301517-2024-陕西华达-2024年一季度报告.txt
+Loong/data/doc/financial/report_301550-2024-斯菱股份-2024年一季度报告.txt
+Loong/data/doc/financial/report_301555-2024-惠柏新材-2024年一季度报告.txt
+Loong/data/doc/financial/report_301589-2024-诺瓦星云-2024年一季度报告.txt
+Loong/data/doc/financial/report_600123-2024-兰花科创-兰花科创2024年第一季度报告.txt
+Loong/data/doc/financial/report_600232-2024-金鹰股份-金鹰股份2024年第一季度报告.txt
+Loong/data/doc/financial/report_600282-2024-南钢股份-南京钢铁股份有限公司2024年第一季度报告.txt
+Loong/data/doc/financial/report_600310-2024-广西能源-广西能源股份有限公司2024年第一季度报告.txt
+Loong/data/doc/financial/report_600396-2024-ST金山-2024年第一季度报告.txt
+Loong/data/doc/financial/report_600410-2024-华胜天成-2024年第一季度报告.txt
+Loong/data/doc/financial/report_600436-2024-片仔癀-漳州片仔癀药业股份有限公司2024年第一季度报告.txt
+Loong/data/doc/financial/report_600449-2024-宁夏建材-宁夏建材2024年第一季度报告.txt
+Loong/data/doc/financial/report_600673-2024-东阳光-东阳光2024年第一季度报告.txt
+Loong/data/doc/financial/report_600717-2024-天津港-天津港股份有限公司2024年第一季度报告.txt
+Loong/data/doc/financial/report_600740-2024-山西焦化-山西焦化股份有限公司2024年第一季度报告.txt
+Loong/data/doc/financial/report_600745-2024-闻泰科技-2024年第一季度报告.txt
+Loong/data/doc/financial/report_600746-2024-江苏索普-江苏索普2024年第一季度报告.txt
+Loong/data/doc/financial/report_600866-2024-星湖科技-2024年一季度报告.txt
+Loong/data/doc/financial/report_600885-2024-宏发股份-宏发股份2024年第一季度报告.txt
+Loong/data/doc/financial/report_600955-2024-维远股份-利华益维远化学股份有限公司2024年第一季度报告.txt
+Loong/data/doc/financial/report_600980-2024-北矿科技-北矿科技2024年第一季度报告.txt
+Loong/data/doc/financial/report_601100-2024-恒立液压-江苏恒立液压股份有限公司2024年第一季度报告.txt
+Loong/data/doc/financial/report_601101-2024-昊华能源-北京昊华能源股份有限公司2024年第一季度报告.txt
+Loong/data/doc/financial/report_601318-2024-中国平安-平安银行股份有限公司2024年第一季度报告.txt
+Loong/data/doc/financial/report_601633-2024-长城汽车-长城汽车股份有限公司2024年第一季度报告.txt
+Loong/data/doc/financial/report_601975-2024-招商南油-招商南油2024年第一季度报告.txt
+Loong/data/doc/financial/report_603015-2024-弘讯科技-2024年一季度报告.txt
+Loong/data/doc/financial/report_603059-2024-倍加洁-倍加洁集团股份有限公司2024年第一季度报告.txt
+Loong/data/doc/financial/report_603062-2024-麦加芯彩-公司2024年第一季度报告.txt
+Loong/data/doc/financial/report_603081-2024-大丰实业-浙江大丰实业股份有限公司2024年第一季度报告.txt
+Loong/data/doc/financial/report_603093-2024-南华期货-南华期货股份有限公司2024年第一季度报告.txt
+Loong/data/doc/financial/report_603097-2024-江苏华辰-江苏华辰2024年第一季度报告.txt
+Loong/data/doc/financial/report_603132-2024-金徽股份-金徽股份2024年第一季度报告.txt
+Loong/data/doc/financial/report_603156-2024-养元饮品-养元饮品2024年第一季度报告.txt
+Loong/data/doc/financial/report_603206-2024-嘉环科技-2024年第一季度报告.txt
+Loong/data/doc/financial/report_603298-2024-杭叉集团-杭叉集团2024年第一季度报告.txt
+Loong/data/doc/financial/report_603309-2024-维力医疗-维力医疗2024年第一季度报告.txt
+Loong/data/doc/financial/report_603505-2024-金石资源-金石资源集团股份有限公司2024年第一季度报告.txt
+Loong/data/doc/financial/report_603558-2024-健盛集团-健盛集团2024年第一季度报告.txt
+Loong/data/doc/financial/report_603585-2024-苏利股份-苏利股份2024年第一季度报告.txt
+Loong/data/doc/financial/report_603629-2024-利通电子-利通电子2024年第一季度报告.txt
+Loong/data/doc/financial/report_603679-2024-华体科技-四川华体照明科技股份有限公司2024年第一季度报告.txt
+Loong/data/doc/financial/report_603713-2024-密尔克卫-密尔克卫智能供应链服务集团股份有限公司2024年第一季度报告.txt
+Loong/data/doc/financial/report_603737-2024-三棵树-2024年第一季度报告.txt
+Loong/data/doc/financial/report_603799-2024-华友钴业-华友钴业2024年第一季度报告.txt
+Loong/data/doc/financial/report_603919-2024-金徽酒-金徽酒股份有限公司2024年第一季度报告.txt
+Loong/data/doc/financial/report_603920-2024-世运电路-世运电路2024年第一季度报告.txt
+Loong/data/doc/financial/report_603978-2024-深圳新星-2024年第一季度报告.txt
+Loong/data/doc/financial/report_603982-2024-泉峰汽车-2024年第一季度报告.txt
+Loong/data/doc/financial/report_605300-2024-佳禾食品-佳禾食品工业股份有限公司2024年一季报.txt
+Loong/data/doc/financial/report_605389-2024-长龄液压-江苏长龄液压股份有限公司2024年一季度报告.txt
+Loong/data/doc/financial/report_688084-2024-晶品特装-2024年第一季度报告.txt
+Loong/data/doc/financial/report_688096-2024-京源环保-2024年第一季度报告.txt
+Loong/data/doc/financial/report_688111-2024-金山办公-金山办公2024年第一季度报告.txt
+Loong/data/doc/financial/report_688143-2024-长盈通-武汉长盈通光电技术股份有限公司2024年第一季度报告.txt
+Loong/data/doc/financial/report_688267-2024-中触媒-中触媒新材料股份有限公司2024年第一季度报告.txt
+Loong/data/doc/financial/report_688278-2024-特宝生物-特宝生物2024年第一季度报告.txt
+Loong/data/doc/financial/report_688316-2024-青云科技-2024年第一季度报告.txt
+Loong/data/doc/financial/report_688408-2024-中信博-中信博2024年第一季度报告.txt
+Loong/data/doc/financial/report_688510-2024-航亚科技-无锡航亚科技股份有限公司2024年第一季度报告.txt
+Loong/data/doc/financial/report_688516-2024-奥特维-无锡奥特维科技股份有限公司2024年第一季度报告.txt
+Loong/data/doc/financial/report_688579-2024-山大地纬-山大地纬2023年第一季度报告修订版.txt
+Loong/data/doc/financial/report_688626-2024-翔宇医疗-翔宇医疗2024年第一季度报告.txt
+Loong/data/doc/financial/report_688628-2024-优利德-2024年第一季度报告.txt
+Loong/data/doc/financial/report_688630-2024-芯碁微装-2024年第一季度报告.txt
+Loong/data/doc/financial/report_688676-2024-金盘科技-2024年第一季度报告.txt
+Loong/data/doc/financial/report_688682-2024-霍莱沃-2024年第一季度报告.txt
+Loong/data/doc/financial/report_688722-2024-同益中-同益中2024年第一季度报告.txt
+Loong/data/doc/financial/report_688793-2024-倍轻松-2024年第一季度报告.txt
+Loong/data/doc/legal/legal.json
+Loong/data/doc/paper/1508.01745.md
+Loong/data/doc/paper/1604.05280.md
+Loong/data/doc/paper/1604.05377.md
+Loong/data/doc/paper/1605.00252.md
+Loong/data/doc/paper/1610.04325.md
+Loong/data/doc/paper/1612.04662.md
+Loong/data/doc/paper/1709.03082.md
+Loong/data/doc/paper/1802.03426.md
+Loong/data/doc/paper/1802.08129.md
+Loong/data/doc/paper/1803.08375.md
+Loong/data/doc/paper/1804.04272.md
+Loong/data/doc/paper/1901.02039.md
+Loong/data/doc/paper/1901.05353.md
+Loong/data/doc/paper/1902.05715.md
+Loong/data/doc/paper/1902.07958.md
+Loong/data/doc/paper/1906.00341.md
+Loong/data/doc/paper/1907.02189.md
+Loong/data/doc/paper/1908.03825.md
+Loong/data/doc/paper/1909.04715.md
+Loong/data/doc/paper/1909.11114.md
+Loong/data/doc/paper/1909.11942.md
+Loong/data/doc/paper/1910.01161.md
+Loong/data/doc/paper/1910.10434.md
+Loong/data/doc/paper/1910.10683.md
+Loong/data/doc/paper/1911.00837.md
+Loong/data/doc/paper/1911.07205.md
+Loong/data/doc/paper/2001.04296.md
+Loong/data/doc/paper/2001.09186.md
+Loong/data/doc/paper/2002.03754.md
+Loong/data/doc/paper/2003.10555.md
+Loong/data/doc/paper/2004.08249.md
+Loong/data/doc/paper/2004.15015.md
+Loong/data/doc/paper/2005.10084.md
+Loong/data/doc/paper/2005.12592.md
+Loong/data/doc/paper/2007.01560.md
+Loong/data/doc/paper/2007.06048.md
+Loong/data/doc/paper/2008.07772.md
+Loong/data/doc/paper/2009.02235.md
+Loong/data/doc/paper/2010.00453.md
+Loong/data/doc/paper/2011.09533.md
+Loong/data/doc/paper/2012.04857.md
+Loong/data/doc/paper/2101.03049.md
+Loong/data/doc/paper/2103.01955.md
+Loong/data/doc/paper/2103.05149.md
+Loong/data/doc/paper/2103.11955.md
+Loong/data/doc/paper/2104.13209.md
+Loong/data/doc/paper/2105.01051.md
+Loong/data/doc/paper/2105.14550.md
+Loong/data/doc/paper/2106.04624.md
+Loong/data/doc/paper/2106.07447.md
+Loong/data/doc/paper/2107.01384.md
+Loong/data/doc/paper/2107.04700.md
+Loong/data/doc/paper/2108.08612.md
+Loong/data/doc/paper/2109.00666.md
+Loong/data/doc/paper/2109.09193.md
+Loong/data/doc/paper/2109.11251.md
+Loong/data/doc/paper/2111.14641.md
+Loong/data/doc/paper/2112.04359.md
+Loong/data/doc/paper/2112.09761.md
+Loong/data/doc/paper/2112.10913.md
+Loong/data/doc/paper/2112.13227.md
+Loong/data/doc/paper/2201.00965.md
+Loong/data/doc/paper/2201.11990.md
+Loong/data/doc/paper/2203.09043.md
+Loong/data/doc/paper/2203.15556.md
+Loong/data/doc/paper/2204.03775.md
+Loong/data/doc/paper/2205.10383.md
+Loong/data/doc/paper/2205.11257.md
+Loong/data/doc/paper/2206.06290.md
+Loong/data/doc/paper/2207.06731.md
+Loong/data/doc/paper/2207.11536.md
+Loong/data/doc/paper/2208.12615.md
+Loong/data/doc/paper/2209.02128.md
+Loong/data/doc/paper/2209.08244.md
+Loong/data/doc/paper/2209.08648.md
+Loong/data/doc/paper/2209.12660.md
+Loong/data/doc/paper/2209.12681.md
+Loong/data/doc/paper/2209.13768.md
+Loong/data/doc/paper/2210.09953.md
+Loong/data/doc/paper/2210.10749.md
+Loong/data/doc/paper/2210.11735.md
+Loong/data/doc/paper/2210.14140.md
+Loong/data/doc/paper/2210.15097.md
+Loong/data/doc/paper/2210.16724.md
+Loong/data/doc/paper/2211.04894.md
+Loong/data/doc/paper/2211.05244.md
+Loong/data/doc/paper/2211.05617.md
+Loong/data/doc/paper/2211.10066.md
+Loong/data/doc/paper/2211.10797.md
+Loong/data/doc/paper/2212.04356.md
+Loong/data/doc/paper/2212.10001.md
+Loong/data/doc/paper/2212.13138.md
+Loong/data/doc/paper/2301.05062.md
+Loong/data/doc/paper/2301.08807.md
+Loong/data/doc/paper/2301.10813.md
+Loong/data/doc/paper/2301.13196.md
+Loong/data/doc/paper/2302.05442.md
+Loong/data/doc/paper/2302.09751.md
+Loong/data/doc/paper/2302.13971.md
+Loong/data/doc/paper/2302.14376.md
+Loong/data/doc/paper/2303.07678.md
+Loong/data/doc/paper/2303.08774.md
+Loong/data/doc/paper/2303.08891.md
+Loong/data/doc/paper/2303.12712.md
+Loong/data/doc/paper/2303.13375.md
+Loong/data/doc/paper/2303.13495.md
+Loong/data/doc/paper/2303.13496.md
+Loong/data/doc/paper/2303.13604.md
+Loong/data/doc/paper/2303.15056.md
+Loong/data/doc/paper/2303.16129.md
+Loong/data/doc/paper/2303.16203.md
+Loong/data/doc/paper/2304.03283.md
+Loong/data/doc/paper/2304.03442.md
+Loong/data/doc/paper/2304.04661.md
+Loong/data/doc/paper/2304.06793.md
+Loong/data/doc/paper/2304.08177.md
+Loong/data/doc/paper/2304.08782.md
+Loong/data/doc/paper/2304.12898.md
+Loong/data/doc/paper/2304.14108.md
+Loong/data/doc/paper/2305.00857.md
+Loong/data/doc/paper/2305.01865.md
+Loong/data/doc/paper/2305.02536.md
+Loong/data/doc/paper/2305.03653.md
+Loong/data/doc/paper/2305.06161.md
+Loong/data/doc/paper/2305.07004.md
+Loong/data/doc/paper/2305.08322.md
+Loong/data/doc/paper/2305.12474.md
+Loong/data/doc/paper/2305.13691.md
+Loong/data/doc/paper/2305.14334.md
+Loong/data/doc/paper/2305.14992.md
+Loong/data/doc/paper/2305.15011.md
+Loong/data/doc/paper/2305.15077.md
+Loong/data/doc/paper/2305.15347.md
+Loong/data/doc/paper/2305.16291.md
+Loong/data/doc/paper/2305.16307.md
+Loong/data/doc/paper/2305.16366.md
+Loong/data/doc/paper/2305.17560.md
+Loong/data/doc/paper/2305.17812.md
+Loong/data/doc/paper/2305.18290.md
+Loong/data/doc/paper/2306.02707.md
+Loong/data/doc/paper/2306.03078.md
+Loong/data/doc/paper/2306.05685.md
+Loong/data/doc/paper/2306.06624.md
+Loong/data/doc/paper/2306.07629.md
+Loong/data/doc/paper/2306.09198.md
+Loong/data/doc/paper/2306.11348.md
+Loong/data/doc/paper/2306.11417.md
+Loong/data/doc/paper/2306.11644.md
+Loong/data/doc/paper/2306.15626.md
+Loong/data/doc/paper/2306.16793.md
+Loong/data/doc/paper/2306.17653.md
+Loong/data/doc/paper/2307.03172.md
+Loong/data/doc/paper/2307.03319.md
+Loong/data/doc/paper/2307.03875.md
+Loong/data/doc/paper/2307.04684.md
+Loong/data/doc/paper/2307.06135.md
+Loong/data/doc/paper/2307.09288.md
+Loong/data/doc/paper/2307.09481.md
+Loong/data/doc/paper/2307.10719.md
+Loong/data/doc/paper/2307.15217.md
+Loong/data/doc/paper/2307.15818.md
+Loong/data/doc/paper/2307.16039.md
+Loong/data/doc/paper/2307.16645.md
+Loong/data/doc/paper/2307.16789.md
+Loong/data/doc/paper/2307.16877.md
+Loong/data/doc/paper/2308.00352.md
+Loong/data/doc/paper/2308.01861.md
+Loong/data/doc/paper/2308.05384.md
+Loong/data/doc/paper/2308.07107.md
+Loong/data/doc/paper/2308.08493.md
+Loong/data/doc/paper/2308.08998.md
+Loong/data/doc/paper/2308.10960.md
+Loong/data/doc/paper/2308.11432.md
+Loong/data/doc/paper/2308.12284.md
+Loong/data/doc/paper/2308.12950.md
+Loong/data/doc/paper/2308.13937.md
+Loong/data/doc/paper/2309.00267.md
+Loong/data/doc/paper/2309.01219.md
+Loong/data/doc/paper/2309.01431.md
+Loong/data/doc/paper/2309.03450.md
+Loong/data/doc/paper/2309.04662.md
+Loong/data/doc/paper/2309.05463.md
+Loong/data/doc/paper/2309.05868.md
+Loong/data/doc/paper/2309.05922.md
+Loong/data/doc/paper/2309.06180.md
+Loong/data/doc/paper/2309.07864.md
+Loong/data/doc/paper/2309.08532.md
+Loong/data/doc/paper/2309.08958.md
+Loong/data/doc/paper/2309.09400.md
+Loong/data/doc/paper/2309.10313.md
+Loong/data/doc/paper/2309.10400.md
+Loong/data/doc/paper/2309.11925.md
+Loong/data/doc/paper/2309.12307.md
+Loong/data/doc/paper/2309.12499.md
+Loong/data/doc/paper/2309.12871.md
+Loong/data/doc/paper/2309.15025.md
+Loong/data/doc/paper/2309.15088.md
+Loong/data/doc/paper/2309.16039.md
+Loong/data/doc/paper/2309.17410.md
+Loong/data/doc/paper/2309.17421.md
+Loong/data/doc/paper/2309.17425.md
+Loong/data/doc/paper/2309.17452.md
+Loong/data/doc/paper/2309.17453.md
+Loong/data/doc/paper/2310.00564.md
+Loong/data/doc/paper/2310.00935.md
+Loong/data/doc/paper/2310.01036.md
+Loong/data/doc/paper/2310.01152.md
+Loong/data/doc/paper/2310.01387.md
+Loong/data/doc/paper/2310.01410.md
+Loong/data/doc/paper/2310.01798.md
+Loong/data/doc/paper/2310.01801.md
+Loong/data/doc/paper/2310.02238.md
+Loong/data/doc/paper/2310.02304.md
+Loong/data/doc/paper/2310.02989.md
+Loong/data/doc/paper/2310.03025.md
+Loong/data/doc/paper/2310.03051.md
+Loong/data/doc/paper/2310.03744.md
+Loong/data/doc/paper/2310.04406.md
+Loong/data/doc/paper/2310.04875.md
+Loong/data/doc/paper/2310.05204.md
+Loong/data/doc/paper/2310.05492.md
+Loong/data/doc/paper/2310.05915.md
+Loong/data/doc/paper/2310.06117.md
+Loong/data/doc/paper/2310.06225.md
+Loong/data/doc/paper/2310.06770.md
+Loong/data/doc/paper/2310.06825.md
+Loong/data/doc/paper/2310.06987.md
+Loong/data/doc/paper/2310.07075.md
+Loong/data/doc/paper/2310.07177.md
+Loong/data/doc/paper/2310.07554.md
+Loong/data/doc/paper/2310.07579.md
+Loong/data/doc/paper/2310.08118.md
+Loong/data/doc/paper/2310.08256.md
+Loong/data/doc/paper/2310.08319.md
+Loong/data/doc/paper/2310.08372.md
+Loong/data/doc/paper/2310.08419.md
+Loong/data/doc/paper/2310.08461.md
+Loong/data/doc/paper/2310.08491.md
+Loong/data/doc/paper/2310.08541.md
+Loong/data/doc/paper/2310.08879.md
+Loong/data/doc/paper/2310.09590.md
+Loong/data/doc/paper/2310.10047.md
+Loong/data/doc/paper/2310.10158.md
+Loong/data/doc/paper/2310.10482.md
+Loong/data/doc/paper/2310.10501.md
+Loong/data/doc/paper/2310.10631.md
+Loong/data/doc/paper/2310.10634.md
+Loong/data/doc/paper/2310.10638.md
+Loong/data/doc/paper/2310.10677.md
+Loong/data/doc/paper/2310.11511.md
+Loong/data/doc/paper/2310.11689.md
+Loong/data/doc/paper/2310.12036.md
+Loong/data/doc/paper/2310.12397.md
+Loong/data/doc/paper/2310.12426.md
+Loong/data/doc/paper/2310.12487.md
+Loong/data/doc/paper/2310.12541.md
+Loong/data/doc/paper/2310.12560.md
+Loong/data/doc/paper/2310.12773.md
+Loong/data/doc/paper/2310.12823.md
+Loong/data/doc/paper/2310.12931.md
+Loong/data/doc/paper/2310.12956.md
+Loong/data/doc/paper/2310.13023.md
+Loong/data/doc/paper/2310.13227.md
+Loong/data/doc/paper/2310.13548.md
+Loong/data/doc/paper/2310.13615.md
+Loong/data/doc/paper/2310.13639.md
+Loong/data/doc/paper/2310.13988.md
+Loong/data/doc/paper/2310.14628.md
+Loong/data/doc/paper/2310.15123.md
+Loong/data/doc/paper/2310.15144.md
+Loong/data/doc/paper/2310.15916.md
+Loong/data/doc/paper/2310.16450.md
+Loong/data/doc/paper/2310.16570.md
+Loong/data/doc/paper/2310.16789.md
+Loong/data/doc/paper/2310.16795.md
+Loong/data/doc/paper/2310.17623.md
+Loong/data/doc/paper/2310.17631.md
+Loong/data/doc/paper/2310.17976.md
+Loong/data/doc/paper/2310.18465.md
+Loong/data/doc/paper/2310.18969.md
+Loong/data/doc/paper/2310.19046.md
+Loong/data/doc/paper/2310.19102.md
+Loong/data/doc/paper/2310.19784.md
+Loong/data/doc/paper/2310.19852.md
+Loong/data/doc/paper/2310.20329.md
+Loong/data/doc/paper/2310.20689.md
+Loong/data/doc/paper/2310.20707.md
+Loong/data/doc/paper/2311.00423.md
+Loong/data/doc/paper/2311.01192.md
+Loong/data/doc/paper/2311.03348.md
+Loong/data/doc/paper/2311.04850.md
+Loong/data/doc/paper/2311.04897.md
+Loong/data/doc/paper/2311.05232.md
+Loong/data/doc/paper/2311.05997.md
+Loong/data/doc/paper/2311.07463.md
+Loong/data/doc/paper/2311.07911.md
+Loong/data/doc/paper/2311.08045.md
+Loong/data/doc/paper/2311.08252.md
+Loong/data/doc/paper/2311.08401.md
+Loong/data/doc/paper/2311.08711.md
+Loong/data/doc/paper/2311.08803.md
+Loong/data/doc/paper/2311.09215.md
+Loong/data/doc/paper/2311.09677.md
+Loong/data/doc/paper/2311.10081.md
+Loong/data/doc/paper/2311.10702.md
+Loong/data/doc/paper/2311.11045.md
+Loong/data/doc/paper/2311.11797.md
+Loong/data/doc/paper/2311.11855.md
+Loong/data/doc/paper/2311.12420.md
+Loong/data/doc/paper/2311.12983.md
+Loong/data/doc/paper/2311.13503.md
+Loong/data/doc/paper/2311.13721.md
+Loong/data/doc/paper/2311.14115.md
+Loong/data/doc/paper/2311.14520.md
+Loong/data/doc/paper/2311.15249.md
+Loong/data/doc/paper/2311.15451.md
+Loong/data/doc/paper/2311.16079.md
+Loong/data/doc/paper/2311.16090.md
+Loong/data/doc/paper/2311.16169.md
+Loong/data/doc/paper/2311.16452.md
+Loong/data/doc/paper/2311.16502.md
+Loong/data/doc/paper/2311.16867.md
+Loong/data/doc/paper/2311.17035.md
+Loong/data/doc/paper/2311.17541.md
+Loong/data/doc/paper/2311.17946.md
+Loong/data/doc/paper/2311.18677.md
+Loong/data/doc/paper/2311.18743.md
+Loong/data/doc/paper/2311.18760.md
+Loong/data/doc/paper/2312.00164.md
+Loong/data/doc/paper/2312.01797.md
+Loong/data/doc/paper/2312.02418.md
+Loong/data/doc/paper/2312.04724.md
+Loong/data/doc/paper/2312.04985.md
+Loong/data/doc/paper/2312.06585.md
+Loong/data/doc/paper/2312.07395.md
+Loong/data/doc/paper/2312.07551.md
+Loong/data/doc/paper/2312.07930.md
+Loong/data/doc/paper/2312.08358.md
+Loong/data/doc/paper/2312.08914.md
+Loong/data/doc/paper/2312.09085.md
+Loong/data/doc/paper/2312.09241.md
+Loong/data/doc/paper/2312.09244.md
+Loong/data/doc/paper/2312.09390.md
+Loong/data/doc/paper/2312.10997.md
+Loong/data/doc/paper/2312.11444.md
+Loong/data/doc/paper/2312.12575.md
+Loong/data/doc/paper/2312.12683.md
+Loong/data/doc/paper/2312.13771.md
+Loong/data/doc/paper/2312.14302.md
+Loong/data/doc/paper/2312.15166.md
+Loong/data/doc/paper/2312.15791.md
+Loong/data/doc/paper/2312.16682.md
+Loong/data/doc/paper/2312.17122.md
+Loong/data/doc/paper/2312.17173.md
+Loong/data/doc/paper/2312.17235.md
+Loong/data/doc/paper/2312.17238.md
+Loong/data/doc/paper/2401.00071.md
+Loong/data/doc/paper/2401.00211.md
+Loong/data/doc/paper/2401.00368.md
+Loong/data/doc/paper/2401.00595.md
+Loong/data/doc/paper/2401.00812.md
+Loong/data/doc/paper/2401.01055.md
+Loong/data/doc/paper/2401.01141.md
+Loong/data/doc/paper/2401.01275.md
+Loong/data/doc/paper/2401.01286.md
+Loong/data/doc/paper/2401.01325.md
+Loong/data/doc/paper/2401.01335.md
+Loong/data/doc/paper/2401.01614.md
+Loong/data/doc/paper/2401.01854.md
+Loong/data/doc/paper/2401.01879.md
+Loong/data/doc/paper/2401.02015.md
+Loong/data/doc/paper/2401.02051.md
+Loong/data/doc/paper/2401.02385.md
+Loong/data/doc/paper/2401.02954.md
+Loong/data/doc/paper/2401.03462.md
+Loong/data/doc/paper/2401.04056.md
+Loong/data/doc/paper/2401.04088.md
+Loong/data/doc/paper/2401.04398.md
+Loong/data/doc/paper/2401.04620.md
+Loong/data/doc/paper/2401.04621.md
+Loong/data/doc/paper/2401.04695.md
+Loong/data/doc/paper/2401.05268.md
+Loong/data/doc/paper/2401.05302.md
+Loong/data/doc/paper/2401.05561.md
+Loong/data/doc/paper/2401.05654.md
+Loong/data/doc/paper/2401.05778.md
+Loong/data/doc/paper/2401.05856.md
+Loong/data/doc/paper/2401.06059.md
+Loong/data/doc/paper/2401.06066.md
+Loong/data/doc/paper/2401.06080.md
+Loong/data/doc/paper/2401.06102.md
+Loong/data/doc/paper/2401.06118.md
+Loong/data/doc/paper/2401.06121.md
+Loong/data/doc/paper/2401.06201.md
+Loong/data/doc/paper/2401.06209.md
+Loong/data/doc/paper/2401.06373.md
+Loong/data/doc/paper/2401.06468.md
+Loong/data/doc/paper/2401.06760.md
+Loong/data/doc/paper/2401.06954.md
+Loong/data/doc/paper/2401.07102.md
+Loong/data/doc/paper/2401.07184.md
+Loong/data/doc/paper/2401.07324.md
+Loong/data/doc/paper/2401.07897.md
+Loong/data/doc/paper/2401.08281.md
+Loong/data/doc/paper/2401.08358.md
+Loong/data/doc/paper/2401.08406.md
+Loong/data/doc/paper/2401.08417.md
+Loong/data/doc/paper/2401.08541.md
+Loong/data/doc/paper/2401.09395.md
+Loong/data/doc/paper/2401.09670.md
+Loong/data/doc/paper/2401.10020.md
+Loong/data/doc/paper/2401.10034.md
+Loong/data/doc/paper/2401.10302.md
+Loong/data/doc/paper/2401.10774.md
+Loong/data/doc/paper/2401.10935.md
+Loong/data/doc/paper/2401.11181.md
+Loong/data/doc/paper/2401.11708.md
+Loong/data/doc/paper/2401.11817.md
+Loong/data/doc/paper/2401.11888.md
+Loong/data/doc/paper/2401.12187.md
+Loong/data/doc/paper/2401.12963.md
+Loong/data/doc/paper/2401.13601.md
+Loong/data/doc/paper/2401.13649.md
+Loong/data/doc/paper/2401.13919.md
+Loong/data/doc/paper/2401.14887.md
+Loong/data/doc/paper/2401.15360.md
+Loong/data/doc/paper/2401.16185.md
+Loong/data/doc/paper/2401.17882.md
+Loong/data/doc/paper/2401.18018.md
+Loong/data/doc/paper/2401.18079.md
+Loong/data/doc/paper/2402.00157.md
+Loong/data/doc/paper/2402.00159.md
+Loong/data/doc/paper/2402.01030.md
+Loong/data/doc/paper/2402.01145.md
+Loong/data/doc/paper/2402.01306.md
+Loong/data/doc/paper/2402.01622.md
+Loong/data/doc/paper/2402.01739.md
+Loong/data/doc/paper/2402.01817.md
+Loong/data/doc/paper/2402.02057.md
+Loong/data/doc/paper/2402.02416.md
+Loong/data/doc/paper/2402.02716.md
+Loong/data/doc/paper/2402.03620.md
+Loong/data/doc/paper/2402.04247.md
+Loong/data/doc/paper/2402.05861.md
+Loong/data/doc/paper/2402.09178.md
+Loong/data/doc/paper/2402.10104.md
+Loong/data/doc/paper/2402.10705.md
+Loong/data/doc/paper/2402.12348.md
+Loong/data/doc/paper/2402.14328.md
+Loong/data/doc/paper/2402.14658.md
+Loong/data/doc/paper/2402.14830.md
+Loong/data/doc/paper/2402.15205.md
+Loong/data/doc/paper/2402.16627.md
+Loong/data/doc/paper/2402.16981.md
+Loong/data/doc/paper/2402.17563.md
+Loong/data/doc/paper/2402.19113.md
+Loong/data/doc/paper/2403.00278.md
+Loong/data/doc/paper/2403.01876.md
+Loong/data/doc/paper/2403.01979.md
+Loong/data/doc/paper/2403.03101.md
+Loong/data/doc/paper/2403.03230.md
+Loong/data/doc/paper/2403.05530.md
+Loong/data/doc/paper/2403.06560.md
+Loong/data/doc/paper/2403.07059.md
+Loong/data/doc/paper/2403.07559.md
+Loong/data/doc/paper/2403.08140.md
+Loong/data/doc/paper/2403.08251.md
+Loong/data/doc/paper/2403.08337.md
+Loong/data/doc/paper/2403.08570.md
+Loong/data/doc/paper/2403.09308.md
+Loong/data/doc/paper/2403.09746.md
+Loong/data/doc/paper/2403.12806.md
+Loong/data/doc/paper/2403.13309.md
+Loong/data/doc/paper/2403.13355.md
+Loong/data/doc/paper/2403.13438.md
+Loong/data/doc/paper/2403.14123.md
+Loong/data/doc/paper/2403.15556.md
+Loong/data/doc/paper/2403.19154.md
+Loong/data/doc/paper/2403.19949.md
+Loong/data/doc/paper/2403.19962.md
+Loong/data/doc/paper/2403.20208.md
+Loong/data/doc/paper/2404.00376.md
+Loong/data/doc/paper/2404.01349.md
+Loong/data/doc/paper/2404.02152.md
+Loong/data/doc/paper/2404.02575.md
+Loong/data/doc/paper/2404.04292.md
+Loong/data/doc/paper/2404.04850.md
+Loong/data/doc/paper/2404.04925.md
+Loong/data/doc/paper/2404.05264.md
+Loong/data/doc/paper/2404.05443.md
+Loong/data/doc/paper/2404.05955.md
+Loong/data/doc/paper/2404.05971.md
+Loong/data/doc/paper/2404.06654.md
+Loong/data/doc/paper/2404.07084.md
+Loong/data/doc/paper/2404.09356.md
+Loong/data/doc/paper/2404.09486.md
+Loong/data/doc/paper/2404.09699.md
+Loong/data/doc/paper/2404.10150.md
+Loong/data/doc/paper/2404.11269.md
+Loong/data/doc/paper/2404.11276.md
+Loong/data/doc/paper/2404.11912.md
+Loong/data/doc/paper/2404.11932.md
+Loong/data/doc/paper/2404.12135.md
+Loong/data/doc/paper/2404.12318.md
+Loong/data/doc/paper/2404.12736.md
+Loong/data/doc/paper/2404.13066.md
+Loong/data/doc/paper/2404.13591.md
+Loong/data/doc/paper/2404.13886.md
+Loong/data/doc/paper/2404.14082.md
+Loong/data/doc/paper/2404.14122.md
+Loong/data/doc/paper/2404.14215.md
+Loong/data/doc/paper/2404.14387.md
+Loong/data/doc/paper/2404.14688.md
+Loong/data/doc/paper/2404.15247.md
+Loong/data/doc/paper/2404.15378.md
+Loong/data/doc/paper/2404.15381.md
+Loong/data/doc/paper/2404.15488.md
+Loong/data/doc/paper/2404.15676.md
+Loong/data/doc/paper/2404.15939.md
+Loong/data/doc/paper/2404.16375.md
+Loong/data/doc/paper/2404.16792.md
+Loong/data/doc/paper/2404.16906.md
+Loong/data/doc/paper/2404.17153.md
+Loong/data/doc/paper/2404.17833.md
+Loong/data/doc/paper/2404.18231.md
+Loong/data/doc/paper/2404.18239.md
+Loong/data/doc/paper/2404.18311.md
+Loong/data/doc/paper/2404.18353.md
+Loong/data/doc/paper/2404.18824.md
+Loong/data/doc/paper/2404.18852.md
+Loong/data/doc/paper/2404.18911.md
+Loong/data/doc/paper/2404.19505.md
+Loong/data/doc/paper/2404.19553.md
+Loong/data/doc/paper/2404.19705.md
+Loong/data/doc/paper/2405.00263.md
+Loong/data/doc/paper/2405.01029.md
+Loong/data/doc/paper/2405.01147.md
+Loong/data/doc/paper/2405.01378.md
+Loong/data/doc/paper/2405.01868.md
+Loong/data/doc/paper/2405.02019.md
+Loong/data/doc/paper/2405.02421.md
+Loong/data/doc/paper/2405.02714.md
+Loong/data/doc/paper/2405.03007.md
+Loong/data/doc/paper/2405.03085.md
+Loong/data/doc/paper/2405.03097.md
+Loong/data/doc/paper/2405.03133.md
+Loong/data/doc/paper/2405.03456.md
+Loong/data/doc/paper/2405.03488.md
+Loong/data/doc/paper/2405.03547.md
+Loong/data/doc/paper/2405.03644.md
+Loong/data/doc/paper/2405.03710.md
+Loong/data/doc/paper/2405.03917.md
+Loong/data/doc/paper/2405.04028.md
+Loong/data/doc/paper/2405.04237.md
+Loong/data/doc/paper/2405.04434.md
+Loong/data/doc/paper/2405.04437.md
+Loong/data/doc/paper/2405.04497.md
+Loong/data/doc/paper/2405.04781.md
+Loong/data/doc/paper/2405.05136.md
+Loong/data/doc/paper/2405.05465.md
+Loong/data/doc/paper/2405.05824.md
+Loong/data/doc/paper/2405.05885.md
+Loong/data/doc/paper/2405.05904.md
+Loong/data/doc/paper/2405.05945.md
+Loong/data/doc/paper/2405.05950.md
+Loong/data/doc/paper/2405.05955.md
+Loong/data/doc/paper/2405.06093.md
+Loong/data/doc/paper/2405.06107.md
+Loong/data/doc/paper/2405.06161.md
+Loong/data/doc/paper/2405.06219.md
+Loong/data/doc/paper/2405.06331.md
+Loong/data/doc/paper/2405.06856.md
+Loong/data/doc/paper/2405.07435.md
+Loong/data/doc/paper/2405.07437.md
+Loong/data/doc/paper/2405.07460.md
+Loong/data/doc/paper/2405.07482.md
+Loong/data/doc/paper/2405.07518.md
+Loong/data/doc/paper/2405.07628.md
+Loong/data/doc/paper/2405.07657.md
+Loong/data/doc/paper/2405.07745.md
+Loong/data/doc/paper/2405.07761.md
+Loong/data/doc/paper/2405.07764.md
+Loong/data/doc/paper/2405.07770.md
+Loong/data/doc/paper/2405.07898.md
+Loong/data/doc/paper/2405.07960.md
+Loong/data/doc/paper/2405.08054.md
+Loong/data/doc/paper/2405.08135.md
+Loong/data/doc/paper/2405.08289.md
+Loong/data/doc/paper/2405.08480.md
+Loong/data/doc/paper/2405.08514.md
+Loong/data/doc/paper/2405.08542.md
+Loong/data/doc/paper/2405.08555.md
+Loong/data/doc/paper/2405.08582.md
+Loong/data/doc/paper/2405.08745.md
+Loong/data/doc/paper/2405.08748.md
+Loong/data/doc/paper/2405.08813.md
+Loong/data/doc/paper/2405.08839.md
+Loong/data/doc/paper/2405.08863.md
+Loong/data/doc/paper/2405.08888.md
+Loong/data/doc/paper/2405.08908.md
+Loong/data/doc/paper/2405.08920.md
+Loong/data/doc/paper/2405.08981.md
+Loong/data/doc/paper/2405.09115.md
+Loong/data/doc/paper/2405.09117.md
+Loong/data/doc/paper/2405.09142.md
+Loong/data/doc/paper/2405.09204.md
+Loong/data/doc/paper/2405.09251.md
+Loong/data/doc/paper/2405.09255.md
+Loong/data/doc/paper/2405.09266.md
+Loong/data/doc/paper/2405.09276.md
+Loong/data/doc/paper/2405.09285.md
+Loong/data/doc/paper/2405.09306.md
+Loong/data/doc/paper/2405.09330.md
+Loong/data/doc/paper/2405.09341.md
+Loong/data/doc/paper/2405.09395.md
+Loong/data/doc/paper/2405.09711.md
+Loong/data/doc/paper/2405.10150.md
+Loong/data/doc/paper/2405.10480.md
+Loong/data/doc/paper/2405.10516.md
+Loong/data/doc/paper/2405.10632.md
+Loong/data/doc/paper/2405.11120.md
+Loong/data/doc/paper/2405.11537.md
+Loong/data/doc/paper/2405.11612.md
+Loong/data/doc/paper/2405.11647.md
+Loong/data/doc/paper/2405.11804.md
+Loong/data/doc/paper/2405.12523.md
+Loong/data/doc/paper/2405.12532.md
+Loong/data/doc/paper/2405.12648.md
+Loong/data/doc/paper/2405.12750.md
+Loong/data/doc/paper/2405.12819.md
+Loong/data/doc/paper/2405.12910.md
+Loong/data/doc/paper/2405.12933.md
+Loong/data/doc/paper/2405.12979.md
+Loong/data/doc/paper/2405.12999.md
+Loong/data/doc/paper/2405.13050.md
+Loong/data/doc/paper/2405.13816.md
+Loong/data/doc/paper/2405.13929.md
+Loong/data/doc/paper/2405.13966.md
+Loong/data/doc/paper/2405.14169.md
+Loong/data/doc/paper/2405.14205.md
+Loong/data/doc/paper/2405.14231.md
+Loong/data/doc/paper/2405.14573.md
+Loong/data/doc/paper/2405.14591.md
+Loong/data/doc/paper/2405.14722.md
+Loong/data/doc/paper/2405.14734.md
+Loong/data/doc/paper/2405.14751.md
+Loong/data/doc/paper/2405.14785.md
+Loong/data/doc/paper/2405.14804.md
+Loong/data/doc/paper/2405.14828.md
+Loong/data/doc/paper/2405.14930.md
+Loong/data/doc/paper/2405.14974.md
+Loong/data/doc/paper/2405.15007.md
+Loong/data/doc/paper/2405.15032.md
+Loong/data/doc/paper/2405.15116.md
+Loong/data/doc/paper/2405.15130.md
+Loong/data/doc/paper/2405.15160.md
+Loong/data/doc/paper/2405.15194.md
+Loong/data/doc/paper/2405.15287.md
+Loong/data/doc/paper/2405.15306.md
+Loong/data/doc/paper/2405.15307.md
+Loong/data/doc/paper/2405.15341.md
+Loong/data/doc/paper/2405.15349.md
+Loong/data/doc/paper/2405.15604.md
+Loong/data/doc/paper/2405.15614.md
+Loong/data/doc/paper/2405.15638.md
+Loong/data/doc/paper/2405.15652.md
+Loong/data/doc/paper/2405.15756.md
+Loong/data/doc/paper/2405.15984.md
+Loong/data/doc/paper/2405.16009.md
+Loong/data/doc/paper/2405.16247.md
+Loong/data/doc/paper/2405.16276.md
+Loong/data/doc/paper/2405.16388.md
+Loong/data/doc/paper/2405.16406.md
+Loong/data/doc/paper/2405.16444.md
+Loong/data/doc/paper/2405.16510.md
+Loong/data/doc/paper/2405.16528.md
+Loong/data/doc/paper/2405.16533.md
+Loong/data/doc/paper/2405.16661.md
+Loong/data/doc/paper/2405.16681.md
+Loong/data/doc/paper/2405.16714.md
+Loong/data/doc/paper/2405.16783.md
+Loong/data/doc/paper/2405.16821.md
+Loong/data/doc/paper/2405.16833.md
+Loong/data/doc/paper/2405.16847.md
+Loong/data/doc/paper/2405.16908.md
+Loong/data/doc/paper/2405.17051.md
+Loong/data/doc/paper/2405.17147.md
+Loong/data/doc/paper/2405.17220.md
+Loong/data/doc/paper/2405.17233.md
+Loong/data/doc/paper/2405.17249.md
+Loong/data/doc/paper/2405.17374.md
+Loong/data/doc/paper/2405.17386.md
+Loong/data/doc/paper/2405.17438.md
+Loong/data/doc/paper/2405.17512.md
+Loong/data/doc/paper/2405.17602.md
+Loong/data/doc/paper/2405.17653.md
+Loong/data/doc/paper/2405.17741.md
+Loong/data/doc/paper/2405.17820.md
+Loong/data/doc/paper/2405.17915.md
+Loong/data/doc/paper/2405.17927.md
+Loong/data/doc/paper/2405.17935.md
+Loong/data/doc/paper/2405.17950.md
+Loong/data/doc/paper/2405.17969.md
+Loong/data/doc/paper/2405.18027.md
+Loong/data/doc/paper/2405.18111.md
+Loong/data/doc/paper/2405.18137.md
+Loong/data/doc/paper/2405.18193.md
+Loong/data/doc/paper/2405.18208.md
+Loong/data/doc/paper/2405.18272.md
+Loong/data/doc/paper/2405.18320.md
+Loong/data/doc/paper/2405.18348.md
+Loong/data/doc/paper/2405.18392.md
+Loong/data/doc/paper/2405.18415.md
+Loong/data/doc/paper/2405.18573.md
+Loong/data/doc/paper/2405.18628.md
+Loong/data/doc/paper/2405.18718.md
+Loong/data/doc/paper/2405.18886.md
+Loong/data/doc/paper/2405.18922.md
+Loong/data/doc/paper/2405.19010.md
+Loong/data/doc/paper/2405.19086.md
+Loong/data/doc/paper/2405.19103.md
+Loong/data/doc/paper/2405.19107.md
+Loong/data/doc/paper/2405.19226.md
+Loong/data/doc/paper/2405.19261.md
+Loong/data/doc/paper/2405.19262.md
+Loong/data/doc/paper/2405.19313.md
+Loong/data/doc/paper/2405.19316.md
+Loong/data/doc/paper/2405.19323.md
+Loong/data/doc/paper/2405.19327.md
+Loong/data/doc/paper/2405.19425.md
+Loong/data/doc/paper/2405.19524.md
+Loong/data/doc/paper/2405.19534.md
+Loong/data/doc/paper/2405.19550.md
+Loong/data/doc/paper/2405.19563.md
+Loong/data/doc/paper/2405.19616.md
+Loong/data/doc/paper/2405.19668.md
+Loong/data/doc/paper/2405.19715.md
+Loong/data/doc/paper/2405.19716.md
+Loong/data/doc/paper/2405.19806.md
+Loong/data/doc/paper/2405.19846.md
+Loong/data/doc/paper/2405.19888.md
+Loong/data/doc/paper/2405.19973.md
+Loong/data/doc/paper/2405.20092.md
+Loong/data/doc/paper/2405.20099.md
+Loong/data/doc/paper/2405.20175.md
+Loong/data/doc/paper/2405.20215.md
+Loong/data/doc/paper/2405.20216.md
+Loong/data/doc/paper/2405.20304.md
+Loong/data/doc/paper/2405.20314.md
+Loong/data/doc/paper/2405.20347.md
+Loong/data/doc/paper/2405.20362.md
+Loong/data/doc/paper/2405.20404.md
+Loong/data/doc/paper/2405.20512.md
+Loong/data/doc/paper/2405.20625.md
+Loong/data/doc/paper/2405.20703.md
+Loong/data/doc/paper/2405.20773.md
+Loong/data/doc/paper/2405.20774.md
+Loong/data/doc/paper/2405.20778.md
+Loong/data/doc/paper/2405.20830.md
+Loong/data/doc/paper/2405.20947.md
+Loong/data/doc/paper/2405.20974.md
+Loong/data/doc/paper/2405.21018.md
+Loong/data/doc/paper/2405.21040.md
+Loong/data/doc/paper/2405.21046.md
+Loong/output/qwen/loong_evaluate.jsonl
+Loong/output/qwen/loong_generate.jsonl
+loong/Loong/
+model/

@@ -1,3 +1,32 @@
+
+## 0. Run dawoncode
+```
+
+pip install -r dawonreq.txt
+loong zip download
+unzip loong.zip
+/workspace/StructRAG/loong/Loong
+
+# copy and paste
+source /workspace/venvs/structrag/bin/activate
+mkdir -p /workspace/StructRAG/model
+
+python - <<'PY'
+from huggingface_hub import snapshot_download
+snapshot_download(
+    repo_id="Qwen/Qwen2.5-14B-Instruct",
+    local_dir="/workspace/StructRAG/model/Qwen2.5-14B-Instruct",
+    local_dir_use_symlinks=False,
+)
+PY
+
+
+terminal 1 -> bash /workspace/StructRAG/run_server_qwen14b.sh
+terminal 2 -> bash /workspace/StructRAG/run_sample5_and_sample100_qwen14b.sh sample100
+```
+
+
+
 # StructRAG
 StructRAG: Boosting Knowledge Intensive Reasoning of LLMs via Inference-time Hybrid Information Structurization (ICLR 2025)
 

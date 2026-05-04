@@ -22,6 +22,7 @@ REASONING_PARSER="${REASONING_PARSER:-}"
 MAX_MODEL_LEN="${MAX_MODEL_LEN:-}"
 GPU_MEMORY_UTILIZATION="${GPU_MEMORY_UTILIZATION:-}"
 MAX_NUM_SEQS="${MAX_NUM_SEQS:-}"
+QUANTIZATION="${QUANTIZATION:-}"
 DISABLE_CUSTOM_ALL_REDUCE="${DISABLE_CUSTOM_ALL_REDUCE:-1}"
 ENFORCE_EAGER="${ENFORCE_EAGER:-0}"
 TRUST_REMOTE_CODE="${TRUST_REMOTE_CODE:-0}"
@@ -50,6 +51,7 @@ Environment overrides:
   MAX_MODEL_LEN=65536
   GPU_MEMORY_UTILIZATION=0.9
   MAX_NUM_SEQS=8
+  QUANTIZATION=awq
   DISABLE_CUSTOM_ALL_REDUCE=1
   ENFORCE_EAGER=1
   TRUST_REMOTE_CODE=1
@@ -129,6 +131,13 @@ build_server_cmd() {
             SERVER_CMD+=(--reasoning-parser "$REASONING_PARSER")
         else
             echo "warning=REASONING_PARSER=$REASONING_PARSER requested, but this vLLM does not support --reasoning-parser; skipping it."
+        fi
+    fi
+    if [[ -n "$QUANTIZATION" ]]; then
+        if vllm_arg_supported "--quantization"; then
+            SERVER_CMD+=(--quantization "$QUANTIZATION")
+        else
+            echo "warning=QUANTIZATION=$QUANTIZATION requested, but this vLLM does not support --quantization; skipping it."
         fi
     fi
     if [[ -n "$GPU_MEMORY_UTILIZATION" ]]; then

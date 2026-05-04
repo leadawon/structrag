@@ -1,0 +1,547 @@
+첫 번째 데이터셋 흐름 리포트 (설명: 한국어 / 데이터: 원문)
+
+============================================================
+0) 먼저, 이 데이터셋의 구성부터 이해하기
+============================================================
+이 리포트가 헷갈렸던 핵심 이유:
+- question은 항상 "의문문"이 아닙니다.
+- type에 따라 question/doc/answer의 의미가 달라집니다.
+
+타입별 해석 규칙:
+1) type = paper
+- question: "분석 대상 논문 제목"(질문 문장 아님)
+- doc: 원문 파일명 리스트 (예: ["2402.01739.md", ...])
+- docs: 실제 논문 본문들이 합쳐진 긴 문자열
+- answer: 정답 라벨(Reference/Citation)
+
+2) type = legal
+- question: 실제 분류 지시문(긴 문장)
+- doc: 판결문 제목 리스트
+- docs: 실제 판결문 본문 결합 텍스트
+- answer: 분류 결과 dict
+
+3) type = financial
+- question: 실제 질의 문장(예: EPS, 비용 등)
+- doc: 기업명 리스트
+- docs: 재무 문서 본문 결합 텍스트
+- answer: 문자열 숫자/금액
+
+왜 현재 샘플 question이 제목처럼 보이냐?
+- 현재 샘플의 type이 paper이기 때문입니다.
+- paper 타입 태스크는 "이 논문이 누구를 참고했고 누가 이 논문을 인용했는가"를 찾는 작업이라,
+  question 자리에 "분석 대상 논문 제목"이 들어가도록 설계되어 있습니다.
+
+여기까지 설명입니다
+
+[이건 실행 컨텍스트입니다]
+- run_id: run-20260325T001656Z
+- output_suffix: loong_ts-20260325T011521Z_act-sample5_api-qwen_tok-qwen2-5-32b-instruct_gen-qwen2_eval-qwen-local-judge_guide-lm-format-enforcer_url-127-0-0-1-1225
+- data_id: 13a4a371-6339-4c9d-82cf-fc9ab2bb017d
+
+============================================================
+1) 이건 Loong 원본 데이터의 주요 인자입니다
+============================================================
+여기서부터 데이터입니다 (원문 그대로)
+- keys: ["answer", "doc", "docs", "id", "instruction", "language", "length", "level", "prompt", "prompt_template", "question", "set", "shuffle_doc", "type"]
+- id: 13a4a371-6339-4c9d-82cf-fc9ab2bb017d
+- level: 3
+- set: 1
+- type: paper
+- language: en
+
+[question - 원문 전체]
+OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models
+
+[instruction - 원문 전체]
+We hope you will carefully study the provided papers and determine the citation relationships between them. Please follow the instructions below strictly to complete the task:
+
+#Specific Requirements:
+1. Reference: When a given paper mentions other provided papers, those other papers are considered as "references" for the given paper. To summarize in this specific context, references are about what the given paper is using.
+2. Citation: Conversely, when other provided papers mention the given paper in their works, the given paper is being "cited" by those other papers. To summarize in this specific context, citations are about who is using the given paper.
+3. Given a paper, you need to determine the citation or reference relationship between this paper and the other papers. Do not consider papers that are not provided.
+3. Please present the paper titles in a json format as follows: {{"Reference":["Reference Title 1", "Reference Title 2", ..., "Reference Title n"], "Citation":["Citation Title 1", "Citation Title 2", ..., "Citation Title n"]}}.
+4. If a paper does not have any references or citations, please leave the corresponding list empty, e.g.{{"Refernce":[]}}, {{"Citation":[]}}.
+
+[doc - 원문 전체]
+[
+  "2402.01739.md",
+  "2405.03133.md",
+  "2401.02385.md"
+]
+
+[answer - 원문 전체]
+{
+  "Reference": [
+    "# TinyLlama: An Open-Source Small Language Model "
+  ],
+  "Citation": [
+    "# Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training "
+  ]
+}
+
+여기까지 데이터입니다
+
+============================================================
+2) 이건 query 생성 결과입니다
+============================================================
+설명: prompt_template에 docs 전체를 넣지 않고 "......"를 넣어 query를 만듭니다.
+여기서부터 데이터입니다 (원문 그대로)
+#Papers:
+......
+
+We hope you will carefully study the provided papers and determine the citation relationships between them. Please follow the instructions below strictly to complete the task:
+
+#Specific Requirements:
+1. Reference: When a given paper mentions other provided papers, those other papers are considered as "references" for the given paper. To summarize in this specific context, references are about what the given paper is using.
+2. Citation: Conversely, when other provided papers mention the given paper in their works, the given paper is being "cited" by those other papers. To summarize in this specific context, citations are about who is using the given paper.
+3. Given a paper, you need to determine the citation or reference relationship between this paper and the other papers. Do not consider papers that are not provided.
+3. Please present the paper titles in a json format as follows: {{"Reference":["Reference Title 1", "Reference Title 2", ..., "Reference Title n"], "Citation":["Citation Title 1", "Citation Title 2", ..., "Citation Title n"]}}.
+4. If a paper does not have any references or citations, please leave the corresponding list empty, e.g.{{"Refernce":[]}}, {{"Citation":[]}}.
+
+#The paper you need to analyze:
+OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models
+여기까지 데이터입니다
+
+============================================================
+3) 이건 core_content 결과입니다
+============================================================
+설명: docs를 split해서 title 목록만 뽑아 core_content를 구성합니다.
+여기서부터 데이터입니다 (원문 그대로)
+The titles of the docs are: Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training
+OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models
+TinyLlama: An Open-Source Small Language Model
+여기까지 데이터입니다
+
+============================================================
+4) 이건 router 결과입니다
+============================================================
+설명: query + core_content를 넣어 어떤 구조(graph/table/chunk 등)로 갈지 고릅니다.
+여기서부터 데이터입니다 (원문 그대로)
+chosen: graph
+router_output: graph
+여기까지 데이터입니다
+- router llm call 원문 파일: 32b_logging/runs/run-20260325T001656Z/samples/13a4a371-6339-4c9d-82cf-fc9ab2bb017d/llm_calls/002_router.do_route.md
+
+============================================================
+5) 이건 structurizer 결과입니다
+============================================================
+설명: chosen에 맞춰 docs를 구조화하고 kb 파일을 저장합니다.
+여기서부터 데이터입니다 (원문 그대로)
+[instruction]
+Based on the given document, construct a graph where entities are the titles of papers and the relation is 'reference', using the given document title as the head and other paper titles as tails.
+
+[kb_info]
+Among the paper titles that need to be considered, "TinyLlama: An Open-Source Small Language Model" is the title of the given doAmong the paper titles that need to be considered, "Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language MoAmong the paper titles that need to be considered, "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models" is the 
+
+
+[kb_info가 끊겨 보이는 이유]
+- kb_info는 코드에서 각 문서 output 첫 줄의 앞 128자만 이어붙여 저장합니다.
+- 따라서 kb_info 자체의 '전문'은 저장되어 있지 않습니다.
+- 근거 코드: structurizer.py -> info_of_graph += output.split("\n")[0][:128]
+
+[5번의 전체 원문 대체본: graph_kb 원문 전체]
+여기서부터 데이터입니다 (원문 그대로)
+[
+  "TinyLlama: An Open-Source Small Language Model: Among the paper titles that need to be considered, \"TinyLlama: An Open-Source Small Language Model\" is the title of the given document, so it should be used as the head. Among the other paper titles that need to be considered, \"OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models\" does not appear in the given document, and \"Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training\" does not appear either. Therefore, there are no relevant references to extract from the given document.\n\nSince no relevant references are found, the output is:\n\n```json\n{}\n```",
+  "Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training: Among the paper titles that need to be considered, \"Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training\" is the title of the given document, so it should be used as the head. Among the other paper titles that need to be considered, \"OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models\" appears in the references of the given document, so it should be used as the tail. The remaining paper titles that need to be considered do not appear in the given document, so they are not considered.\n\n{\"head\": \"Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training\", \"relation\": \"reference\", \"tail\": [\"OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models\"]}",
+  "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models: Among the paper titles that need to be considered, \"OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models\" is the title of the given document, so it should be used as the head. Among the other paper titles that need to be considered, none of them appear in the given document's references, so they are not considered as tails.\n\nTherefore, no relevant triplets are extracted based on the given requirement.\n\n```json\n{}\n```"
+]
+여기까지 데이터입니다
+
+여기까지 데이터입니다
+
+============================================================
+6) 이건 subquery 분해 전/후입니다
+============================================================
+설명: query + kb_info를 넣어 세부 질의(subqueries)로 분해합니다.
+여기서부터 데이터입니다 (원문 그대로)
+[before: query]
+#Papers:
+......
+
+We hope you will carefully study the provided papers and determine the citation relationships between them. Please follow the instructions below strictly to complete the task:
+
+#Specific Requirements:
+1. Reference: When a given paper mentions other provided papers, those other papers are considered as "references" for the given paper. To summarize in this specific context, references are about what the given paper is using.
+2. Citation: Conversely, when other provided papers mention the given paper in their works, the given paper is being "cited" by those other papers. To summarize in this specific context, citations are about who is using the given paper.
+3. Given a paper, you need to determine the citation or reference relationship between this paper and the other papers. Do not consider papers that are not provided.
+3. Please present the paper titles in a json format as follows: {{"Reference":["Reference Title 1", "Reference Title 2", ..., "Reference Title n"], "Citation":["Citation Title 1", "Citation Title 2", ..., "Citation Title n"]}}.
+4. If a paper does not have any references or citations, please leave the corresponding list empty, e.g.{{"Refernce":[]}}, {{"Citation":[]}}.
+
+#The paper you need to analyze:
+OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models
+
+[after: subqueries]
+[
+  "determine the papers that \"OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models\" references,",
+  "determine the papers that cite \"OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models\"."
+]
+여기까지 데이터입니다
+
+============================================================
+7) 이건 do_extract 매칭 방식입니다
+============================================================
+설명: 규칙 기반 exact match가 아니라, graph_kb 전체 + subquery를 LLM에 넣어 의미 기반 필터링합니다.
+- extract 원문 파일 #1: 32b_logging/runs/run-20260325T001656Z/samples/13a4a371-6339-4c9d-82cf-fc9ab2bb017d/llm_calls/010_utilizer.extract_graph.md
+- extract 원문 파일 #2: 32b_logging/runs/run-20260325T001656Z/samples/13a4a371-6339-4c9d-82cf-fc9ab2bb017d/llm_calls/011_utilizer.extract_graph.md
+
+[do_extract + subknowledges 묶음 정리]
+[무슨 단계인가?]
+- 목적: subquery별로 graph_kb에서 필요한 근거만 골라 subknowledges를 만든다.
+
+[입력]
+- chosen: graph
+- subqueries:
+  1) determine the papers that "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models" references,
+  2) determine the papers that cite "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models".
+- graph_kb: TinyLlama / Lory / OpenMoE 관련 그래프 텍스트 3개
+
+[실제 LLM 입력 프롬프트 구조]
+- Instruction: query에 도움이 되는 triple만 graph 전체에서 필터링하라
+- Graphs: graph_kb 3개를 이어붙인 전체 텍스트
+- Query: 현재 subquery 1개
+- Output:
+
+[처리]
+- subquery 하나당 LLM 호출 1번
+- 현재 샘플은 subquery 2개이므로 extract 호출 2번 수행
+
+[출력 = subknowledges]
+- subknowledges[0] (references 질의): OpenMoE가 다른 제공 논문을 reference한 근거 없음 -> {}
+- subknowledges[1] (cites 질의): Lory가 OpenMoE를 reference함 -> OpenMoE를 cite하는 근거 1건
+
+[요약]
+- do_extract는 규칙 매칭이 아니라 LLM 의미 필터링 단계
+- 결과 subknowledges 리스트는 do_merge의 직접 입력으로 사용됨
+
+[실제 RAW 입력/출력 위치]
+- 정제 없는 원문 전체: tmp_do_extract_raw_io.txt
+- 원본 호출 로그 #1: 32b_logging/runs/run-20260325T001656Z/samples/13a4a371-6339-4c9d-82cf-fc9ab2bb017d/llm_calls/010_utilizer.extract_graph.md
+- 원본 호출 로그 #2: 32b_logging/runs/run-20260325T001656Z/samples/13a4a371-6339-4c9d-82cf-fc9ab2bb017d/llm_calls/011_utilizer.extract_graph.md
+
+[do_extract 실제 모델 입력/출력 원문 직접 첨부]
+아래는 정제/요약 없이 llm_calls에서 가져온 실제 Prompt/Response입니다.
+
+[CALL 1 - Prompt 원문]
+Instruction: According to the query, filter out the triples from all triples in the graph that can help answer the query.
+Note, carefully analyze the entities and relationships mentioned in the query and filter based on this information.
+
+Graphs:TinyLlama: An Open-Source Small Language Model: Among the paper titles that need to be considered, "TinyLlama: An Open-Source Small Language Model" is the title of the given document, so it should be used as the head. Among the other paper titles that need to be considered, "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models" does not appear in the given document, and "Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training" does not appear either. Therefore, there are no relevant references to extract from the given document.
+
+Since no relevant references are found, the output is:
+
+```json
+{}
+```
+
+Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training: Among the paper titles that need to be considered, "Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training" is the title of the given document, so it should be used as the head. Among the other paper titles that need to be considered, "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models" appears in the references of the given document, so it should be used as the tail. The remaining paper titles that need to be considered do not appear in the given document, so they are not considered.
+
+{"head": "Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training", "relation": "reference", "tail": ["OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models"]}
+
+OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models: Among the paper titles that need to be considered, "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models" is the title of the given document, so it should be used as the head. Among the other paper titles that need to be considered, none of them appear in the given document's references, so they are not considered as tails.
+
+Therefore, no relevant triplets are extracted based on the given requirement.
+
+```json
+{}
+```
+
+Query:determine the papers that "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models" references,
+
+Output:
+
+[CALL 1 - Response 원문]
+Based on the provided information and the query, there are no references from "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models" to other papers that are included in the given data.
+
+Therefore, the output is:
+
+```json
+{}
+```
+
+[CALL 2 - Prompt 원문]
+Instruction: According to the query, filter out the triples from all triples in the graph that can help answer the query.
+Note, carefully analyze the entities and relationships mentioned in the query and filter based on this information.
+
+Graphs:TinyLlama: An Open-Source Small Language Model: Among the paper titles that need to be considered, "TinyLlama: An Open-Source Small Language Model" is the title of the given document, so it should be used as the head. Among the other paper titles that need to be considered, "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models" does not appear in the given document, and "Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training" does not appear either. Therefore, there are no relevant references to extract from the given document.
+
+Since no relevant references are found, the output is:
+
+```json
+{}
+```
+
+Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training: Among the paper titles that need to be considered, "Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training" is the title of the given document, so it should be used as the head. Among the other paper titles that need to be considered, "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models" appears in the references of the given document, so it should be used as the tail. The remaining paper titles that need to be considered do not appear in the given document, so they are not considered.
+
+{"head": "Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training", "relation": "reference", "tail": ["OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models"]}
+
+OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models: Among the paper titles that need to be considered, "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models" is the title of the given document, so it should be used as the head. Among the other paper titles that need to be considered, none of them appear in the given document's references, so they are not considered as tails.
+
+Therefore, no relevant triplets are extracted based on the given requirement.
+
+```json
+{}
+```
+
+Query:determine the papers that cite "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models".
+
+Output:
+
+[CALL 2 - Response 원문]
+Based on the provided information, the paper "Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training" cites "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models". Therefore, the output that answers the query should list "Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training" as a paper that cites "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models".
+
+Here is the output in JSON format:
+
+```json
+{
+  "head": "Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training",
+  "relation": "reference",
+  "tail": "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models"
+}
+```
+
+============================================================
+8) 이건 subknowledges 결과입니다
+============================================================
+여기서부터 데이터입니다 (원문 그대로)
+[
+  "Based on the provided information and the query, there are no references from \"OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models\" to other papers that are included in the given data.\n\nTherefore, the output is:\n\n```json\n{}\n```",
+  "Based on the provided information, the paper \"Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training\" cites \"OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models\". Therefore, the output that answers the query should list \"Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training\" as a paper that cites \"OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models\".\n\nHere is the output in JSON format:\n\n```json\n{\n  \"head\": \"Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training\",\n  \"relation\": \"reference\",\n  \"tail\": \"OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models\"\n}\n```"
+]
+여기까지 데이터입니다
+
+============================================================
+9) 이건 final generation 입력/결과입니다
+============================================================
+설명: 요청하신 대로 final generation의 입력(prompt)과 출력(response)만 원문으로 넣습니다.
+- merge 원문 파일: 32b_logging/runs/run-20260325T001656Z/samples/13a4a371-6339-4c9d-82cf-fc9ab2bb017d/llm_calls/013_utilizer.do_merge.md
+
+[final generation 입력 - Prompt 원문]
+여기서부터 데이터입니다 (원문 그대로)
+Instruction:
+1. Answer the Question based on retrieval results. 
+2. Find the relevant information from given retrieval results and output as detailed, specific, and lengthy as possible. 
+3. The output must be a coherent and smooth piece of text.
+
+Question:
+#Papers:
+......
+
+We hope you will carefully study the provided papers and determine the citation relationships between them. Please follow the instructions below strictly to complete the task:
+
+#Specific Requirements:
+1. Reference: When a given paper mentions other provided papers, those other papers are considered as "references" for the given paper. To summarize in this specific context, references are about what the given paper is using.
+2. Citation: Conversely, when other provided papers mention the given paper in their works, the given paper is being "cited" by those other papers. To summarize in this specific context, citations are about who is using the given paper.
+3. Given a paper, you need to determine the citation or reference relationship between this paper and the other papers. Do not consider papers that are not provided.
+3. Please present the paper titles in a json format as follows: {{"Reference":["Reference Title 1", "Reference Title 2", ..., "Reference Title n"], "Citation":["Citation Title 1", "Citation Title 2", ..., "Citation Title n"]}}.
+4. If a paper does not have any references or citations, please leave the corresponding list empty, e.g.{{"Refernce":[]}}, {{"Citation":[]}}.
+
+#The paper you need to analyze:
+OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models
+
+Retrieval:
+Subquery: determine the papers that "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models" references,
+Retrieval results:
+Based on the provided information and the query, there are no references from "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models" to other papers that are included in the given data.
+
+Therefore, the output is:
+
+```json
+{}
+```
+
+Subquery: determine the papers that cite "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models".
+Retrieval results:
+Based on the provided information, the paper "Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training" cites "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models". Therefore, the output that answers the query should list "Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training" as a paper that cites "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models".
+
+Here is the output in JSON format:
+
+```json
+{
+  "head": "Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training",
+  "relation": "reference",
+  "tail": "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models"
+}
+```
+여기까지 데이터입니다
+
+[final generation 출력 - Response 원문]
+여기서부터 데이터입니다 (원문 그대로)
+Based on the analysis of the provided retrieval results, here's a coherent and detailed presentation of the citation and reference relationships for the paper titled "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models":
+
+```json
+{
+  "Reference": [],
+  "Citation": ["Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training"]
+}
+```
+
+This JSON structure clearly reflects that the paper "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models" does not reference any other papers within the provided dataset. However, it is cited by the paper "Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training". This indicates that the latter paper builds upon or extends the work introduced in "OpenMoE", suggesting a progression or refinement of ideas related to mixture-of-experts models in the context of language models.
+여기까지 데이터입니다
+
+============================================================
+10) 이건 scoring 과정 정리입니다
+============================================================
+설명: 먼저 `step`이라는 용어부터 정리해야 혼란이 없습니다.
+
+[step 용어가 의미하는 것]
+- 여기서 step은 "Loong 평가 파이프라인의 단계 번호"입니다.
+- 즉, `step1_load_data.py` -> `step2_model_generate.py` -> `step3_model_evaluate.py` -> `step4_cal_metric.py`
+  순서의 1,2,3,4를 뜻합니다.
+
+[step1, step2, step3, step4를 한 번에 보기]
+- step1 (load_data): 평가 데이터 로드/전처리 단계
+- step2 (model_generate): 모델이 답안을 생성하는 단계
+- step3 (model_evaluate): judge LLM이 생성 답안을 샘플별 채점하는 단계
+- step4 (cal_metric): step3 점수를 자동 집계하는 단계
+
+[채점모델(=judge 모델) 정보]
+- 기본 설정 파일: loong/Loong/config/models/qwen_local_judge.yaml
+- 설정값:
+  - type: vllm
+  - api_name: Qwen
+  - api_url: http://127.0.0.1:1225/v1
+  - temperature: 0.0
+- run_score.sh 기본값:
+  - EVAL_MODEL_CONFIG=qwen_local_judge.yaml
+- 즉, 기본 채점은 "로컬 Qwen judge"를 사용합니다.
+- 참고: 생성모델 설정(GEN_MODEL_CONFIG)은 별개이며 기본은 qwen2.yaml입니다.
+
+[이번 실행에서 "정확히 어떤 Qwen"을 썼는가]
+- run manifest 기준:
+  - api_model_name: Qwen
+  - tokenizer_path: /workspace/StructRAG/model/Qwen2.5-32B-Instruct
+  - url: 127.0.0.1:1225
+- 서버 스크립트 기본 MODEL_PATH도 `/workspace/StructRAG/model/Qwen2.5-32B-Instruct` 이므로,
+  이번 추론(run-20260325T001656Z / sample5)의 생성모델은
+  `Qwen2.5-32B-Instruct`(served name: `Qwen`)로 보는 것이 맞습니다.
+
+[중요: 이번 run에서 채점모델 실제 호출 여부]
+- 이번 run manifest에는 `auto_score: 0` 으로 기록되어 있음
+- 즉 이번 실행에서는 step3/step4 채점 자체를 수행하지 않았고,
+  "채점모델 설정"만 존재하는 상태입니다.
+- AUTO_SCORE=1로 채점을 돌리면, 기본값 기준으로 judge도
+  `qwen_local_judge.yaml` -> api_name `Qwen` -> 127.0.0.1:1225 를 사용합니다.
+
+[생성모델/채점모델 선언 코드 위치 (질문하신 핵심)]
+1) 생성모델 선언(main.py)
+- `main.py`에서 생성 LLM 객체를 만들 때
+  - URL: `http://{args.url}/v1/chat/completions`
+  - model_name: `args.api_model_name` (기본 `Qwen`)
+- 즉, main.py는 "생성" 경로를 담당합니다.
+
+2) 채점모델 선언(run_score + step3)
+- 채점 경로는 main.py가 아니라 scoring 파이프라인에 있습니다.
+- `run_inference.sh`에서 AUTO_SCORE=1이면 `run_score.sh` 호출
+- `run_score.sh`가 step3 실행 시
+  - `--eval_model "$EVAL_MODEL_CONFIG"` 를 전달
+  - 기본값: `qwen_local_judge.yaml`
+- `step3_model_evaluate.py`에서
+  - `eval_config = load(... args.eval_model ...)`
+  - 이 eval_config로 judge 호출(generate)
+
+3) 왜 같은 서버를 쓰게 되나
+- `qwen_local_judge.yaml`의 api_url이 `http://127.0.0.1:1225/v1`
+- 동시에 생성도 보통 `args.url=127.0.0.1:1225`를 사용
+- 그래서 기본값 그대로면 생성/채점이 같은 vLLM 서버(같은 Qwen served model)로 연결됩니다.
+
+4) 실제 모델 파일(서버 쪽)
+- `run_server.sh` 기본값:
+  - `MODEL_PATH=/workspace/StructRAG/model/Qwen2.5-32B-Instruct`
+  - `SERVED_MODEL_NAME=Qwen`
+- 따라서 코드에서 `Qwen`으로 부르는 것은 별칭이고, 실제 파일은 위 model path입니다.
+
+이 리포트의 현재 관심사는 step3/step4(채점/집계)지만,
+step1/step2를 빼면 "step"이라는 말 자체가 갑자기 나와서 혼란스러워집니다.
+그래서 아래 설명은 step1~4 전체 문맥 위에서 읽으면 정확합니다.
+
+[A. LLM이 하는 일 (채점)]
+- 여기서 말하는 "LLM 채점"은 step3입니다.
+- 입력: Question + Gold Answer + 모델 Predicted Answer
+- 출력: 평가 문장 + `Rating: [[score]]` 형태의 점수(1~100)
+- 즉, "샘플별 점수 자체"는 LLM judge가 만듭니다.
+
+[B. 자동(automatic)으로 하는 일 (집계)]
+- 여기서 말하는 "자동 계산"은 step4입니다.
+- step3에서 나온 `[[score]]`를 정규식으로 추출해서,
+  - 평균(avg_score)
+  - 만점비율(perfect_rate)
+  - 채점성공률(scoring_success_rate)
+  를 기계적으로 계산합니다.
+- 중요한 점: 이 저장소에서는 EM 같은 문자열 exact-match 지표를 따로 계산하지 않습니다.
+  (자동 단계는 "LLM이 준 점수"를 집계하는 역할입니다.)
+
+[전체 파이프라인 한 줄 요약]
+1) step1/step2로 평가 대상과 모델 생성답 준비
+2) `final_output_*.jsonl` 병합
+3) step3에서 LLM judge가 샘플별 점수 생성
+4) step4에서 자동 집계
+
+[레벨(level)은 무엇인가?]
+Loong 기준 task 종류입니다.
+- level1: Spotlight Locating
+- level2: Comparison
+- level3: Clustering
+- level4: Chain of Reasoning
+
+[세트(set)는 무엇인가?]
+Loong 기준 입력 길이 구간입니다.
+- set1: 10K-50K
+- set2: 50K-100K
+- set3: 100K-200K
+- set4: 200K-250K
+
+[로그 한 줄이 의미하는 것]
+예:
+`level: 3, set: 1, scoring_success_rate: 1.00 , avg_score: 75.00 , perfect_rate_calculation: 0/2 , perfect_rate: 0.00`
+
+해석:
+- 집계 대상: set1 안의 level3 샘플
+- scoring_success_rate 1.00: 해당 그룹 샘플이 모두 유효하게 점수 추출됨
+- avg_score 75.00: 그 그룹 샘플 점수 평균이 75
+- perfect_rate 0/2: 2개 중 100점 샘플이 0개
+
+[왜 overall avg_score가 42.00이 되었나? (실제 로그 예시 계산)]
+sample5 실행 로그에서:
+- level3 평균 75, 샘플수 2개
+- level4 평균 20, 샘플수 3개
+- 전체 5개
+
+따라서 전체 평균은
+`(75*2 + 20*3) / 5 = 210/5 = 42`
+그래서 `avg_score: 42.00`이 나옵니다.
+
+[실무에서 꼭 보는 포인트]
+- `evaluate_scored`가 0이면: judge 출력 포맷/연결 문제로 metric 계산 실패
+- `scoring_success_rate`가 낮으면: judge가 `[[score]]` 형식을 일부 샘플에서 못 지킨 것
+- `avg_score`는 "모델 생성 품질" + "judge 성향"이 함께 반영된 값
+
+[AUTO_SCORE 동작]
+- `run_inference.sh`에서 `AUTO_SCORE=1`이면 추론 직후 `run_score.sh` 자동 실행
+- `AUTO_SCORE=0`이면 추론만 수행하고 채점은 생략
+
+[산출물 파일]
+- 병합 생성: `loong_generate.jsonl`
+- judge 결과: `loong_evaluate.jsonl`
+- 집계 로그: `score.log`
+- 메타정보: `score_manifest.json`
+
+여기까지 설명입니다
+
+============================================================
+참고 원본 파일 경로
+============================================================
+- loong/Loong/data/loong_process.jsonl
+- run_inference.sh
+- run_score.sh
+- loong/Loong/src/step3_model_evaluate.py
+- loong/Loong/src/step4_cal_metric.py
+- loong/Loong/src/utils/prompt.py
+- loong/Loong/src/utils/metric.py
+- eval_results/qwen/loong_ts-20260325T011521Z_act-sample5_api-qwen_tok-qwen2-5-32b-instruct_gen-qwen2_eval-qwen-local-judge_guide-lm-format-enforcer_url-127-0-0-1-1225/final_output_0.jsonl
+- intermediate_results/qwen/loong_ts-20260325T011521Z_act-sample5_api-qwen_tok-qwen2-5-32b-instruct_gen-qwen2_eval-qwen-local-judge_guide-lm-format-enforcer_url-127-0-0-1-1225/13a4a371-6339-4c9d-82cf-fc9ab2bb017d.jsonl
+- 32b_logging/runs/run-20260325T001656Z/samples/13a4a371-6339-4c9d-82cf-fc9ab2bb017d/sample_meta.json
+- 32b_logging/runs/run-20260325T001656Z/samples/13a4a371-6339-4c9d-82cf-fc9ab2bb017d/llm_calls/002_router.do_route.md
+- 32b_logging/runs/run-20260325T001656Z/samples/13a4a371-6339-4c9d-82cf-fc9ab2bb017d/llm_calls/010_utilizer.extract_graph.md
+- 32b_logging/runs/run-20260325T001656Z/samples/13a4a371-6339-4c9d-82cf-fc9ab2bb017d/llm_calls/011_utilizer.extract_graph.md
+- 32b_logging/runs/run-20260325T001656Z/samples/13a4a371-6339-4c9d-82cf-fc9ab2bb017d/llm_calls/013_utilizer.do_merge.md

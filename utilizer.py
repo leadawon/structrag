@@ -18,7 +18,16 @@ class Utilizer():
             query=query, 
             kb_info=kb_info
         )
-        output = self.llm.response(prompt) 
+        output = self.llm.response(
+            prompt,
+            trace_context={
+                "data_id": data_id,
+                "component": "utilizer.do_decompose",
+                "metadata": {
+                    "kb_info_preview": kb_info[:256],
+                },
+            },
+        ) 
         subqueries = output.split("\n")
 
         return subqueries
@@ -54,7 +63,17 @@ class Utilizer():
             print(f"retrieve chunk {c}/{len(chunks)} in chunks ..")
 
             prompt = f"Instruction:\nAnswer the Query based on the given Document.\n\nQuery:\n{composed_query}\n\nDocument:\n{chunk}\n\nOutput:"
-            tmp_output = self.llm.response(prompt)
+            tmp_output = self.llm.response(
+                prompt,
+                trace_context={
+                    "data_id": data_id,
+                    "component": "utilizer.extract_chunk",
+                    "metadata": {
+                        "chunk_index": c,
+                        "chunk_count": len(chunks),
+                    },
+                },
+            )
             title = chunk.split(":")[0]
             subknowledges.append(f"Retrieval result for {title}: {tmp_output}")
 
@@ -72,7 +91,17 @@ class Utilizer():
         for s, subquery in enumerate(subqueries):
             print(f"data_id: {data_id}, do_extract_table... in subquery {s}/{len(subqueries)} in subqueries ..")
             prompt = f"Instruction:\nThe following Tables show multiple independent tables built from multiple documents.\nFilter these tables according to the query, retaining only the table information that helps answer the query.\nNote that you need to analyze the attributes and entities mentioned in the query and filter accordingly.\nThe information needed to answer the query must exist in one or several tables, and you need to check these tables one by one.\n\nTables:{tables_content}\n\nQuery:{subquery}\n\nOutput:"
-            retrieval = self.llm.response(prompt)
+            retrieval = self.llm.response(
+                prompt,
+                trace_context={
+                    "data_id": data_id,
+                    "component": "utilizer.extract_table",
+                    "metadata": {
+                        "subquery_index": s,
+                        "subquery_count": len(subqueries),
+                    },
+                },
+            )
             subknowledges.append(retrieval)
 
         return subknowledges
@@ -87,7 +116,17 @@ class Utilizer():
         for s, subquery in enumerate(subqueries):
             print(f"data_id: {data_id}, do_extract_graph... in subquery {s}/{len(subqueries)} in subqueries ..")
             prompt = f"Instruction: According to the query, filter out the triples from all triples in the graph that can help answer the query.\nNote, carefully analyze the entities and relationships mentioned in the query and filter based on this information.\n\nGraphs:{graphs_content}\n\nQuery:{subquery}\n\nOutput:"
-            retrieval = self.llm.response(prompt)
+            retrieval = self.llm.response(
+                prompt,
+                trace_context={
+                    "data_id": data_id,
+                    "component": "utilizer.extract_graph",
+                    "metadata": {
+                        "subquery_index": s,
+                        "subquery_count": len(subqueries),
+                    },
+                },
+            )
             subknowledges.append(retrieval)
 
         return subknowledges
@@ -102,7 +141,17 @@ class Utilizer():
         for s, subquery in enumerate(subqueries):
             print(f"data_id: {data_id}, do_extract_algorithm... in subquery {s}/{len(subqueries)} in subqueries ..")
             prompt = f"Instruction: According to the query, filter out information from algorithm descriptions that can help answer the query.\nNote, carefully analyze the entities and relationships mentioned in the query and filter based on this information.\n\nAlgorithms:{algorithms_content}\n\nQuery:{subquery}\n\nOutput:"
-            retrieval = self.llm.response(prompt)
+            retrieval = self.llm.response(
+                prompt,
+                trace_context={
+                    "data_id": data_id,
+                    "component": "utilizer.extract_algorithm",
+                    "metadata": {
+                        "subquery_index": s,
+                        "subquery_count": len(subqueries),
+                    },
+                },
+            )
             subknowledges.append(retrieval)
 
         return subknowledges
@@ -117,7 +166,17 @@ class Utilizer():
         for s, subquery in enumerate(subqueries):
             print(f"data_id: {data_id}, do_extract_catalogue... in subquery {s}/{len(subqueries)} in subqueries ..")
             prompt = f"Instruction: According to the query, filter out information from the catalogue that can help answer the query.\nNote, carefully analyze the entities and relationships mentioned in the query and filter based on this information.\n\nCatalogues:{catalogues_content}\n\nQuery:{subquery}\n\nOutput:"
-            retrieval = self.llm.response(prompt)
+            retrieval = self.llm.response(
+                prompt,
+                trace_context={
+                    "data_id": data_id,
+                    "component": "utilizer.extract_catalogue",
+                    "metadata": {
+                        "subquery_index": s,
+                        "subquery_count": len(subqueries),
+                    },
+                },
+            )
             subknowledges.append(retrieval)
 
         return subknowledges
@@ -154,6 +213,16 @@ class Utilizer():
         instruction = "1. Answer the Question based on retrieval results. \n2. Find the relevant information from given retrieval results and output as detailed, specific, and lengthy as possible. \n3. The output must be a coherent and smooth piece of text."
         prompt = f"Instruction:\n{instruction}\n\nQuestion:\n{query}\n\nRetrieval:\n{retrieval_of_chunk}{retrieval_of_graph}{retrieval_of_table}{retrieval_of_algorithm}{retrieval_of_catalogue}"
 
-        answer = self.llm.response(prompt)
+        answer = self.llm.response(
+            prompt,
+            trace_context={
+                "data_id": data_id,
+                "component": "utilizer.do_merge",
+                "metadata": {
+                    "chosen": chosen,
+                    "subquery_count": len(subqueries),
+                },
+            },
+        )
 
         return answer, decision, new_query

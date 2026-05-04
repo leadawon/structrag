@@ -53,7 +53,18 @@ class Structurizer:
                 raw_content=content,
                 titles="\n".join(titles)
             )
-            output = self.llm.response(prompt)
+            output = self.llm.response(
+                prompt,
+                trace_context={
+                    "data_id": data_id,
+                    "component": "structurizer.construct_graph",
+                    "metadata": {
+                        "doc_index": d,
+                        "doc_count": len(docs),
+                        "doc_title": title,
+                    },
+                },
+            )
             info_of_graph += output.split("\n")[0][:128]
             graphs.append(f"{title}: {output}")
 
@@ -77,7 +88,18 @@ class Structurizer:
                 instruction=instruction, 
                 content=content
             )
-            output = self.llm.response(prompt)
+            output = self.llm.response(
+                prompt,
+                trace_context={
+                    "data_id": data_id,
+                    "component": "structurizer.construct_table",
+                    "metadata": {
+                        "doc_index": d,
+                        "doc_count": len(docs),
+                        "doc_title": title,
+                    },
+                },
+            )
             info_of_table += output.split("\n")[0][:128]
             tables.append(f"{title}: {output}")
 
@@ -117,7 +139,18 @@ class Structurizer:
                 requirement=instruction, 
                 raw_content=content
             )
-            output = self.llm.response(prompt)
+            output = self.llm.response(
+                prompt,
+                trace_context={
+                    "data_id": data_id,
+                    "component": "structurizer.construct_algorithm",
+                    "metadata": {
+                        "doc_index": d,
+                        "doc_count": len(docs),
+                        "doc_title": title,
+                    },
+                },
+            )
             info_of_algorithm += output.split("\n")[0][:128]
             algorithms.append(f"{title}: {output}")
 
@@ -149,7 +182,21 @@ class Structurizer:
                     requirement=instruction, 
                     raw_content=content
                 )
-                output = self.llm.response(prompt)
+                output = self.llm.response(
+                    prompt,
+                    trace_context={
+                        "data_id": data_id,
+                        "component": "structurizer.construct_catalogue",
+                        "metadata": {
+                            "doc_index": d,
+                            "doc_count": len(docs),
+                            "doc_title": title,
+                            "content_index": c,
+                            "content_count": len(contents),
+                            "document_length": len_document,
+                        },
+                    },
+                )
                 info_of_catalogue += output.split("\n")[0][:128]
                 catalogues.append(f"\n\n{title}: {output}")
 

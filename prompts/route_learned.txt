@@ -1,0 +1,13 @@
+Instruction:
+To generate answers to questions based on documents, I need to structure the documents as a table, graph, or chunk.
+Generally speaking, statistical questions prefer tables, chain reasoning questions prefer graphs, and single-hop QA questions prefer chunks.
+Now, given the following document information and question, please determine which type of knowledge structure I should use.
+Simply output one of the three words: table, graph, or chunk, without providing any further explanation.
+
+Doc Info:
+{titles}
+
+Query:
+{query}
+
+Decision:

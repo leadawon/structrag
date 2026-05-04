@@ -1,0 +1,149 @@
+do_extract 실제 모델 입력/출력 RAW
+
+======================================================================
+CALL 1: 32b_logging/runs/run-20260325T001656Z/samples/13a4a371-6339-4c9d-82cf-fc9ab2bb017d/llm_calls/010_utilizer.extract_graph.md
+======================================================================
+
+# LLM Call: utilizer.extract_graph
+
+## Metadata
+
+~~~json
+{
+  "subquery_index": 0,
+  "subquery_count": 2,
+  "url": "http://127.0.0.1:1225/v1/chat/completions",
+  "model_name": "Qwen",
+  "guided_decoding_backend": "lm-format-enforcer",
+  "max_tokens": 4096,
+  "input_text_len": 529,
+  "truncated_input": false,
+  "attempts": 1,
+  "status_code": 200,
+  "usage": {
+    "prompt_tokens": 558,
+    "total_tokens": 614,
+    "completion_tokens": 56
+  }
+}
+~~~
+
+## Prompt
+
+~~~text
+Instruction: According to the query, filter out the triples from all triples in the graph that can help answer the query.
+Note, carefully analyze the entities and relationships mentioned in the query and filter based on this information.
+
+Graphs:TinyLlama: An Open-Source Small Language Model: Among the paper titles that need to be considered, "TinyLlama: An Open-Source Small Language Model" is the title of the given document, so it should be used as the head. Among the other paper titles that need to be considered, "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models" does not appear in the given document, and "Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training" does not appear either. Therefore, there are no relevant references to extract from the given document.
+
+Since no relevant references are found, the output is:
+
+```json
+{}
+```
+
+Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training: Among the paper titles that need to be considered, "Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training" is the title of the given document, so it should be used as the head. Among the other paper titles that need to be considered, "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models" appears in the references of the given document, so it should be used as the tail. The remaining paper titles that need to be considered do not appear in the given document, so they are not considered.
+
+{"head": "Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training", "relation": "reference", "tail": ["OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models"]}
+
+OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models: Among the paper titles that need to be considered, "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models" is the title of the given document, so it should be used as the head. Among the other paper titles that need to be considered, none of them appear in the given document's references, so they are not considered as tails.
+
+Therefore, no relevant triplets are extracted based on the given requirement.
+
+```json
+{}
+```
+
+Query:determine the papers that "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models" references,
+
+Output:
+~~~
+
+## Response
+
+~~~text
+Based on the provided information and the query, there are no references from "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models" to other papers that are included in the given data.
+
+Therefore, the output is:
+
+```json
+{}
+```
+~~~
+
+
+======================================================================
+CALL 2: 32b_logging/runs/run-20260325T001656Z/samples/13a4a371-6339-4c9d-82cf-fc9ab2bb017d/llm_calls/011_utilizer.extract_graph.md
+======================================================================
+
+# LLM Call: utilizer.extract_graph
+
+## Metadata
+
+~~~json
+{
+  "subquery_index": 1,
+  "subquery_count": 2,
+  "url": "http://127.0.0.1:1225/v1/chat/completions",
+  "model_name": "Qwen",
+  "guided_decoding_backend": "lm-format-enforcer",
+  "max_tokens": 4096,
+  "input_text_len": 528,
+  "truncated_input": false,
+  "attempts": 1,
+  "status_code": 200,
+  "usage": {
+    "prompt_tokens": 557,
+    "total_tokens": 731,
+    "completion_tokens": 174
+  }
+}
+~~~
+
+## Prompt
+
+~~~text
+Instruction: According to the query, filter out the triples from all triples in the graph that can help answer the query.
+Note, carefully analyze the entities and relationships mentioned in the query and filter based on this information.
+
+Graphs:TinyLlama: An Open-Source Small Language Model: Among the paper titles that need to be considered, "TinyLlama: An Open-Source Small Language Model" is the title of the given document, so it should be used as the head. Among the other paper titles that need to be considered, "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models" does not appear in the given document, and "Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training" does not appear either. Therefore, there are no relevant references to extract from the given document.
+
+Since no relevant references are found, the output is:
+
+```json
+{}
+```
+
+Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training: Among the paper titles that need to be considered, "Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training" is the title of the given document, so it should be used as the head. Among the other paper titles that need to be considered, "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models" appears in the references of the given document, so it should be used as the tail. The remaining paper titles that need to be considered do not appear in the given document, so they are not considered.
+
+{"head": "Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training", "relation": "reference", "tail": ["OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models"]}
+
+OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models: Among the paper titles that need to be considered, "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models" is the title of the given document, so it should be used as the head. Among the other paper titles that need to be considered, none of them appear in the given document's references, so they are not considered as tails.
+
+Therefore, no relevant triplets are extracted based on the given requirement.
+
+```json
+{}
+```
+
+Query:determine the papers that cite "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models".
+
+Output:
+~~~
+
+## Response
+
+~~~text
+Based on the provided information, the paper "Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training" cites "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models". Therefore, the output that answers the query should list "Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training" as a paper that cites "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models".
+
+Here is the output in JSON format:
+
+```json
+{
+  "head": "Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training",
+  "relation": "reference",
+  "tail": "OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models"
+}
+```
+~~~
+

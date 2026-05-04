@@ -21,6 +21,26 @@ def resolve_loong_dir(loong_dir):
     raise FileNotFoundError(f"Could not find Loong directory. searched={searched}")
 
 
+def load_jsonl_records(path: Path):
+    rows = []
+    if not path.exists():
+        return rows
+
+    with path.open(encoding="utf-8") as fh:
+        for lineno, line in enumerate(fh, start=1):
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                rows.append(json.loads(line))
+            except json.JSONDecodeError as exc:
+                print(
+                    f"Warning: skipping malformed JSONL line: "
+                    f"path={path}, line={lineno}, error={exc}"
+                )
+    return rows
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--llm_name", type=str, default="qwen")
@@ -45,14 +65,28 @@ if __name__ == "__main__":
         raise ValueError(f"File already exists: {evaluate_output_path}")
 
     total_datas = []
+    seen_ids = set()
     dir_path = Path(f"./eval_results{args.git_hash}/{args.llm_name}/{args.dataset_name}{args.output_path_suffix}")
 
     for worker_id in range(args.worker_count):
         worker_output_path = dir_path / f"final_output_{worker_id}.jsonl"
         if worker_output_path.exists():
-            worker_datas = [json.loads(line) for line in open(worker_output_path)]
-            print(f"worker_id={worker_id}, len={len(worker_datas)}")
-            total_datas += worker_datas
+            worker_datas = load_jsonl_records(worker_output_path)
+            deduped_worker_datas = []
+            duplicate_count = 0
+            for data in worker_datas:
+                data_id = data.get("id")
+                if data_id is not None and data_id in seen_ids:
+                    duplicate_count += 1
+                    continue
+                if data_id is not None:
+                    seen_ids.add(data_id)
+                deduped_worker_datas.append(data)
+            print(
+                f"worker_id={worker_id}, len={len(deduped_worker_datas)}, "
+                f"duplicates_skipped={duplicate_count}"
+            )
+            total_datas += deduped_worker_datas
 
     print("len(total_datas)", len(total_datas))
 

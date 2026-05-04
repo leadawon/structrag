@@ -1,0 +1,36 @@
+Loong schema quick check (근거 요약)
+
+전체 샘플 수: 1600
+- paper: 400
+- legal: 500
+- financial: 700
+
+question 길이 통계(min/avg/max)
+- paper: 0 / 48.7 / 111
+- legal: 21 / 682.2 / 5837
+- financial: 12 / 116.5 / 512
+
+해석
+- paper는 question이 짧고 제목형인 경우가 많음(분석 대상 논문명)
+- legal은 question이 매우 긴 지시문 형태
+- financial은 일반적인 질의 문장 형태
+
+타입별 실제 예시 (원문 일부)
+
+[paper]
+id: 13a4a371-6339-4c9d-82cf-fc9ab2bb017d
+question: OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models
+doc: ["2402.01739.md", "2405.03133.md", "2401.02385.md"]
+answer: {"Reference": ["# TinyLlama: An Open-Source Small Language Model "], "Citation": ["# Lory: Fully Differentiable Mixture-of-Experts for Autoregressive Language Model Pre-training "]}
+
+[legal]
+id: 7e611a2e-4ca1-44b9-8897-bbb55baa9d7b
+question: 阅读以上判决文书，请按照'破环社会主义市场经济秩序罪' ... 这7种案由对以上所有判决文书进行分类...
+doc: 판결문 제목 리스트
+answer: 案由 -> 判决文书 번호 리스트 dict
+
+[financial]
+id: ff3aa0ab-8dff-4115-8365-0b734655b779
+question: What is the Basic Earnings Per Share of General Enterprise Ventures, Inc.?
+doc: ["General Enterprise Ventures, Inc.", "AUDDIA INC."]
+answer: -$0.04

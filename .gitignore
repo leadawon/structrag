@@ -1356,3 +1356,6 @@ Loong/output/qwen/loong_evaluate.jsonl
 Loong/output/qwen/loong_generate.jsonl
 loong/Loong/
 model/
+32b_logging/active_run.env
+32b_logging/latest
+32b_logging/runs/

@@ -3,8 +3,8 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-VENV_PATH="${VENV_PATH:-/workspace/venvs/structrag}"
-PYTHON_BIN="${PYTHON_BIN:-$VENV_PATH/bin/python}"
+# VENV_PATH="${VENV_PATH:-/workspace/venvs/structrag}"
+PYTHON_BIN="${PYTHON_BIN:-python3}"
 LOONG_DIR="${LOONG_DIR:-$ROOT_DIR/loong/Loong}"
 
 INPUT_LLM_NAME="${INPUT_LLM_NAME:-qwen}"
@@ -27,7 +27,7 @@ fi
 
 FORCE_OVERWRITE="${FORCE_OVERWRITE:-0}"
 INCLUDE_ERROR_OUTPUTS_IN_SCORE="${INCLUDE_ERROR_OUTPUTS_IN_SCORE:-0}"
-STRUCTURED_EVAL_PY_ROOT="${STRUCTURED_EVAL_PY_ROOT:-/workspace/LAMBO}"
+STRUCTURED_EVAL_PY_ROOT="${STRUCTURED_EVAL_PY_ROOT:-}"
 if [[ "$URL" == http://* || "$URL" == https://* ]]; then
     if [[ "$URL" == */v1 ]]; then
         DEFAULT_LAMBO_V2_JUDGE_BASE_URL="$URL"
@@ -62,7 +62,7 @@ Usage:
   bash run_score.sh _sample5
 
 Environment overrides:
-  VENV_PATH=/workspace/venvs/structrag
+  PYTHON_BIN=/path/to/python3
   INPUT_LLM_NAME=qwen
   DATASET_NAME=loong
   OUTPUT_PATH_SUFFIX=_sample5
@@ -73,7 +73,7 @@ Environment overrides:
   GEN_MODEL_CONFIG=qwen2.yaml
   FORCE_OVERWRITE=1
   INCLUDE_ERROR_OUTPUTS_IN_SCORE=0
-  STRUCTURED_EVAL_PY_ROOT=/workspace/LAMBO
+  STRUCTURED_EVAL_PY_ROOT=/path/to/LAMBO
   LAMBO_V2_JUDGE=1
   LAMBO_V2_JUDGE_BASE_URL=http://127.0.0.1:1225/v1
   LAMBO_V2_JUDGE_MODEL=Qwen

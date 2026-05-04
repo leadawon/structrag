@@ -5,8 +5,8 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
-VENV_PATH="${VENV_PATH:-/workspace/venvs/structrag}"
-PYTHON_BIN="${PYTHON_BIN:-$VENV_PATH/bin/python}"
+# VENV_PATH="${VENV_PATH:-/workspace/venvs/structrag}"
+PYTHON_BIN="${PYTHON_BIN:-python3}"
 MODEL_ID="${MODEL_ID:-Qwen/Qwen2-72B-Instruct-AWQ}"
 MODEL_DIR="${MODEL_DIR:-$ROOT_DIR/model/Qwen2-72B-Instruct-AWQ}"
 REVISION="${REVISION:-main}"
@@ -34,7 +34,7 @@ Defaults:
 Examples:
   bash scripts/72b_4bit/download_model.sh
   HF_TOKEN=hf_xxx bash scripts/72b_4bit/download_model.sh
-  MODEL_DIR=/workspace/StructRAG/model/Qwen2-72B-Instruct-AWQ bash scripts/72b_4bit/download_model.sh
+  MODEL_DIR=/path/to/Qwen2-72B-Instruct-AWQ bash scripts/72b_4bit/download_model.sh
 EOF
 }
 

@@ -3,11 +3,12 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-VENV_PATH="${VENV_PATH:-/workspace/venvs/structrag}"
-PYTHON_BIN="${PYTHON_BIN:-$VENV_PATH/bin/python}"
+# VENV_PATH="${VENV_PATH:-/workspace/venvs/structrag}"
+PYTHON_BIN="${PYTHON_BIN:-python3}"
 
 TOKENIZER_PATH="${TOKENIZER_PATH:-$ROOT_DIR/model/Qwen2.5-32B-Instruct}"
 LOONG_DIR="${LOONG_DIR:-$ROOT_DIR/loong/Loong}"
+EVAL_DATA_PATH="${EVAL_DATA_PATH:-}"
 HOST="${HOST:-127.0.0.1}"
 PORT="${PORT:-1225}"
 URL="${URL:-$HOST:$PORT}"
@@ -33,7 +34,7 @@ EVAL_MODEL_CONFIG="${EVAL_MODEL_CONFIG:-qwen_local_judge.yaml}"
 GEN_MODEL_CONFIG="${GEN_MODEL_CONFIG:-qwen2.yaml}"
 MODEL_CONFIG_DIR="${MODEL_CONFIG_DIR:-$LOONG_DIR/config/models}"
 INCLUDE_ERROR_OUTPUTS_IN_SCORE="${INCLUDE_ERROR_OUTPUTS_IN_SCORE:-0}"
-STRUCTURED_EVAL_PY_ROOT="${STRUCTURED_EVAL_PY_ROOT:-/workspace/LAMBO}"
+STRUCTURED_EVAL_PY_ROOT="${STRUCTURED_EVAL_PY_ROOT:-}"
 STRUCTURED_EVAL_OUTPUT_PATH="${STRUCTURED_EVAL_OUTPUT_PATH:-}"
 STRUCTRAG_ENABLE_THINKING="${STRUCTRAG_ENABLE_THINKING:-0}"
 GUIDED_DECODING_BACKEND="${STRUCTRAG_GUIDED_DECODING_BACKEND:-lm-format-enforcer}"
@@ -86,7 +87,7 @@ Behavior:
   - Writes run metadata to eval_results/.../run_manifest.json
 
 Environment overrides:
-  VENV_PATH=/workspace/venvs/structrag
+  PYTHON_BIN=/path/to/python3
   TOKENIZER_PATH=$ROOT_DIR/model/Qwen2.5-32B-Instruct
   LOONG_DIR=$ROOT_DIR/loong/Loong
   URL=127.0.0.1:1225
@@ -105,7 +106,7 @@ Environment overrides:
   EVAL_MODEL_CONFIG=qwen_local_judge.yaml
   GEN_MODEL_CONFIG=qwen2.yaml
   INCLUDE_ERROR_OUTPUTS_IN_SCORE=0
-  STRUCTURED_EVAL_PY_ROOT=/workspace/LAMBO
+  STRUCTURED_EVAL_PY_ROOT=/path/to/LAMBO
   STRUCTRAG_ENABLE_THINKING=0
   STRUCTRAG_MAX_INPUT_TOKENS=65536
     RESTART_EVERY=100
@@ -486,6 +487,10 @@ run_main() {
             --router_api_model_name "$resolved_router_api_model_name"
         )
     fi
+    local eval_data_args=()
+    if [[ -n "$EVAL_DATA_PATH" ]]; then
+        eval_data_args=(--eval_data_path "$EVAL_DATA_PATH")
+    fi
     cd "$ROOT_DIR"
     STRUCTRAG_GUIDED_DECODING_BACKEND="$GUIDED_DECODING_BACKEND" \
     STRUCTRAG_ROUTER_DISABLE_GUIDED_DECODING="$ROUTER_DISABLE_GUIDED_DECODING" \
@@ -504,6 +509,7 @@ run_main() {
         --api_model_name "$API_MODEL_NAME" \
         --output_path_suffix "$RUN_OUTPUT_PATH_SUFFIX" \
         "${extra_router_args[@]}" \
+        "${eval_data_args[@]}" \
         "$@"
 }
 
@@ -776,8 +782,9 @@ if [[ ! -e "$TOKENIZER_PATH" ]]; then
     exit 1
 fi
 
-if [[ ! -e "$LOONG_DIR/data/loong_process.jsonl" ]]; then
-    echo "Loong dataset not found: $LOONG_DIR/data/loong_process.jsonl"
+_eval_data_path="${EVAL_DATA_PATH:-$LOONG_DIR/data/loong_process.jsonl}"
+if [[ ! -e "$_eval_data_path" ]]; then
+    echo "Loong dataset not found: $_eval_data_path"
     exit 1
 fi
 

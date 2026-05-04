@@ -5,8 +5,15 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
-VENV_PATH="${VENV_PATH:-/workspace/venvs/structrag}"
-PYTHON_BIN="${PYTHON_BIN:-$VENV_PATH/bin/python}"
+_find_python() {
+    [[ -n "${VENV_PATH:-}" && -x "$VENV_PATH/bin/python" ]] && { printf '%s' "$VENV_PATH/bin/python"; return; }
+    local _p
+    for _p in "$ROOT_DIR/.venv/bin/python" "$ROOT_DIR/venv/bin/python"; do
+        [[ -x "$_p" ]] && { printf '%s' "$_p"; return; }
+    done
+    command -v python3 2>/dev/null || printf '%s' "python3"
+}
+PYTHON_BIN="${PYTHON_BIN:-$(_find_python)}"
 MODEL_ID="${MODEL_ID:-Qwen/Qwen2-72B-Instruct}"
 MODEL_DIR="${MODEL_DIR:-$ROOT_DIR/model/Qwen2-72B-Instruct}"
 REVISION="${REVISION:-main}"
@@ -33,7 +40,7 @@ Defaults:
 Examples:
   bash scripts/72b/download_model.sh
   HF_TOKEN=hf_xxx bash scripts/72b/download_model.sh
-  MODEL_DIR=/workspace/StructRAG/model/Qwen2-72B-Instruct bash scripts/72b/download_model.sh
+  MODEL_DIR=/your/path/Qwen2-72B-Instruct bash scripts/72b/download_model.sh
   MODEL_ID=Qwen/Qwen2-72B-Instruct REVISION=main bash scripts/72b/download_model.sh
 EOF
 }

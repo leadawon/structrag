@@ -9,8 +9,8 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
-VENV_PATH="${VENV_PATH:-/workspace/venvs/structrag}"
-PYTHON_BIN="${PYTHON_BIN:-$VENV_PATH/bin/python}"
+# VENV_PATH="${VENV_PATH:-/workspace/venvs/structrag}"
+PYTHON_BIN="${PYTHON_BIN:-python3}"
 MODEL_ID="${MODEL_ID:-Qwen/Qwen2-72B-Instruct}"
 # Default to the shared model dir used by scripts/72b/ to avoid duplicate downloads.
 MODEL_DIR="${MODEL_DIR:-$ROOT_DIR/model/Qwen2-72B-Instruct}"

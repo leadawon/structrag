@@ -19,10 +19,14 @@ ROOT_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
 if [[ -z "${SERVER_PYTHON_BIN:-}" ]]; then
     if [[ -n "${PYTHON_BIN:-}" ]]; then
         SERVER_PYTHON_BIN="$PYTHON_BIN"
-    elif [[ -x /workspace/venvs/ragteamvenv/bin/python ]]; then
-        SERVER_PYTHON_BIN="/workspace/venvs/ragteamvenv/bin/python"
+    elif [[ -x "$ROOT_DIR/.venv/bin/python" ]]; then
+        SERVER_PYTHON_BIN="$ROOT_DIR/.venv/bin/python"
+    elif [[ -x "$ROOT_DIR/venv/bin/python" ]]; then
+        SERVER_PYTHON_BIN="$ROOT_DIR/venv/bin/python"
+    elif command -v python3 >/dev/null 2>&1; then
+        SERVER_PYTHON_BIN="$(command -v python3)"
     else
-        SERVER_PYTHON_BIN="/workspace/venvs/structrag/bin/python"
+        SERVER_PYTHON_BIN="python3"
     fi
 fi
 if [[ -z "${MODEL_DIR:-}" ]]; then
@@ -69,7 +73,7 @@ Usage:
 
 Defaults:
   MODEL_DIR=$ROOT_DIR/model/Qwen2-72B-Instruct
-  SERVER_PYTHON_BIN=/workspace/venvs/ragteamvenv/bin/python
+  SERVER_PYTHON_BIN=<auto-detected: ROOT_DIR/.venv, venv, or python3>
   CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
   CUDA_DEVICES=0,1,2,3,4,5,6,7
   TENSOR_PARALLEL_SIZE=8

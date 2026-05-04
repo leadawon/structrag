@@ -22,8 +22,9 @@ export TENSOR_PARALLEL_SIZE
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
-VENV_PATH="${VENV_PATH:-/workspace/venvs/structrag}"
-PYTHON_BIN="${PYTHON_BIN:-$VENV_PATH/bin/python}"
+# VENV_PATH="${VENV_PATH:-/workspace/venvs/structrag}"
+PYTHON_BIN="${PYTHON_BIN:-python3}"
+EVAL_DATA_PATH="${EVAL_DATA_PATH:-$ROOT_DIR/all_data/loong_process.jsonl}"
 
 model_ready() {
     local model_dir="$1"
@@ -79,7 +80,7 @@ DATASET_NAME="${DATASET_NAME:-loong}"
 EVAL_MODEL_CONFIG="${EVAL_MODEL_CONFIG:-qwen_local_judge.yaml}"
 GEN_MODEL_CONFIG="${GEN_MODEL_CONFIG:-qwen2.yaml}"
 INCLUDE_ERROR_OUTPUTS_IN_SCORE="${INCLUDE_ERROR_OUTPUTS_IN_SCORE:-1}"
-STRUCTURED_EVAL_PY_ROOT="${STRUCTURED_EVAL_PY_ROOT:-/workspace/LAMBO}"
+STRUCTURED_EVAL_PY_ROOT="${STRUCTURED_EVAL_PY_ROOT:-$(dirname "$ROOT_DIR")/LAMBO}"
 
 usage() {
     cat <<EOF
@@ -201,6 +202,8 @@ fi
 
 export MODEL_PATH="$MODEL_DIR"
 export TOKENIZER_PATH="$MODEL_DIR"
+export PYTHON_BIN
+export EVAL_DATA_PATH
 export API_MODEL_NAME
 export STRUCTRAG_ENABLE_THINKING
 export OUTPUT_PATH_SUFFIX

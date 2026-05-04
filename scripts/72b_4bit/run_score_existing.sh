@@ -6,8 +6,8 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
-VENV_PATH="${VENV_PATH:-/workspace/venvs/structrag}"
-PYTHON_BIN="${PYTHON_BIN:-$VENV_PATH/bin/python}"
+# VENV_PATH="${VENV_PATH:-/workspace/venvs/structrag}"
+PYTHON_BIN="${PYTHON_BIN:-python3}"
 
 SERVER_SCRIPT_PATH="${SERVER_SCRIPT_PATH:-$ROOT_DIR/scripts/72b_4bit/run_server.sh}"
 WAIT_TIMEOUT="${WAIT_TIMEOUT:-1800}"
@@ -123,7 +123,7 @@ mapping = {
     "MANIFEST_API_MODEL_NAME": data.get("api_model_name", "Qwen2-72B-Instruct-AWQ"),
     "MANIFEST_STRUCTRAG_ENABLE_THINKING": data.get("structrag_enable_thinking", "0"),
     "MANIFEST_INCLUDE_ERROR_OUTPUTS_IN_SCORE": data.get("include_error_outputs_in_score", "1"),
-    "MANIFEST_STRUCTURED_EVAL_PY_ROOT": data.get("structured_eval_py_root", "/workspace/LAMBO"),
+    "MANIFEST_STRUCTURED_EVAL_PY_ROOT": data.get("structured_eval_py_root", ""),
     "MANIFEST_LOONG_DIR": data.get("loong_dir", ""),
     "MANIFEST_MODEL_CONFIG_DIR": data.get("model_config_dir", ""),
     "MANIFEST_TOKENIZER_PATH": data.get("tokenizer_path", ""),

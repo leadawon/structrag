@@ -19,13 +19,6 @@ export TENSOR_PARALLEL_SIZE
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
-if [[ -z "${VENV_PATH:-}" ]]; then
-    VENV_PATH="/workspace/venvs/structrag"
-    if [[ ! -x "$VENV_PATH/bin/python" ]]; then
-        VENV_PATH="$(find /workspace/venvs -maxdepth 2 -type f -path "*/bin/python" -name python -print 2>/dev/null | grep -i structrag | head -n 1 | xargs -r dirname | xargs -r dirname)"
-    fi
-fi
-PYTHON_BIN="${PYTHON_BIN:-$VENV_PATH/bin/python}"
 EVAL_DATA_PATH="${EVAL_DATA_PATH:-$ROOT_DIR/all_data/loong_process.jsonl}"
 
 model_ready() {
@@ -188,13 +181,12 @@ if ! model_ready "$MODEL_DIR"; then
     exit 1
 fi
 
-if [[ ! -x "$PYTHON_BIN" ]]; then
-    echo "Python binary not found: $PYTHON_BIN"; exit 1
+if ! command -v python >/dev/null 2>&1; then
+    echo "Python binary not found: python"; exit 1
 fi
 
 export MODEL_PATH="$MODEL_DIR"
 export TOKENIZER_PATH="$MODEL_DIR"
-export PYTHON_BIN
 export EVAL_DATA_PATH
 export API_MODEL_NAME
 export STRUCTRAG_ENABLE_THINKING

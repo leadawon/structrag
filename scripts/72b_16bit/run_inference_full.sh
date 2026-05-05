@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 # Run StructRAG on the full Loong dataset (all 1600 samples) with
-# Qwen2-72B-Instruct in float16 precision (8 GPUs).
+# Qwen2-72B-Instruct in float16 precision (1 GPU).
 #
 # Same model weights as scripts/72b/ (bfloat16); only dtype differs.
 # Useful for environments where float16 is preferred or for ablation comparison.
 
 set -euo pipefail
 
-CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0,1,2,3,4,5,6,7}"
+CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0}"
 export CUDA_VISIBLE_DEVICES
 CUDA_DEVICES="${CUDA_DEVICES:-$CUDA_VISIBLE_DEVICES}"
 if [[ -z "${TENSOR_PARALLEL_SIZE:-}" ]]; then
@@ -19,8 +19,8 @@ export TENSOR_PARALLEL_SIZE
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
-# VENV_PATH="${VENV_PATH:-/workspace/venvs/structrag}"
-PYTHON_BIN="${PYTHON_BIN:-python3}"
+VENV_PATH="${VENV_PATH:-/workspace/venvs/structrag}"
+PYTHON_BIN="${PYTHON_BIN:-$VENV_PATH/bin/python}"
 EVAL_DATA_PATH="${EVAL_DATA_PATH:-$ROOT_DIR/all_data/loong_process.jsonl}"
 
 model_ready() {
@@ -88,7 +88,7 @@ Usage:
 Behavior:
   - Runs StructRAG inference on the full Loong dataset (1600 samples)
   - Uses 8 workers (worker_id 0-7), 200 items each, --no_shuffle
-  - Runs with Qwen2-72B-Instruct in float16 on 8 GPUs
+    - Runs with Qwen2-72B-Instruct in float16 on 1 GPU
   - After inference, scores using the same model as LLM judge
   - Saves EM-style structured metrics plus Loong LLM-as-eval metrics
 

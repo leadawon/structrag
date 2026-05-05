@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Run StructRAG on the full Loong dataset (all 1600 samples) with
-# Qwen2-72B-Instruct-AWQ (4-bit AWQ quantization, 4 GPUs).
+# Qwen2-72B-Instruct-AWQ (4-bit AWQ quantization, 1 GPU).
 #
 # Dataset layout: loong_process.jsonl has 1600 samples. main.py partitions by
 # worker_id using 200-item slices (200*worker_id .. 200*(worker_id+1)), so all
@@ -11,7 +11,7 @@
 
 set -euo pipefail
 
-CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0,1,2,3}"
+CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0}"
 export CUDA_VISIBLE_DEVICES
 CUDA_DEVICES="${CUDA_DEVICES:-$CUDA_VISIBLE_DEVICES}"
 if [[ -z "${TENSOR_PARALLEL_SIZE:-}" ]]; then
@@ -22,8 +22,8 @@ export TENSOR_PARALLEL_SIZE
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
-# VENV_PATH="${VENV_PATH:-/workspace/venvs/structrag}"
-PYTHON_BIN="${PYTHON_BIN:-python3}"
+VENV_PATH="${VENV_PATH:-/workspace/venvs/structrag}"
+PYTHON_BIN="${PYTHON_BIN:-$VENV_PATH/bin/python}"
 EVAL_DATA_PATH="${EVAL_DATA_PATH:-$ROOT_DIR/all_data/loong_process.jsonl}"
 
 model_ready() {
@@ -91,7 +91,7 @@ Usage:
 Behavior:
   - Runs StructRAG inference on the full Loong dataset (1600 samples)
   - Uses 8 workers (worker_id 0-7), each processing a 200-item slice via --no_shuffle
-  - Runs with Qwen2-72B-Instruct-AWQ on 4 GPUs (AWQ 4-bit quantization)
+    - Runs with Qwen2-72B-Instruct-AWQ on 1 GPU (AWQ 4-bit quantization)
   - After inference, scores using the same model as LLM judge
   - Saves EM-style structured metrics plus Loong LLM-as-eval metrics
 

@@ -10,7 +10,7 @@
 
 set -euo pipefail
 
-CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0,1,2,3,4,5,6,7}"
+CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0}"
 export CUDA_VISIBLE_DEVICES
 CUDA_DEVICES="${CUDA_DEVICES:-$CUDA_VISIBLE_DEVICES}"
 if [[ -z "${TENSOR_PARALLEL_SIZE:-}" ]]; then
@@ -21,8 +21,8 @@ export TENSOR_PARALLEL_SIZE
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
-# VENV_PATH="${VENV_PATH:-/workspace/venvs/structrag}"
-PYTHON_BIN="${PYTHON_BIN:-python3}"
+VENV_PATH="${VENV_PATH:-/workspace/venvs/structrag}"
+PYTHON_BIN="${PYTHON_BIN:-$VENV_PATH/bin/python}"
 EVAL_DATA_PATH="${EVAL_DATA_PATH:-$ROOT_DIR/all_data/loong_process.jsonl}"
 
 model_ready() {
@@ -90,7 +90,7 @@ Usage:
 Behavior:
   - Runs StructRAG inference on the full Loong dataset (1600 samples)
   - Uses 8 workers (worker_id 0-7), each processing a 200-item slice via --no_shuffle
-  - Runs with Qwen2-72B-Instruct on 8 GPUs (tensor-parallel-size 8)
+    - Runs with Qwen2-72B-Instruct on 1 GPU (tensor-parallel-size 1)
   - After inference, scores using the same Qwen2-72B-Instruct as LLM judge
   - Includes final_output_error_*.jsonl in scoring as failed cases
   - Saves EM-style structured metrics plus Loong LLM-as-eval metrics
@@ -99,7 +99,7 @@ Behavior:
 Defaults:
   MODEL_DIR=$ROOT_DIR/model/Qwen2-72B-Instruct
   DATASET_NAME=loong
-  WORKER_COUNT=8
+    WORKER_COUNT=8
   API_MODEL_NAME=Qwen2-72B-Instruct
   STRUCTRAG_ENABLE_THINKING=0
   OUTPUT_PATH_SUFFIX=qwen2-72b-full

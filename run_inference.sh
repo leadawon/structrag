@@ -4,7 +4,6 @@ set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # VENV_PATH="${VENV_PATH:-/workspace/venvs/structrag}"
-PYTHON_BIN="${PYTHON_BIN:-python3}"
 
 TOKENIZER_PATH="${TOKENIZER_PATH:-$ROOT_DIR/model/Qwen2.5-32B-Instruct}"
 LOONG_DIR="${LOONG_DIR:-$ROOT_DIR/loong/Loong}"
@@ -87,7 +86,6 @@ Behavior:
   - Writes run metadata to eval_results/.../run_manifest.json
 
 Environment overrides:
-  PYTHON_BIN=/path/to/python3
   TOKENIZER_PATH=$ROOT_DIR/model/Qwen2.5-32B-Instruct
   LOONG_DIR=$ROOT_DIR/loong/Loong
   URL=127.0.0.1:1225
@@ -263,7 +261,7 @@ load_existing_run_context() {
     fi
 
     local loaded
-    loaded="$("$PYTHON_BIN" - <<PY
+    loaded="$(python - <<PY
 import json
 from pathlib import Path
 
@@ -295,7 +293,7 @@ find_matching_resumable_run() {
         return 0
     fi
 
-    "$PYTHON_BIN" - <<PY
+    python - <<PY
 import json
 from pathlib import Path
 
@@ -331,7 +329,7 @@ PY
 }
 
 print_existing_progress() {
-    "$PYTHON_BIN" - <<PY
+    python - <<PY
 import json
 from pathlib import Path
 
@@ -419,7 +417,7 @@ prepare_run_paths() {
 write_run_metadata() {
     local status="$1"
     mkdir -p "$RUN_EVAL_RESULTS_DIR"
-    "$PYTHON_BIN" - <<PY
+    python - <<PY
 import json
 from pathlib import Path
 
@@ -499,7 +497,7 @@ run_main() {
     STRUCTRAG_LOGGING="$STRUCTRAG_LOGGING" \
     STRUCTRAG_LOGGING_DIR="$STRUCTRAG_LOGGING_DIR" \
     STRUCTRAG_LOGGING_RUN_ID="$STRUCTRAG_LOGGING_RUN_ID" \
-    "$PYTHON_BIN" main.py \
+    python main.py \
         --url "$URL" \
         --worker_id "$worker_id" \
         --llm_name "$LLM_NAME" \
@@ -516,7 +514,7 @@ run_main() {
 check_endpoint_health() {
     local endpoint="$1"
     local label="$2"
-    "$PYTHON_BIN" - "$endpoint" "$label" <<'PY'
+    python - "$endpoint" "$label" <<'PY'
 import sys
 import requests
 
@@ -772,8 +770,8 @@ if [[ $# -gt 0 ]]; then
     shift
 fi
 
-if [[ ! -x "$PYTHON_BIN" ]]; then
-    echo "Python binary not found: $PYTHON_BIN"
+if ! command -v python >/dev/null 2>&1; then
+    echo "Python binary not found: python"
     exit 1
 fi
 
@@ -887,7 +885,7 @@ case "$ACTION" in
         RUN_METADATA_PATH="$RUN_EVAL_RESULTS_DIR/run_manifest.json"
         write_run_metadata "merge_only"
         cd "$ROOT_DIR"
-        "$PYTHON_BIN" do_merge_each_batch.py \
+        python do_merge_each_batch.py \
             --llm_name "$LLM_NAME" \
             --dataset_name "$DATASET_NAME" \
             --output_path_suffix "$RUN_OUTPUT_PATH_SUFFIX" \

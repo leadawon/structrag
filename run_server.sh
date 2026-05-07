@@ -359,10 +359,43 @@ stop_stale_vllm_processes() {
         return 1
     fi
 
+    local did_anything=0
+
+    # Kill the saved process group first.  vLLM workers inherit the PGID of the
+    # session leader (started with setsid) and retain it even after the parent
+    # is killed, so PGID-based cleanup catches orphaned workers regardless of
+    # their process name or vLLM version (e.g. 0.6.x workers appear as plain
+    # multiprocessing.spawn processes with no recognisable vLLM marker).
+    if [[ -f "$PGID_FILE" ]]; then
+        local saved_pgid
+        saved_pgid="$(tr -d '[:space:]' < "$PGID_FILE")"
+        if [[ -n "$saved_pgid" ]]; then
+            local pgid_members=()
+            mapfile -t pgid_members < <(
+                ps -eo pid=,pgid= 2>/dev/null \
+                | awk -v g="$saved_pgid" 'NF==2 && $2==g {print $1}' \
+                || true
+            )
+            if [[ "${#pgid_members[@]}" -gt 0 ]]; then
+                echo "Stopping stale vLLM process group $saved_pgid: ${pgid_members[*]}"
+                signal_process_group TERM "$saved_pgid"
+                local remaining_pgid=()
+                if ! mapfile -t remaining_pgid < <(wait_for_pids_exit 10 "${pgid_members[@]}"); then
+                    if [[ "${#remaining_pgid[@]}" -gt 0 ]]; then
+                        echo "Force killing stale vLLM process group $saved_pgid: ${remaining_pgid[*]}"
+                        signal_process_group KILL "$saved_pgid"
+                        wait_for_pids_exit 5 "${remaining_pgid[@]}" >/dev/null || true
+                    fi
+                fi
+                did_anything=1
+            fi
+        fi
+    fi
+
     local stale_pids=()
     mapfile -t stale_pids < <(find_stale_vllm_pids)
     if [[ "${#stale_pids[@]}" -eq 0 ]]; then
-        return 1
+        [[ "$did_anything" -eq 1 ]] && return 0 || return 1
     fi
 
     echo "Stopping stale vLLM processes: ${stale_pids[*]}"

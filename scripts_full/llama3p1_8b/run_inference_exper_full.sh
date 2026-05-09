@@ -93,6 +93,11 @@ RESULT_FULL_DIR="${RESULT_FULL_DIR:-$ROOT_DIR/result_full}"
 LLM_NAME="${LLM_NAME:-llama3p1-8b}"
 DATASET_NAME="${DATASET_NAME:-loong_full}"
 WORKER_COUNT="${WORKER_COUNT:-8}"
+LIMIT="${LIMIT:-}"
+LIMIT_ARG=()
+if [[ -n "$LIMIT" ]]; then
+    LIMIT_ARG=(--limit "$LIMIT")
+fi
 
 # ---------------------------------------------------------------------------
 # Usage
@@ -119,13 +124,14 @@ Defaults:
   FULL_DATA_PATH=$FULL_DATA_PATH
   API_MODEL_NAME=$API_MODEL_NAME
   WORKER_COUNT=$WORKER_COUNT
+    LIMIT=$LIMIT (optional; passed through to main.py)
   AUTO_SCORE=0 (judge disabled)
   RESULT_FULL_DIR=$RESULT_FULL_DIR
 
 Examples:
   bash scripts_full/llama3p1_8b/run_inference_exper_full.sh --dry-run
   CUDA_VISIBLE_DEVICES=0 bash scripts_full/llama3p1_8b/run_inference_exper_full.sh
-  WORKER_COUNT=1 bash scripts_full/llama3p1_8b/run_inference_exper_full.sh  # first 200 only
+    WORKER_COUNT=1 LIMIT=1 bash scripts_full/llama3p1_8b/run_inference_exper_full.sh  # first 1 only
 EOF
 }
 
@@ -243,6 +249,7 @@ if [[ "$DRY_RUN" -eq 1 ]]; then
     echo "lllm_name=$LLM_NAME"
     echo "dataset_name=$DATASET_NAME"
     echo "worker_count=$WORKER_COUNT"
+    echo "limit=${LIMIT:-none}"
     echo "api_model_name=$API_MODEL_NAME"
     echo "auto_score=0 (judge disabled)"
 
@@ -259,7 +266,7 @@ if [[ "$DRY_RUN" -eq 1 ]]; then
     echo "  LOONG_DIR=$LOONG_LINK_DIR EVAL_DATA_PATH=$FULL_DATA_PATH \\"
     echo "  LLM_NAME=$LLM_NAME DATASET_NAME=$DATASET_NAME \\"
     echo "  WORKER_COUNT=$WORKER_COUNT AUTO_SCORE=0 \\"
-    echo "  bash $ROOT_DIR/run_inference.sh all_workers --no_shuffle"
+    echo "  bash $ROOT_DIR/run_inference.sh all_workers --no_shuffle ${LIMIT_ARG[*]}"
     echo ""
     echo "  # Results symlinked to: $RESULT_FULL_DIR/latest"
     exit 0
@@ -361,7 +368,7 @@ fi
 # ---------------------------------------------------------------------------
 # Full run: all 8 workers (8 × 200 = 1600 samples)
 # ---------------------------------------------------------------------------
-bash "$ROOT_DIR/run_inference.sh" all_workers --no_shuffle
+bash "$ROOT_DIR/run_inference.sh" all_workers --no_shuffle "${LIMIT_ARG[@]}"
 
 # ---------------------------------------------------------------------------
 # Post-run: link results into result_full/

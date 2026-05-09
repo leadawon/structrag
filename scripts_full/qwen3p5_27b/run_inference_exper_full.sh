@@ -5,7 +5,7 @@
 
 set -euo pipefail
 
-CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0,1,2,3}"
+CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-4,5,6,7}"
 export CUDA_VISIBLE_DEVICES
 CUDA_DEVICES="${CUDA_DEVICES:-$CUDA_VISIBLE_DEVICES}"
 if [[ -z "${TENSOR_PARALLEL_SIZE:-}" ]]; then
@@ -20,6 +20,20 @@ VENV_PATH="${VENV_PATH:-/workspace/venvs/structragvenv}"
 PYTHON_BIN="${PYTHON_BIN:-$VENV_PATH/bin/python}"
 DOWNLOAD_MODEL_SCRIPT="${DOWNLOAD_MODEL_SCRIPT:-$SCRIPT_DIR/download_model.sh}"
 AUTO_DOWNLOAD_MODEL="${AUTO_DOWNLOAD_MODEL:-0}"
+
+# ---------------------------------------------------------------------------
+# Runtime limit (seconds) — default 10 hours
+# ---------------------------------------------------------------------------
+RUN_MAX_HOURS="${RUN_MAX_HOURS:-10}"
+RUN_MAX_SECONDS="${RUN_MAX_SECONDS:-}"
+TIMEOUT_KILL_GRACE_SECONDS="${TIMEOUT_KILL_GRACE_SECONDS:-120}"
+if [[ -z "${RUN_MAX_SECONDS}" ]]; then
+    if [[ "${RUN_MAX_HOURS}" =~ ^[0-9]+$ ]]; then
+        RUN_MAX_SECONDS="$((RUN_MAX_HOURS * 3600))"
+    else
+        RUN_MAX_SECONDS="0"
+    fi
+fi
 
 # ---------------------------------------------------------------------------
 # model_ready: check that model directory has all required files
@@ -79,6 +93,9 @@ CLEAN_STALE_VLLM="${CLEAN_STALE_VLLM:-1}"
 DISABLE_CUSTOM_ALL_REDUCE="${DISABLE_CUSTOM_ALL_REDUCE:-0}"
 RESTART_WAIT_TIMEOUT="${RESTART_WAIT_TIMEOUT:-1800}"
 RESTART_WAIT_INTERVAL="${RESTART_WAIT_INTERVAL:-15}"
+AUTO_RESUME="${AUTO_RESUME:-1}"
+RESUME_OUTPUT_PATH_SUFFIX="${RESUME_OUTPUT_PATH_SUFFIX:-}"
+FORCE_NEW_RUN="${FORCE_NEW_RUN:-0}"
 
 # ---------------------------------------------------------------------------
 # Full dataset settings (1600 samples, no subset preparation)
@@ -114,6 +131,9 @@ Behavior:
 Flags:
   --dry-run   Validate paths and environment; do not start server or inference
   --smoke     Quick test with 2 samples on worker 0 (server must be running)
+    --resume-suffix <suffix>  Resume a specific run suffix
+    --fresh     Disable auto-resume and force a new run
+    --max-hours <hours>  Override runtime limit (default: ${RUN_MAX_HOURS})
 
 Defaults:
   MODEL_DIR=$MODEL_DIR
@@ -122,6 +142,10 @@ Defaults:
   WORKER_COUNT=$WORKER_COUNT
   AUTO_SCORE=0 (judge disabled)
   RESULT_FULL_DIR=$RESULT_FULL_DIR
+    AUTO_RESUME=$AUTO_RESUME
+    RESUME_OUTPUT_PATH_SUFFIX=$RESUME_OUTPUT_PATH_SUFFIX
+    RUN_MAX_HOURS=$RUN_MAX_HOURS
+    RUN_MAX_SECONDS=$RUN_MAX_SECONDS
 
 Examples:
   bash scripts_full/qwen3p5_27b/run_inference_exper_full.sh --dry-run
@@ -136,20 +160,47 @@ EOF
 DRY_RUN=0
 SMOKE_RUN=0
 
-for arg in "$@"; do
-    case "$arg" in
+while [[ $# -gt 0 ]]; do
+    case "$1" in
         --help|-h)
             usage
             exit 0
             ;;
         --dry-run)
             DRY_RUN=1
+            shift
             ;;
         --smoke)
             SMOKE_RUN=1
+            shift
+            ;;
+        --resume-suffix)
+            shift
+            RESUME_OUTPUT_PATH_SUFFIX="${1:-}"
+            if [[ -z "$RESUME_OUTPUT_PATH_SUFFIX" ]]; then
+                echo "--resume-suffix requires a value"
+                exit 1
+            fi
+            AUTO_RESUME=1
+            shift
+            ;;
+        --fresh)
+            FORCE_NEW_RUN=1
+            AUTO_RESUME=0
+            shift
+            ;;
+        --max-hours)
+            shift
+            RUN_MAX_HOURS="${1:-}"
+            if [[ -z "$RUN_MAX_HOURS" || ! "$RUN_MAX_HOURS" =~ ^[0-9]+$ ]]; then
+                echo "--max-hours requires a numeric value"
+                exit 1
+            fi
+            RUN_MAX_SECONDS="$((RUN_MAX_HOURS * 3600))"
+            shift
             ;;
         *)
-            echo "Unknown option: $arg"
+            echo "Unknown option: $1"
             usage
             exit 1
             ;;
@@ -246,6 +297,11 @@ if [[ "$DRY_RUN" -eq 1 ]]; then
     echo "worker_count=$WORKER_COUNT"
     echo "api_model_name=$API_MODEL_NAME"
     echo "auto_score=0 (judge disabled)"
+    echo "auto_resume=$AUTO_RESUME"
+    echo "resume_output_path_suffix=$RESUME_OUTPUT_PATH_SUFFIX"
+    echo "force_new_run=$FORCE_NEW_RUN"
+    echo "run_max_hours=$RUN_MAX_HOURS"
+    echo "run_max_seconds=$RUN_MAX_SECONDS"
 
     echo ""
     echo "=== Commands that would run ==="
@@ -260,6 +316,7 @@ if [[ "$DRY_RUN" -eq 1 ]]; then
     echo "  LOONG_DIR=$LOONG_LINK_DIR EVAL_DATA_PATH=$FULL_DATA_PATH \\"
     echo "  LLM_NAME=$LLM_NAME DATASET_NAME=$DATASET_NAME \\"
     echo "  WORKER_COUNT=$WORKER_COUNT AUTO_SCORE=0 \\"
+    echo "  AUTO_RESUME=$AUTO_RESUME RESUME_OUTPUT_PATH_SUFFIX=$RESUME_OUTPUT_PATH_SUFFIX FORCE_NEW_RUN=$FORCE_NEW_RUN \\"
     echo "  bash $ROOT_DIR/run_inference.sh all_workers --no_shuffle"
     echo ""
     echo "  # Results symlinked to: $RESULT_FULL_DIR/latest"
@@ -339,6 +396,10 @@ export INCLUDE_ERROR_OUTPUTS_IN_SCORE="1"
 export GEN_MODEL_CONFIG="${GEN_MODEL_CONFIG:-qwen2.yaml}"
 export EVAL_MODEL_CONFIG="${EVAL_MODEL_CONFIG:-qwen_local_judge.yaml}"
 export STRUCTURED_EVAL_PY_ROOT="${STRUCTURED_EVAL_PY_ROOT:-}"
+export AUTO_RESUME
+export RESUME_OUTPUT_PATH_SUFFIX
+export FORCE_NEW_RUN
+export SERVER_PYTHON_BIN="${SERVER_PYTHON_BIN:-$PYTHON_BIN}"
 
 cd "$ROOT_DIR"
 
@@ -358,7 +419,70 @@ fi
 # ---------------------------------------------------------------------------
 # Full run: all 8 workers (8 × 200 = 1600 samples)
 # ---------------------------------------------------------------------------
-bash "$ROOT_DIR/run_inference.sh" all_workers --no_shuffle
+RUN_STARTED=1
+
+stop_server_safely() {
+    if [[ -f "$PID_FILE" || -f "$PGID_FILE" ]]; then
+        PYTHON_BIN="$PYTHON_BIN" \
+        VENV_PATH="$VENV_PATH" \
+        MODEL_DIR="$MODEL_DIR" \
+        LOG_PATH="$LOG_PATH" \
+        PID_FILE="$PID_FILE" \
+        PGID_FILE="$PGID_FILE" \
+        CLEAN_STALE_VLLM="$CLEAN_STALE_VLLM" \
+        CUDA_VISIBLE_DEVICES="$CUDA_VISIBLE_DEVICES" \
+        CUDA_DEVICES="$CUDA_DEVICES" \
+        bash "$SERVER_SCRIPT_PATH" --stop || true
+    fi
+}
+
+cleanup_on_exit() {
+    local exit_code=$?
+    if [[ "${RUN_STARTED:-0}" -eq 1 ]]; then
+        stop_server_safely
+    fi
+    return "$exit_code"
+}
+
+trap cleanup_on_exit EXIT
+
+run_with_timeout() {
+    local cmd=(bash "$ROOT_DIR/run_inference.sh" all_workers --no_shuffle)
+    if [[ "$RUN_MAX_SECONDS" -le 0 ]]; then
+        "${cmd[@]}"
+        return $?
+    fi
+
+    local timeout_bin=""
+    timeout_bin="$(command -v timeout || true)"
+    if [[ -n "$timeout_bin" ]]; then
+        echo "Runtime limit enabled: ${RUN_MAX_SECONDS}s (about ${RUN_MAX_HOURS}h)"
+        "$timeout_bin" --foreground --signal=TERM --kill-after "${TIMEOUT_KILL_GRACE_SECONDS}" \
+            "$RUN_MAX_SECONDS" "${cmd[@]}"
+        return $?
+    fi
+
+    echo "Runtime limit enabled without timeout(1); using watchdog: ${RUN_MAX_SECONDS}s"
+    "${cmd[@]}" &
+    local run_pid=$!
+    (
+        sleep "$RUN_MAX_SECONDS"
+        if kill -0 "$run_pid" >/dev/null 2>&1; then
+            echo "Runtime limit reached; stopping inference..."
+            kill -TERM "$run_pid" >/dev/null 2>&1 || true
+            sleep "$TIMEOUT_KILL_GRACE_SECONDS"
+            kill -KILL "$run_pid" >/dev/null 2>&1 || true
+        fi
+    ) &
+    local watchdog_pid=$!
+    wait "$run_pid"
+    local status=$?
+    kill "$watchdog_pid" >/dev/null 2>&1 || true
+    wait "$watchdog_pid" >/dev/null 2>&1 || true
+    return "$status"
+}
+
+run_with_timeout
 
 # ---------------------------------------------------------------------------
 # Post-run: link results into result_full/

@@ -55,6 +55,10 @@ SERVER_PID_FILE="${SERVER_PID_FILE:-${PID_FILE:-}}"
 SERVER_PGID_FILE="${SERVER_PGID_FILE:-${PGID_FILE:-}}"
 SERVER_LOG_PATH="${SERVER_LOG_PATH:-${LOG_PATH:-}}"
 SERVER_STARTED_BY_INFERENCE=0
+LOCAL_MODEL_DIR="${STRUCTRAG_LOCAL_MODEL_DIR:-}"
+if [[ -n "$LOCAL_MODEL_DIR" ]]; then
+    MANAGE_SERVER=0
+fi
 
 RUN_OUTPUT_PATH_SUFFIX=""
 RUN_EVAL_RESULTS_DIR=""
@@ -494,6 +498,10 @@ run_main() {
     STRUCTRAG_ROUTER_DISABLE_GUIDED_DECODING="$ROUTER_DISABLE_GUIDED_DECODING" \
     STRUCTRAG_ENABLE_THINKING="$STRUCTRAG_ENABLE_THINKING" \
     STRUCTRAG_MAX_INPUT_TOKENS="$CLIENT_MAX_INPUT_TOKENS" \
+    STRUCTRAG_LOCAL_MODEL_DIR="$LOCAL_MODEL_DIR" \
+    STRUCTRAG_LOCAL_DTYPE="${STRUCTRAG_LOCAL_DTYPE:-}" \
+    STRUCTRAG_LOCAL_TRUST_REMOTE_CODE="${STRUCTRAG_LOCAL_TRUST_REMOTE_CODE:-}" \
+    STRUCTRAG_LOCAL_MAX_INPUT_TOKENS="${STRUCTRAG_LOCAL_MAX_INPUT_TOKENS:-}" \
     STRUCTRAG_LOGGING="$STRUCTRAG_LOGGING" \
     STRUCTRAG_LOGGING_DIR="$STRUCTRAG_LOGGING_DIR" \
     STRUCTRAG_LOGGING_RUN_ID="$STRUCTRAG_LOGGING_RUN_ID" \
@@ -567,6 +575,9 @@ print_server_log_tail() {
 }
 
 ensure_required_servers_alive() {
+    if [[ -n "$LOCAL_MODEL_DIR" ]]; then
+        return 0
+    fi
     if [[ "$MANAGE_SERVER" == "1" ]]; then
         start_main_server_if_needed
     fi
@@ -647,6 +658,9 @@ wait_for_endpoint_health() {
 }
 
 restart_main_server_and_wait() {
+    if [[ -n "$LOCAL_MODEL_DIR" ]]; then
+        return 0
+    fi
     echo "Preparing server restart before next chunk..."
     if [[ "$RESTART_STRATEGY" == "manual" ]]; then
         echo "Manual restart mode: restart your server in the other terminal now."

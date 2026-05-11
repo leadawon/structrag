@@ -4,6 +4,8 @@ import os
 import re
 from transformers import AutoTokenizer
 
+from utils.local_chat_model import LocalChatModel
+
 
 class QwenAPI():
     def __init__(self, url, tokenizer_path=None, model_name="Qwen", guided_decoding_backend="__auto__", trace_logger=None):
@@ -24,22 +26,45 @@ class QwenAPI():
         self.merge_reasoning = self._parse_optional_bool(
             os.environ.get("STRUCTRAG_MERGE_REASONING")) or False
 
-        print("loading tokenizer")
-        resolved_tokenizer_path = None
-        for candidate in [
-            tokenizer_path,
-            os.environ.get("STRUCTRAG_TOKENIZER_PATH"),
-            "/mnt/data/lizhuoqun/hf_models/gpt2",
-        ]:
-            if candidate and os.path.exists(candidate):
-                resolved_tokenizer_path = candidate
-                break
+        self.local_model_dir = os.environ.get("STRUCTRAG_LOCAL_MODEL_DIR")
+        self.use_local = bool(self.local_model_dir)
+        self.local_model = None
+        self.local_dtype = os.environ.get("STRUCTRAG_LOCAL_DTYPE", "bfloat16")
+        local_trust_raw = self._parse_optional_bool(
+            os.environ.get("STRUCTRAG_LOCAL_TRUST_REMOTE_CODE"))
+        self.local_trust_remote_code = True if local_trust_raw is None else local_trust_raw
+        self.local_max_input_tokens = self._parse_optional_int(
+            os.environ.get("STRUCTRAG_LOCAL_MAX_INPUT_TOKENS")) or self.max_input_tokens or 32768
 
-        if resolved_tokenizer_path is None:
-            raise Exception("No tokenizer path found. Please pass --tokenizer_path or set STRUCTRAG_TOKENIZER_PATH.")
+        if self.use_local:
+            if self.guided_decoding_backend:
+                print("local_mode=1; guided_decoding_backend ignored")
+                self.guided_decoding_backend = None
+            self.local_model = LocalChatModel(
+                model_dir=self.local_model_dir,
+                compute_dtype=self.local_dtype,
+                enable_thinking=self.enable_thinking,
+                max_input_tokens=self.local_max_input_tokens,
+                trust_remote_code=self.local_trust_remote_code,
+            )
+            self.tokenizer = self.local_model.tokenizer
+        else:
+            print("loading tokenizer")
+            resolved_tokenizer_path = None
+            for candidate in [
+                tokenizer_path,
+                os.environ.get("STRUCTRAG_TOKENIZER_PATH"),
+                "/mnt/data/lizhuoqun/hf_models/gpt2",
+            ]:
+                if candidate and os.path.exists(candidate):
+                    resolved_tokenizer_path = candidate
+                    break
 
-        self.tokenizer = AutoTokenizer.from_pretrained(resolved_tokenizer_path, trust_remote_code=True)
-        print("loading tokenizer done")
+            if resolved_tokenizer_path is None:
+                raise Exception("No tokenizer path found. Please pass --tokenizer_path or set STRUCTRAG_TOKENIZER_PATH.")
+
+            self.tokenizer = AutoTokenizer.from_pretrained(resolved_tokenizer_path, trust_remote_code=True)
+            print("loading tokenizer done")
 
     def _parse_optional_int(self, raw_value):
         if raw_value is None or raw_value == "":
@@ -138,6 +163,58 @@ class QwenAPI():
         else:
             input_text_len = self._token_len(input_text)
         print(f"input_text_len: {input_text_len}")
+
+        data_id = trace_context.get("data_id")
+        component = trace_context.get("component", "llm.response")
+        metadata = dict(trace_context.get("metadata") or {})
+        metadata.update(
+            {
+                "url": self.url,
+                "model_name": self.model_name,
+                "guided_decoding_backend": self.guided_decoding_backend,
+                "enable_thinking": self.enable_thinking,
+                "merge_reasoning": self.merge_reasoning,
+                "max_tokens": max_new_tokens,
+                "input_text_len": input_text_len,
+                "truncated_input": truncated,
+            }
+        )
+
+        if self.use_local:
+            response = None
+            last_error_message = None
+            try:
+                response = self.local_model.generate_text(
+                    system_prompt="",
+                    user_prompt=input_text,
+                    max_output_tokens=max_new_tokens,
+                    temperature=0.0,
+                )
+            except Exception as e:
+                last_error_message = f"local_inference_error={e}"
+
+            if response is None:
+                if self.trace_logger and data_id is not None:
+                    self.trace_logger.log_llm_call(
+                        data_id=data_id,
+                        component=component,
+                        prompt=input_text,
+                        response=f"ERROR: {last_error_message}",
+                        metadata=metadata,
+                    )
+                raise Exception(f"local response is None; last_error={last_error_message}")
+
+            if self.trace_logger and data_id is not None:
+                self.trace_logger.log_llm_call(
+                    data_id=data_id,
+                    component=component,
+                    prompt=input_text,
+                    response=response,
+                    metadata=metadata,
+                )
+
+            print("used time in this qwenapi:", (time.time()-current_time)/60, "min")
+            return response
 
         url = self.url
         headers = {
@@ -244,19 +321,8 @@ class QwenAPI():
                 print(f"(print in qwenapi.py parse, try_time {try_time}) callback: {result} Error: {e}")
                 continue
 
-        data_id = trace_context.get("data_id")
-        component = trace_context.get("component", "llm.response")
-        metadata = dict(trace_context.get("metadata") or {})
         metadata.update(
             {
-                "url": self.url,
-                "model_name": self.model_name,
-                "guided_decoding_backend": self.guided_decoding_backend,
-                "enable_thinking": self.enable_thinking,
-                "merge_reasoning": self.merge_reasoning,
-                "max_tokens": max_new_tokens,
-                "input_text_len": input_text_len,
-                "truncated_input": truncated,
                 "attempts": try_time,
                 "status_code": callback_status_code,
                 "usage": usage,

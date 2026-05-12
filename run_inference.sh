@@ -505,7 +505,7 @@ run_main() {
     STRUCTRAG_LOGGING="$STRUCTRAG_LOGGING" \
     STRUCTRAG_LOGGING_DIR="$STRUCTRAG_LOGGING_DIR" \
     STRUCTRAG_LOGGING_RUN_ID="$STRUCTRAG_LOGGING_RUN_ID" \
-    python main.py \
+    "${PYTHON_BIN:-python}" main.py \
         --url "$URL" \
         --worker_id "$worker_id" \
         --llm_name "$LLM_NAME" \

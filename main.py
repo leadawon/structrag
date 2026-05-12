@@ -101,6 +101,7 @@ if __name__ == '__main__':
     parser.add_argument("--limit", type=int, default=None, help="Only process the first N items after filtering")
     parser.add_argument("--only_id", type=str, default=None, help="Only process the sample with this dataset id")
     parser.add_argument("--no_shuffle", action="store_true", help="Keep dataset order for debugging")
+    parser.add_argument("--reverse", action="store_true", help="Process dataset in reverse order (sample 1599→0)")
     args = parser.parse_args()
 
     for k, v in vars(args).items():
@@ -157,6 +158,9 @@ if __name__ == '__main__':
     if not args.no_shuffle and args.only_id is None:
         random.shuffle(eval_datas)
 
+    if args.reverse:
+        eval_datas = list(reversed(eval_datas))
+
     if args.only_id is not None:
         eval_datas = [data for data in eval_datas if str(data["id"]) == args.only_id]
     else:
@@ -203,12 +207,14 @@ if __name__ == '__main__':
     worker_base_index = 0
     if args.only_id is None:
         worker_base_index = 200 * args.worker_id + args.start_bias
+    TOTAL_SAMPLES = 1600
 
     for i, data in enumerate(eval_datas): # data: {"instruction": "", "question": "", "docs": "", "prompt_template": "{},{},{}"}
         global_index = worker_base_index + i
+        reverse_global_index = TOTAL_SAMPLES - global_index
         if data["id"] in existing_data_ids:
             print(
-                f"################## Skipping local={i}, global={global_index} existing... ##################"
+                f"################## Skipping local={i}, global={global_index}, reverse_global={reverse_global_index} existing... ##################"
             )
             trace_logger.log_run_event(
                 "sample_skipped_existing",
@@ -220,7 +226,7 @@ if __name__ == '__main__':
             )
             continue
         print(
-            f"################## Processing local={i}, global={global_index} ##################"
+            f"################## Processing local={i}, global={global_index}, reverse_global={reverse_global_index} ##################"
         )
 
         try:

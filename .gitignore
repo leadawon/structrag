@@ -1359,6 +1359,10 @@ model/
 all_data/
 logs/
 tmp/
+27b_vllm_full_logging/
+result_full/qwen35_27b_vllm/
+result_full/qwen35_27b_vllm_sets/
+loong/Loong_full/config
 32b_logging/active_run.env
 32b_logging/latest
 32b_logging/runs/

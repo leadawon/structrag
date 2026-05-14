@@ -1,8 +1,10 @@
-# StructRAG Set1 Server0 Tail Run
+# StructRAG Server0 Tail Runs
 
 ## Goal
 
 `run_inference_full_set1_server0.sh` runs only the last 100 unfinished `set1` samples on another server. It writes results to a clearly named server0 folder, separate from the main `set1` run.
+
+`run_inference_full_set4_server0.sh` assigns all currently unfinished `set4` samples to server0.
 
 ## Important: Code Vs Results
 
@@ -11,6 +13,7 @@
 ```text
 scripts_full/qwen3p5_27b_vllm/run_inference_full_sets.sh
 scripts_full/qwen3p5_27b_vllm/run_inference_full_set1_server0.sh
+scripts_full/qwen3p5_27b_vllm/run_inference_full_set4_server0.sh
 scripts_full/qwen3p5_27b_vllm/prepare_ordered_set_runs.py
 ```
 
@@ -25,7 +28,9 @@ So the workflow is:
 
 ## Main Server: Prepare Server0 Input
 
-On the main server, prepare the exact 100 IDs assigned to server0:
+On the main server, prepare the exact 100 IDs assigned to server0.
+
+For set1:
 
 ```bash
 bash scripts_full/qwen3p5_27b_vllm/run_inference_full_set1_server0.sh --prepare-only
@@ -37,16 +42,39 @@ This creates:
 result_full/qwen35_27b_vllm_sets/set1_server0/
 ```
 
-Copy this whole folder to server0 at the same relative path:
+For set4:
+
+```bash
+bash scripts_full/qwen3p5_27b_vllm/run_inference_full_set4_server0.sh --prepare-only
+```
+
+This creates:
+
+```text
+result_full/qwen35_27b_vllm_sets/set4_server0/
+```
+
+For set4, this prepared folder contains every unfinished set4 sample, not just a tail subset.
+
+Copy the relevant whole folder to server0 at the same relative path.
+
+Set1 destination:
 
 ```text
 /workspace/StructRAG/result_full/qwen35_27b_vllm_sets/set1_server0/
 ```
 
-This folder contains the exact input file:
+Set4 destination:
+
+```text
+/workspace/StructRAG/result_full/qwen35_27b_vllm_sets/set4_server0/
+```
+
+Each folder contains the exact input file:
 
 ```text
 result_full/qwen35_27b_vllm_sets/set1_server0/data/loong_process.jsonl
+result_full/qwen35_27b_vllm_sets/set4_server0/data/loong_process.jsonl
 ```
 
 Do not rely on git for this folder.
@@ -59,12 +87,20 @@ After the server0 input folder exists on the main server, you can continue the n
 bash scripts_full/qwen3p5_27b_vllm/run_inference_full_sets.sh
 ```
 
-The normal set runner treats `result_full/qwen35_27b_vllm_sets/set1_server0/data/loong_process.jsonl` as a reserved external shard. Therefore the main server skips those 100 IDs even before the server0 results are copied back.
+The normal set runner treats these server0 input files as reserved external shards. Therefore the main server skips those IDs even before the server0 results are copied back.
 
 ## Server0: Run The Assigned 100
 
+For set1:
+
 ```bash
 bash scripts_full/qwen3p5_27b_vllm/run_inference_full_set1_server0.sh
+```
+
+For set4:
+
+```bash
+bash scripts_full/qwen3p5_27b_vllm/run_inference_full_set4_server0.sh
 ```
 
 Useful checks:
@@ -72,6 +108,8 @@ Useful checks:
 ```bash
 bash scripts_full/qwen3p5_27b_vllm/run_inference_full_set1_server0.sh --prepare-only
 bash scripts_full/qwen3p5_27b_vllm/run_inference_full_set1_server0.sh --dry-run
+bash scripts_full/qwen3p5_27b_vllm/run_inference_full_set4_server0.sh --prepare-only
+bash scripts_full/qwen3p5_27b_vllm/run_inference_full_set4_server0.sh --dry-run
 ```
 
 ## Output Folders
@@ -80,12 +118,14 @@ Server0 inference output:
 
 ```text
 eval_results/qwen35-27b-vllm/loong_set1_server0_tail100/
+eval_results/qwen35-27b-vllm/loong_set4_server0_full_remaining/
 ```
 
 Server0 prepared input and manifest:
 
 ```text
 result_full/qwen35_27b_vllm_sets/set1_server0/
+result_full/qwen35_27b_vllm_sets/set4_server0/
 ```
 
 ## Copy Back To Main Server
@@ -94,12 +134,14 @@ After server0 finishes, copy this result folder back to the same relative path o
 
 ```text
 eval_results/qwen35-27b-vllm/loong_set1_server0_tail100/
+eval_results/qwen35-27b-vllm/loong_set4_server0_full_remaining/
 ```
 
-The full destination should be:
+The full destinations should be:
 
 ```text
 /workspace/StructRAG/eval_results/qwen35-27b-vllm/loong_set1_server0_tail100/
+/workspace/StructRAG/eval_results/qwen35-27b-vllm/loong_set4_server0_full_remaining/
 ```
 
 Then rerun the normal set wrapper on the main server:
@@ -108,4 +150,4 @@ Then rerun the normal set wrapper on the main server:
 bash scripts_full/qwen3p5_27b_vllm/run_inference_full_sets.sh
 ```
 
-The prepare step detects `loong_set*_server*` result folders and reuses those rows. After the copy-back, those 100 IDs become normal completed set1 rows in the main set workflow.
+The prepare step detects `loong_set*_server*` result folders and reuses those rows. After the copy-back, server0 rows become normal completed rows in the main set workflow.
